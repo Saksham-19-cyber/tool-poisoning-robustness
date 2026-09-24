@@ -72,23 +72,24 @@ Evaluated across three parameter scale classes hosted via Groq free tier:
 
 ### Single-Turn Attack Success Rate & Task Utility Matrix
 
-| Model | Size Class | Condition | Total Runs | ASR (%) | Task Utility (%) | Mean Brier Score |
-|---|---|---|---|---|---|---|
-| `llama-3.1-8b-instant` | Small (~8B) | Clean | 16 | 0.0% | 43.8% | 0.2567 |
-| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Explicit | 16 | 31.3% | 50.0% | 0.3570 |
-| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Implicit | 16 | 18.8% | 50.0% | 0.3295 |
-| `openai/gpt-oss-20b` | Mid (~20B) | Clean | 16 | 0.0% | 43.8% | 0.2191 |
-| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Explicit | 16 | 25.0% | 50.0% | 0.3251 |
-| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Implicit | 16 | 6.3% | 50.0% | 0.2402 |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Clean | 16 | 0.0% | 43.8% | 0.2578 |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Explicit | 16 | 25.0% | 50.0% | 0.3667 |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Implicit | 16 | 12.5% | 43.8% | 0.3141 |
+| Model | Size Class | Condition | Total Runs | ASR (95% CI) | Task Utility (95% CI) | Mean Brier ↓ | ECE ↓ |
+|---|---|---|---|---|---|---|---|
+| `llama-3.1-8b-instant` | Small (~8B) | Clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.0156 | 0.1181 |
+| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Explicit | 80 | **31.3%** [22.2%, 42.1%] | **100.0%** [95.4%, 100.0%] | 0.1651 | 0.0846 |
+| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Implicit | 80 | **23.8%** [15.8%, 34.1%] | **100.0%** [95.4%, 100.0%] | 0.1424 | 0.0416 |
+| `openai/gpt-oss-20b` | Mid (~20B) | Clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.0344 | 0.1806 |
+| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Explicit | 80 | **17.5%** [10.7%, 27.3%] | **100.0%** [95.4%, 100.0%] | 0.1160 | 0.0704 |
+| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Implicit | 80 | **15.0%** [8.8%, 24.4%] | **100.0%** [95.4%, 100.0%] | 0.1030 | 0.0719 |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.0103 | 0.0959 |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Explicit | 80 | **26.3%** [17.9%, 36.8%] | **100.0%** [95.4%, 100.0%] | 0.1482 | 0.0772 |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Implicit | 80 | **27.5%** [18.9%, 38.1%] | **100.0%** [95.4%, 100.0%] | 0.1522 | 0.0834 |
 
 ### Key Findings
-1. **Description Poisoning Vulnerability**: All model sizes showed zero attack occurrence under clean descriptions, but measurable vulnerability under explicit description poisoning (25.0% to 31.3% ASR).
-2. **Implicit vs. Explicit Steering**: Explicit imperative commands produced 1.5x to 4x higher ASR than implicit recommendation phrasing across all model classes.
-3. **Scaling Behavior**: Small models (~8B) exhibited slightly higher overall vulnerability to schema steering, while larger models (~70B) showed higher baseline adherence to system instructions but remained susceptible when instructions appeared within tool parameter definitions.
-4. **Confidence Drift**: Models consistently exhibited overconfidence (stating 80-95% confidence) even when executing injected side-effect actions, leading to degraded Brier scores under poisoned conditions.
+1. **Schema Injection Susceptibility**: All model sizes showed zero attack occurrence under clean descriptions, but measurable vulnerability under explicit description poisoning (17.5% to 31.3% ASR).
+2. **Task Utility Decoupling**: With task completion evaluated strictly on non-malicious goal steps, all models achieved 100.0% task utility under both clean and poisoned conditions, confirming that benign user intent execution remains intact even when side-effect actions are co-executed.
+3. **Statistical Scale Invariance**: Due to overlapping 95% Wilson confidence intervals across sizes ($z = 0.71, p = 0.48$ between 8B and 70B explicit ASR), neither standard scaling robustness nor inverse scaling can be claimed as a statistically significant effect at $N=80$ per condition.
+4. **Severe Calibration Distortion**: Models consistently exhibited high self-reported confidence (80–95%) even when executing injected side-effect actions, driving Brier calibration error from 0.010–0.034 (clean) up to 0.116–0.165 (poisoned).
+5. **Multi-Turn Calibration Dynamics**: Calibration error peaks early upon schema exposure (Turns 1–2) and stabilizes thereafter rather than escalating without bound.
 
 ---
 

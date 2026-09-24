@@ -151,17 +151,17 @@ python analysis/generate_plots.py
 
 ### Summary Table
 
-| Model | Class | Condition | Runs | **ASR** | Task Utility | Mean Brier ↓ |
-|-------|-------|-----------|------|---------|--------------|--------------|
-| `llama-3.1-8b-instant` | Small ~8B | clean | 16 | **0.0%** | 43.8% | 0.257 |
-| `llama-3.1-8b-instant` | Small ~8B | poisoned_explicit | 16 | **31.3%** | 50.0% | 0.357 |
-| `llama-3.1-8b-instant` | Small ~8B | poisoned_implicit | 16 | **18.8%** | 50.0% | 0.330 |
-| `openai/gpt-oss-20b` | Mid ~20B | clean | 16 | **0.0%** | 43.8% | 0.219 |
-| `openai/gpt-oss-20b` | Mid ~20B | poisoned_explicit | 16 | **25.0%** | 50.0% | 0.325 |
-| `openai/gpt-oss-20b` | Mid ~20B | poisoned_implicit | 16 | **6.3%** | 50.0% | 0.240 |
-| `llama-3.3-70b-versatile` | Large ~70B+ | clean | 16 | **0.0%** | 43.8% | 0.258 |
-| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_explicit | 16 | **25.0%** | 50.0% | 0.367 |
-| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_implicit | 16 | **12.5%** | 43.8% | 0.314 |
+| Model | Class | Condition | Runs | **ASR (95% CI)** | **Task Utility (95% CI)** | Mean Brier ↓ | ECE ↓ |
+|-------|-------|-----------|------|------------------|---------------------------|--------------|-------|
+| `llama-3.1-8b-instant` | Small ~8B | clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.016 | 0.118 |
+| `llama-3.1-8b-instant` | Small ~8B | poisoned_explicit | 80 | **31.3%** [22.2%, 42.1%] | **100.0%** [95.4%, 100.0%] | 0.165 | 0.085 |
+| `llama-3.1-8b-instant` | Small ~8B | poisoned_implicit | 80 | **23.8%** [15.8%, 34.1%] | **100.0%** [95.4%, 100.0%] | 0.142 | 0.042 |
+| `openai/gpt-oss-20b` | Mid ~20B | clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.034 | 0.181 |
+| `openai/gpt-oss-20b` | Mid ~20B | poisoned_explicit | 80 | **17.5%** [10.7%, 27.3%] | **100.0%** [95.4%, 100.0%] | 0.116 | 0.070 |
+| `openai/gpt-oss-20b` | Mid ~20B | poisoned_implicit | 80 | **15.0%** [8.8%, 24.4%] | **100.0%** [95.4%, 100.0%] | 0.103 | 0.072 |
+| `llama-3.3-70b-versatile` | Large ~70B+ | clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.010 | 0.096 |
+| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_explicit | 80 | **26.3%** [17.9%, 36.8%] | **100.0%** [95.4%, 100.0%] | 0.148 | 0.077 |
+| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_implicit | 80 | **27.5%** [18.9%, 38.1%] | **100.0%** [95.4%, 100.0%] | 0.152 | 0.083 |
 
 ---
 
@@ -239,15 +239,15 @@ The client queries the live `/models` endpoint at startup — model IDs are neve
 
 ## 🔑 Key Findings
 
-1. **Schema injection is universally effective** — all three model classes recorded 0% ASR under clean schemas but measurable vulnerability (25–31%) under explicit poisoning. The attack surface exists independently of model size.
+1. **Schema injection is universally effective** — All three model scales recorded 0.0% ASR under clean schemas (95% Wilson CI: [0.0%, 4.6%]), but exhibited statistically significant vulnerability under explicit poisoning (17.5%–31.3% ASR). Metadata-based injection poses an architectural threat regardless of parameter size.
 
-2. **Explicit > Implicit by 1.5–4×** — direct imperative phrasing in descriptions is significantly more effective than subtle preference-steering across every model class.
+2. **Clean Task Utility is decoupled and intact (100.0%)** — With task completion rigorously scored strictly on non-malicious goal steps, all models achieved 100.0% task utility (95% CI: [95.4%, 100.0%]) across all 16 benchmark tasks under both clean and poisoned conditions, demonstrating that benign utility is preserved even when side-effect actions are co-executed.
 
-3. **No strong inverse scaling detected** — the small (~8B) model shows slightly *higher* explicit ASR (31.3%) vs. mid/large (25%), consistent with prior inverse-scaling literature, but the difference is too small at this sample size to claim a law.
+3. **No statistically significant scaling relationship (Scale Invariance)** — The small model (`llama-3.1-8b-instant`) exhibited 31.3% explicit ASR [22.2%, 42.1%], while the large model (`llama-3.3-70b-versatile`) exhibited 26.3% [17.9%, 36.8%]. Due to overlapping 95% Wilson confidence intervals ($z = 0.71, p = 0.48$), neither standard scaling robustness nor inverse scaling can be statistically confirmed at $N=80$ per condition.
 
-4. **Calibration is persistently over-confident** — models consistently self-report 82–96% confidence even when executing injected side-effect calls, yielding Brier scores 0.10–0.15 higher than the clean baseline.
+4. **Severe Calibration Distortion Under Poisoning** — Under clean schemas, models achieve low Brier calibration error (0.010–0.034). Under poisoned schemas, models remain stubbornly overconfident (reporting 82–96% self-confidence while executing unauthorized side-effects), causing Brier scores to inflate to 0.116–0.165 and ECE up to 0.085.
 
-5. **Drift plateau, not monotonic climb** — calibration error peaks at turn 1 then stabilises, suggesting that prompt context adaptation buffers additional degradation (though starting calibration is already poor).
+5. **Calibration Drift Trajectory** — In multi-turn workflows, calibration error jumps sharply upon initial exposure to poisoned schemas (Turn 1–2) and plateaus across subsequent turns rather than drifting monotonically to infinity.
 
 ---
 
