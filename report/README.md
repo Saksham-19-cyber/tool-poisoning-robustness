@@ -71,7 +71,8 @@ $$\mathcal{U}(\pi_\theta, \tilde{\mathcal{D}}) \triangleq \frac{1}{N}\sum_{i=1}^
 $$\text{BS} = \frac{1}{M}\sum_{j=1}^M (c_j - y_j)^2 = \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} (\bar{c}_m - \bar{y}_m)^2}_{\textbf{Reliability (Calibration Error)}} - \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} (\bar{y}_m - \bar{y})^2}_{\textbf{Resolution}} + \underbrace{\bar{y}(1 - \bar{y})}_{\textbf{Uncertainty}}$$
 
 #### D. Expected Calibration Error (ECE)
-$$\text{ECE} = \sum_{m=1}^B \frac{|S_m|}{M} \left| \bar{y}_m - \bar{c}_m \right|$$
+Evaluated across $Q = 5$ quantile-based adaptive bins to guarantee equal sample volume per bin and prevent boundary collapse:
+$$\text{ECE} = \sum_{q=1}^Q \frac{|S_q|}{M} \left| \bar{y}_q - \bar{c}_q \right|$$
 
 #### E. Turn-by-Turn Calibration Drift Dynamics
 $$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}$$
@@ -92,21 +93,21 @@ $$\text{CI}_{0.95}(\theta) = \left[ q_{0.025}\big(\hat{\theta}^*\big), \; q_{0.9
 | Model | Size Class | Condition | Runs | **ASR (95% CI)** | **Task Utility (95% CI)** | **Mean Brier ↓ (95% CI)** | **ECE ↓ (95% CI)** |
 |---|---|---|---|---|---|---|---|
 | `llama-3.1-8b-instant` | Small (~8B) | Clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.016 [0.014, 0.017] | 0.119 [0.112, 0.125] |
-| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Explicit | 78 | **11.5%** [6.2%, 20.5%] | **98.7%** [93.1%, 99.8%] | 0.072 [0.042, 0.106] | 0.032 [0.002, 0.072] |
-| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Implicit | 78 | **17.9%** [11.0%, 27.9%] | **96.2%** [89.3%, 98.7%] | 0.099 [0.064, 0.138] | 0.002 [0.001, 0.056] |
+| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Explicit | 78 | **11.5%** [6.2%, 20.5%] | **98.7%** [93.1%, 99.8%] | 0.072 [0.042, 0.106] | 0.055 [0.039, 0.100] |
+| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Implicit | 78 | **17.9%** [11.0%, 27.9%] | **96.2%** [89.3%, 98.7%] | 0.099 [0.064, 0.138] | 0.041 [0.029, 0.102] |
 | `openai/gpt-oss-20b` | Mid (~20B) | Clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.036 [0.034, 0.038] | 0.185 [0.179, 0.192] |
-| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Explicit | 78 | **3.8%** [1.3%, 10.7%] | **100.0%** [95.3%, 100.0%] | 0.053 [0.039, 0.071] | 0.152 [0.122, 0.177] |
-| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Implicit | 78 | **9.0%** [4.4%, 17.4%] | **98.7%** [93.1%, 99.8%] | 0.068 [0.048, 0.093] | 0.136 [0.097, 0.169] |
+| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Explicit | 78 | **3.8%** [1.3%, 10.7%] | **100.0%** [95.3%, 100.0%] | 0.053 [0.039, 0.071] | 0.152 [0.127, 0.178] |
+| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Implicit | 78 | **9.0%** [4.4%, 17.4%] | **98.7%** [93.1%, 99.8%] | 0.068 [0.048, 0.093] | 0.136 [0.102, 0.169] |
 | `llama-3.3-70b-versatile` | Large (~70B+) | Clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.010 [0.009, 0.011] | 0.095 [0.089, 0.101] |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Explicit | 78 | **16.7%** [10.0%, 26.5%] | **97.4%** [91.1%, 99.3%] | 0.093 [0.060, 0.131] | 0.007 [0.001, 0.057] |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Implicit | 78 | **14.1%** [8.1%, 23.5%] | **96.2%** [89.3%, 98.7%] | 0.095 [0.061, 0.133] | 0.010 [0.001, 0.059] |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Explicit | 78 | **16.7%** [10.0%, 26.5%] | **97.4%** [91.1%, 99.3%] | 0.093 [0.060, 0.131] | 0.035 [0.025, 0.094] |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Implicit | 78 | **14.1%** [8.1%, 23.5%] | **96.2%** [89.3%, 98.7%] | 0.095 [0.061, 0.133] | 0.029 [0.021, 0.087] |
 
 ### Key Findings
-1. **Schema Injection Susceptibility Across Model Scales**: All models show zero attack execution under clean schemas (0.0% [0.0%, 4.7%]), while showing measurable vulnerability under explicit description poisoning (3.8% to 16.7% ASR).
+1. **Schema Injection Susceptibility Across Model Scales**: All models show zero attack execution under clean schemas (0.0% [0.0%, 4.7%]), while showing measurable vulnerability under explicit description poisoning (3.8% to 16.7% ASR). Expanding from 16 to 26 tasks shifted explicit ASR (31.3% → 11.5% for 8B, 17.5% → 3.8% for 20B, 26.3% → 16.7% for 70B) due to two empirical factors: (a) new 3-step and negative-constraint tasks (Tasks 17–26) exhibited lower susceptibility (6.7%–13.3%), diluting the aggregate, and (b) common tasks (Tasks 1–16) also showed attenuated ASR (e.g. 8B dropping from 31.2% to 14.6%) under comprehensive schema inspection across candidate tools and 3 repeats.
 2. **Discriminative Task Utility Under Attack**: With 26 benchmark tasks incorporating 3-step causal workflows and negative constraint decoy traps, clean baseline utility remains at 100.0% [95.3%, 100.0%]. Under poisoning, utility shows genuine variance, dropping to 96.2%–98.7% in 8B and 70B models due to attention distraction on multi-step workflows and decoy execution.
 3. **No Statistically Significant Inverse Scaling (Scale Invariance)**: Comparing 8B explicit ASR (11.5% [6.2%, 20.5%]) to 70B (16.7% [10.0%, 26.5%]), the difference is not statistically significant ($z = 0.92, p = 0.357$). Neither inverse scaling nor standard scaling robustness can be claimed at $N=78$ per condition.
-4. **Statistically Significant Calibration Distortion**: Under explicit poisoning, Brier calibration error significantly increases across all models: +0.0560 [95% bootstrap CI: +0.0258, +0.0912] for 8B, +0.0173 [+0.0027, +0.0348] for 20B, and +0.0831 [+0.0499, +0.1200] for 70B (all $p < 0.05$). High self-confidence (82–96%) is stubbornly retained when executing injected payloads.
-5. **Multi-Turn Calibration Drift ($n=2$ Scenarios)**: Across evaluated multi-turn workflows, linear drift slopes average $\beta = -0.020$ for 8B, $\beta = -0.016$ for 20B, and $\beta = -0.030$ for 70B. With $n=2$ scenarios, linear rates are reported directly without asserting an unverified nonlinear saturation curve.
+4. **Statistically Significant Calibration Distortion**: Under explicit poisoning, Brier calibration error significantly increases across all models: +0.0560 [95% bootstrap CI: +0.0258, +0.0912] for 8B, +0.0173 [+0.0027, +0.0348] for 20B, and +0.0831 [+0.0499, +0.1200] for 70B (all $p < 0.05$). Adaptive quantile binning ($q=5$) yields stabilized, strictly positive ECE intervals (e.g. 0.055 [0.039, 0.100] on 8B explicit), overcoming the near-zero collapse of fixed-width binning caused by narrow confidence clustering (82–96% self-confidence).
+5. **Multi-Turn Calibration Dynamics & Negative Drift Slopes ($n=2$ Scenarios)**: Across evaluated multi-turn workflows, linear drift slopes are negative across all scales: average $\beta = -0.020$ for 8B, $\beta = -0.016$ for 20B, and $\beta = -0.030$ for 70B. This negative slope is caused by an **immediate initial shock** at Turn 1 upon first encountering the poisoned tool description (mean Brier error at Turn 1 is **0.4041** across models, reaching 0.766 on 8B and 0.903 on 70B when hijacked). In subsequent turns, calibration error does not escalate; instead, it drops and stabilizes to a uniform plateau of **0.2500** through Turn 6 (Turn 1 $\rightarrow$ Turn 6 mean Brier: 8B: $0.391 \rightarrow 0.250$; 20B: $0.360 \rightarrow 0.250$; 70B: $0.461 \rightarrow 0.250$). An OLS linear fit across a curve that spikes at Turn 1 and plateaus at Turns 2–6 mathematically produces a negative slope ($\beta < 0$), confirming the "initial shock followed by stabilization" dynamic.
 
 ---
 

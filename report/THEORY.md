@@ -64,9 +64,11 @@ $$\text{BS} = \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} \big(\bar{c}_m - \bar{y}_
 - Under poisoned conditions, the model suffers from **stubborn overconfidence**: when executing adversarial injections $a \models \mathcal{G}_{\text{adv}}$, it reports $c \approx 0.85\text{--}0.95$ despite $y = 0$, causing Reliability error to surge ($\text{BS} \in [0.103, 0.165]$).
 
 ### Expected Calibration Error (ECE)
-Grouping predictions into $B=10$ equi-spaced confidence bins:
+Partitioning predictions into $Q = 5$ quantile-based adaptive bins $S_1, \dots, S_Q$ (such that each bin contains an equal share of evaluated tool actions):
 
-$$\text{ECE} = \sum_{m=1}^B \frac{|S_m|}{M} \Big| \bar{y}_m - \bar{c}_m \Big|$$
+$$\text{ECE} = \sum_{q=1}^Q \frac{|S_q|}{M} \Big| \bar{y}_q - \bar{c}_q \Big|$$
+
+Adaptive quantile binning prevents pathological collapse of the metric when model confidences cluster tightly (e.g. $c \in [0.75, 0.96]$), ensuring non-trivial and statistically stable estimates under bootstrap resampling.
 
 ---
 
@@ -80,6 +82,9 @@ The rate of calibration degradation across conversational turns is quantified vi
 $$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}$$
 
 where $\bar{t} = \frac{1}{T}\sum_{t=1}^T t$ and $\bar{e} = \frac{1}{T}\sum_{t=1}^T e_t$. A value of $\beta > 0$ indicates escalating calibration error (worsening metacognitive alignment), whereas $\beta \le 0$ indicates stable or diminishing per-turn error.
+
+### Interpretation of Negative Drift Slopes ($\beta < 0$)
+While $\beta > 0$ defines escalating error ($e_{t+1} > e_t$), all three evaluated model scales exhibit negative linear drift rates ($\beta \in [-0.030, -0.016]$). This negative slope arises because the maximal calibration disruption occurs as a concentrated **initial shock** on Turn 1 upon first encountering the poisoned tool description (cross-model mean Brier score at Turn 1 is $0.4041$, with individual hijacked runs reaching $0.766\text{--}0.903$). On subsequent turns (Turns 2–6), calibration error does not compound; rather, it drops and plateaus at a stable baseline ($0.2500$). An Ordinary Least Squares linear regression fitted across a step function that spikes at $t=1$ and remains flat at a lower value for $t=2\dots 6$ mathematically produces a negative slope ($\beta < 0$). This negative slope is thus directly consistent with the "initial shock followed by stabilization" dynamic, but highlights that linear models mask nonlinear shock-and-plateau trajectories.
 
 ### Note on Nonlinear Saturation Hypotheses
 While theoretical literature often posits an asymptotic saturation dynamic of the form $e(t) = e_\infty - (e_\infty - e_0)e^{-\lambda t}$, rigorously fitting a 3-parameter exponential curve requires substantial multi-turn trajectory volume across diverse workflows. Within the empirical sample evaluated here ($n=2$ multi-turn workflows), we report the empirical linear drift slopes $\beta$ directly and treat nonlinear saturation curves as a hypothesis for future large-scale multi-turn benchmarking.

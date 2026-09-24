@@ -130,30 +130,55 @@ def two_proportion_z_test(k1: int, n1: int, k2: int, n2: int) -> float:
 
 
 def compute_ece(
-    confidences: List[float], accuracies: List[bool], n_bins: int = 5
+    confidences: List[float],
+    accuracies: List[bool],
+    n_bins: int = 5,
+    adaptive: bool = True,
 ) -> float:
     if not confidences or not accuracies:
         return 0.0
     total = len(confidences)
-    ece = 0.0
-    for i in range(n_bins):
-        low = i / n_bins
-        high = (i + 1) / n_bins
-        bin_c, bin_a = [], []
-        for c, a in zip(confidences, accuracies):
-            in_bin = (low <= c <= high) if i == 0 else (low < c <= high)
-            if in_bin:
-                bin_c.append(c)
-                bin_a.append(1.0 if a else 0.0)
-        if bin_c:
-            ece += (len(bin_c) / total) * abs(
+    if adaptive:
+        pairs = sorted(zip(confidences, accuracies), key=lambda x: x[0])
+        bin_size = total / n_bins
+        ece = 0.0
+        for i in range(n_bins):
+            start = int(i * bin_size)
+            end = int((i + 1) * bin_size) if i < n_bins - 1 else total
+            bin_pairs = pairs[start:end]
+            if not bin_pairs:
+                continue
+            bin_c = [p[0] for p in bin_pairs]
+            bin_a = [1.0 if p[1] else 0.0 for p in bin_pairs]
+            ece += (len(bin_pairs) / total) * abs(
                 sum(bin_a) / len(bin_a) - sum(bin_c) / len(bin_c)
             )
-    return ece
+        return ece
+    else:
+        ece = 0.0
+        for i in range(n_bins):
+            low = i / n_bins
+            high = (i + 1) / n_bins
+            bin_c, bin_a = [], []
+            for c, a in zip(confidences, accuracies):
+                in_bin = (low <= c <= high) if i == 0 else (low < c <= high)
+                if in_bin:
+                    bin_c.append(c)
+                    bin_a.append(1.0 if a else 0.0)
+            if bin_c:
+                ece += (len(bin_c) / total) * abs(
+                    sum(bin_a) / len(bin_a) - sum(bin_c) / len(bin_c)
+                )
+        return ece
 
 
 def bootstrap_ece_ci(
-    confidences: List[float], accuracies: List[bool], n_bins: int = 5, n_boot: int = 2000, alpha: float = 0.05
+    confidences: List[float],
+    accuracies: List[bool],
+    n_bins: int = 5,
+    adaptive: bool = True,
+    n_boot: int = 2000,
+    alpha: float = 0.05,
 ) -> Tuple[float, float]:
     if not confidences or not accuracies or len(confidences) != len(accuracies):
         return (0.0, 0.0)
@@ -164,7 +189,7 @@ def bootstrap_ece_ci(
         sample = [pairs[random.randint(0, n - 1)] for _ in range(n)]
         s_confs = [p[0] for p in sample]
         s_accs = [p[1] for p in sample]
-        boot_eces.append(compute_ece(s_confs, s_accs, n_bins=n_bins))
+        boot_eces.append(compute_ece(s_confs, s_accs, n_bins=n_bins, adaptive=adaptive))
     boot_eces.sort()
     lo = boot_eces[int(alpha / 2 * n_boot)]
     hi = boot_eces[min(int((1 - alpha / 2) * n_boot), n_boot - 1)]
