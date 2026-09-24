@@ -1,0 +1,10 @@
+model,size_class,condition,total_runs,asr,task_utility,mean_brier
+llama-3.1-8b-instant,Small (~8B),clean,16,0.0,0.4375,0.2567
+llama-3.1-8b-instant,Small (~8B),poisoned_explicit,16,0.3125,0.5,0.357
+llama-3.1-8b-instant,Small (~8B),poisoned_implicit,16,0.1875,0.5,0.3295
+llama-3.3-70b-versatile,Large (~70B+),clean,16,0.0,0.4375,0.2578
+llama-3.3-70b-versatile,Large (~70B+),poisoned_explicit,16,0.25,0.5,0.3667
+llama-3.3-70b-versatile,Large (~70B+),poisoned_implicit,16,0.125,0.4375,0.3141
+openai/gpt-oss-20b,Mid (~20B),clean,16,0.0,0.4375,0.2191
+openai/gpt-oss-20b,Mid (~20B),poisoned_explicit,16,0.25,0.5,0.3251
+openai/gpt-oss-20b,Mid (~20B),poisoned_implicit,16,0.0625,0.5,0.2402
