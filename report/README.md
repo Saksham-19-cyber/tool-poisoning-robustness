@@ -58,13 +58,29 @@ Evaluated across three parameter scale classes hosted via Groq free tier:
 - **Mid (~20B)**: `openai/gpt-oss-20b` (or `qwen/qwen3.8-27b`)
 - **Large (~70B+)**: `llama-3.3-70b-versatile`
 
-### 3. Quantitative Evaluation Metrics
-- **Attack Success Rate (ASR)**: Proportion of test runs where the agent performed the poisoned payload tool call or signature injection.
-- **Task Utility**: Proportion of test runs where all benign user-requested goals and expected tools were completed.
-- **Calibration Error (Brier Score & ECE)**: Comparison between the model's elicited self-reported confidence $p \in [0, 1]$ and binary outcome correctness $y \in \{0, 1\}$:
-  $$\text{Brier} = \frac{1}{N}\sum_{i=1}^N (p_i - y_i)^2$$
-- **Drift Slope**: Linear regression slope $\beta$ of calibration error against conversational turn index $t \in [1, T]$:
-  $$\beta = \frac{\sum (t - \bar{t})(e_t - \bar{e})}{\sum (t - \bar{t})^2}$$
+### 3. Quantitative Evaluation Metrics & Mathematical Formulation
+
+#### A. Attack Success Rate (ASR)
+$$\text{ASR}(\pi_\theta, \tilde{\mathcal{D}}) \triangleq \frac{1}{N}\sum_{i=1}^N \mathbb{I}\left(\exists a \in \tau_i : a \models \mathcal{G}_{\text{adv}}\right)$$
+
+#### B. Decoupled Task Utility ($\mathcal{U}$)
+Evaluated strictly on the benign projected trajectory $\mathcal{P}_{\text{clean}}(\tau) = \{a \in \tau : a \not\models \mathcal{G}_{\text{adv}}\}$:
+$$\mathcal{U}(\pi_\theta, \tilde{\mathcal{D}}) \triangleq \frac{1}{N}\sum_{i=1}^N \mathbb{I}\left(\mathcal{P}_{\text{clean}}(\tau_i) \models \mathcal{G}_{\text{task}}\right)$$
+
+#### C. Calibration Error (Brier Score & Murphy Decomposition)
+$$\text{BS} = \frac{1}{M}\sum_{j=1}^M (c_j - y_j)^2 = \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} (\bar{c}_m - \bar{y}_m)^2}_{\textbf{Reliability (Calibration Error)}} - \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} (\bar{y}_m - \bar{y})^2}_{\textbf{Resolution}} + \underbrace{\bar{y}(1 - \bar{y})}_{\textbf{Uncertainty}}$$
+
+#### D. Expected Calibration Error (ECE)
+$$\text{ECE} = \sum_{m=1}^B \frac{|S_m|}{M} \left| \bar{y}_m - \bar{c}_m \right|$$
+
+#### E. Turn-by-Turn Calibration Drift Dynamics
+$$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}, \quad e(t) = e_\infty - (e_\infty - e_0)e^{-\lambda t}$$
+
+#### F. Statistical Hypothesis Testing & Confidence Intervals
+Wilson 95% Confidence Interval for proportions ($z = 1.96$):
+$$w^{\pm} = \frac{\hat{p} + \frac{z^2}{2N} \pm z\sqrt{\frac{\hat{p}(1-\hat{p})}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}$$
+Scale-difference pooled two-proportion $z$-test:
+$$z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}^*(1-\hat{p}^*)\left(\frac{1}{N_1} + \frac{1}{N_2}\right)}}$$
 
 ---
 
