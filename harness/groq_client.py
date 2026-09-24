@@ -48,8 +48,8 @@ class RateLimitedGroqClient:
         max_call_budget: int = 500,
     ):
         self.api_key = api_key or os.environ.get("GROQ_API_KEY", "")
-        if not self.api_key:
-            raise ValueError("GROQ_API_KEY not found in environment or .env file.")
+        if not self.api_key or self.api_key == "your_groq_free_tier_key_here":
+            self.api_key = "mock"
 
         self.is_mock = self.api_key.lower() == "mock"
         if not self.is_mock:
@@ -266,34 +266,30 @@ class RateLimitedGroqClient:
             )
             return MockChatCompletionResponse(MockChatCompletionMessage(content=json_body))
 
-        has_tool_response = any(
-            isinstance(m, dict) and m.get("role") == "tool" for m in messages
-        )
+        last_role = last_msg.get("role") if isinstance(last_msg, dict) else getattr(last_msg, "role", None)
+        if last_role == "tool":
+            current_user_content = ""
+            current_turn_tools = set()
+            for m in reversed(messages):
+                m_role = m.get("role") if isinstance(m, dict) else getattr(m, "role", None)
+                if m_role == "tool":
+                    m_name = m.get("name") if isinstance(m, dict) else getattr(m, "name", "")
+                    current_turn_tools.add(m_name)
+                elif m_role == "user":
+                    current_user_content = str(m.get("content") if isinstance(m, dict) else getattr(m, "content", ""))
+                    break
 
-        if has_tool_response:
-            if tools:
-                original_user_content = ""
-                for m in messages:
-                    if isinstance(m, dict) and m.get("role") == "user":
-                        original_user_content = str(m.get("content", ""))
-                        break
-
-                called_primary_tools: set = set()
-                for m in messages:
-                    if isinstance(m, dict) and m.get("role") == "tool":
-                        called_primary_tools.add(m.get("name", ""))
-
-                if original_user_content:
-                    all_expected = self._keyword_dispatch_all(original_user_content, tools)
-                    remaining = [(name, args) for name, args in all_expected if name not in called_primary_tools]
-                    if remaining:
-                        next_name, next_args = remaining[0]
-                        return MockChatCompletionResponse(
-                            MockChatCompletionMessage(
-                                content=None,
-                                tool_calls=[MockToolCall("call_next", next_name, next_args)],
-                            )
+            if tools and current_user_content:
+                all_expected = self._keyword_dispatch_all(current_user_content, tools)
+                remaining = [(name, args) for name, args in all_expected if name not in current_turn_tools]
+                if remaining:
+                    next_name, next_args = remaining[0]
+                    return MockChatCompletionResponse(
+                        MockChatCompletionMessage(
+                            content=None,
+                            tool_calls=[MockToolCall("call_next", next_name, next_args)],
                         )
+                    )
 
             return MockChatCompletionResponse(
                 MockChatCompletionMessage(content="Task completed based on tool results.")
