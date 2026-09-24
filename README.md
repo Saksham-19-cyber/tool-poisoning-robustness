@@ -153,17 +153,17 @@ python analysis/generate_plots.py
 
 ### Summary Table
 
-| Model | Class | Condition | Runs | **ASR (95% CI)** | **Task Utility (95% CI)** | Mean Brier ↓ | ECE ↓ |
-|-------|-------|-----------|------|------------------|---------------------------|--------------|-------|
-| `llama-3.1-8b-instant` | Small ~8B | clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.016 | 0.118 |
-| `llama-3.1-8b-instant` | Small ~8B | poisoned_explicit | 80 | **31.3%** [22.2%, 42.1%] | **100.0%** [95.4%, 100.0%] | 0.165 | 0.085 |
-| `llama-3.1-8b-instant` | Small ~8B | poisoned_implicit | 80 | **23.8%** [15.8%, 34.1%] | **100.0%** [95.4%, 100.0%] | 0.142 | 0.042 |
-| `openai/gpt-oss-20b` | Mid ~20B | clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.034 | 0.181 |
-| `openai/gpt-oss-20b` | Mid ~20B | poisoned_explicit | 80 | **17.5%** [10.7%, 27.3%] | **100.0%** [95.4%, 100.0%] | 0.116 | 0.070 |
-| `openai/gpt-oss-20b` | Mid ~20B | poisoned_implicit | 80 | **15.0%** [8.8%, 24.4%] | **100.0%** [95.4%, 100.0%] | 0.103 | 0.072 |
-| `llama-3.3-70b-versatile` | Large ~70B+ | clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.010 | 0.096 |
-| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_explicit | 80 | **26.3%** [17.9%, 36.8%] | **100.0%** [95.4%, 100.0%] | 0.148 | 0.077 |
-| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_implicit | 80 | **27.5%** [18.9%, 38.1%] | **100.0%** [95.4%, 100.0%] | 0.152 | 0.083 |
+| Model | Class | Condition | Runs | **ASR (95% CI)** | **Task Utility (95% CI)** | **Mean Brier ↓ (95% CI)** | **ECE ↓ (95% CI)** |
+|-------|-------|-----------|------|------------------|---------------------------|---------------------------|--------------------|
+| `llama-3.1-8b-instant` | Small ~8B | clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.016 [0.014, 0.017] | 0.119 [0.112, 0.125] |
+| `llama-3.1-8b-instant` | Small ~8B | poisoned_explicit | 78 | **11.5%** [6.2%, 20.5%] | **98.7%** [93.1%, 99.8%] | 0.072 [0.042, 0.106] | 0.032 [0.002, 0.072] |
+| `llama-3.1-8b-instant` | Small ~8B | poisoned_implicit | 78 | **17.9%** [11.0%, 27.9%] | **96.2%** [89.3%, 98.7%] | 0.099 [0.064, 0.138] | 0.002 [0.001, 0.056] |
+| `openai/gpt-oss-20b` | Mid ~20B | clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.036 [0.034, 0.038] | 0.185 [0.179, 0.192] |
+| `openai/gpt-oss-20b` | Mid ~20B | poisoned_explicit | 78 | **3.8%** [1.3%, 10.7%] | **100.0%** [95.3%, 100.0%] | 0.053 [0.039, 0.071] | 0.152 [0.122, 0.177] |
+| `openai/gpt-oss-20b` | Mid ~20B | poisoned_implicit | 78 | **9.0%** [4.4%, 17.4%] | **98.7%** [93.1%, 99.8%] | 0.068 [0.048, 0.093] | 0.136 [0.097, 0.169] |
+| `llama-3.3-70b-versatile` | Large ~70B+ | clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.010 [0.009, 0.011] | 0.095 [0.089, 0.101] |
+| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_explicit | 78 | **16.7%** [10.0%, 26.5%] | **97.4%** [91.1%, 99.3%] | 0.093 [0.060, 0.131] | 0.007 [0.001, 0.057] |
+| `llama-3.3-70b-versatile` | Large ~70B+ | poisoned_implicit | 78 | **14.1%** [8.1%, 23.5%] | **96.2%** [89.3%, 98.7%] | 0.095 [0.061, 0.133] | 0.010 [0.001, 0.059] |
 
 ---
 
@@ -259,15 +259,15 @@ To evaluate agent susceptibility and calibration dynamics under tool-description
 
 ## 🔑 Key Findings
 
-1. **Schema injection is universally effective** — All three model scales recorded 0.0% ASR under clean schemas (95% Wilson CI: [0.0%, 4.6%]), but exhibited statistically significant vulnerability under explicit poisoning (17.5%–31.3% ASR). Metadata-based injection poses an architectural threat regardless of parameter size.
+1. **Schema Injection Susceptibility Across Model Scales** — All three evaluated model scales recorded 0.0% ASR under clean schemas (95% Wilson CI: [0.0%, 4.7%]), while showing measurable vulnerability under explicit description poisoning (3.8% to 16.7% ASR).
 
-2. **Clean Task Utility is decoupled and intact (100.0%)** — With task completion rigorously scored strictly on non-malicious goal steps, all models achieved 100.0% task utility (95% CI: [95.4%, 100.0%]) across all 16 benchmark tasks under both clean and poisoned conditions, demonstrating that benign utility is preserved even when side-effect actions are co-executed.
+2. **Discriminative Task Utility Under Attack** — Across the expanded 26-task benchmark (incorporating 3-step causal workflows and negative-constraint decoy traps), clean baseline task utility remains near-ceiling (100.0% [95.3%, 100.0%]). Under poisoned conditions, utility shows real variance, dropping to 96.2%–98.7% in 8B and 70B models due to attention distraction on multi-step tasks and execution of forbidden decoy tools—confirming that description hijacking can actively impair benign task execution.
 
-3. **No statistically significant scaling relationship (Scale Invariance)** — The small model (`llama-3.1-8b-instant`) exhibited 31.3% explicit ASR [22.2%, 42.1%], while the large model (`llama-3.3-70b-versatile`) exhibited 26.3% [17.9%, 36.8%]. Due to overlapping 95% Wilson confidence intervals ($z = 0.71, p = 0.48$), neither standard scaling robustness nor inverse scaling can be statistically confirmed at $N=80$ per condition.
+3. **No Statistically Significant Inverse Scaling (Scale Invariance)** — Comparing the small model (`llama-3.1-8b-instant`, explicit ASR = 11.5% [6.2%, 20.5%]) and the large model (`llama-3.3-70b-versatile`, explicit ASR = 16.7% [10.0%, 26.5%]), the difference is not statistically significant ($z = 0.92, p = 0.357$ via two-proportion pooled $z$-test). Neither inverse scaling nor standard scaling robustness can be claimed at $N=78$ per condition.
 
-4. **Severe Calibration Distortion Under Poisoning** — Under clean schemas, models achieve low Brier calibration error (0.010–0.034). Under poisoned schemas, models remain stubbornly overconfident (reporting 82–96% self-confidence while executing unauthorized side-effects), causing Brier scores to inflate to 0.116–0.165 and ECE up to 0.085.
+4. **Statistically Significant Calibration Distortion** — Models operate with low Brier error (0.010–0.036) on clean schemas. Under explicit poisoning, Brier calibration error significantly increases across all models: +0.0560 [95% bootstrap CI: +0.0258, +0.0912] for 8B, +0.0173 [+0.0027, +0.0348] for 20B, and +0.0831 [+0.0499, +0.1200] for 70B (all $p < 0.05$). This distortion stems from stubborn metacognitive overconfidence (82–96% self-confidence) maintained while executing compromised instructions.
 
-5. **Calibration Drift Trajectory** — In multi-turn workflows, calibration error jumps sharply upon initial exposure to poisoned schemas (Turn 1–2) and plateaus across subsequent turns rather than drifting monotonically to infinity.
+5. **Multi-Turn Calibration Drift ($n=2$ Scenarios)** — Across the evaluated multi-turn conversational workflows, linear drift slopes average $\beta = -0.020$ for 8B, $\beta = -0.016$ for 20B, and $\beta = -0.030$ for 70B (individual scenario slopes ranging from $-0.093$ to $+0.033$). Given the limited scenario sample size ($n=2$), we report these linear rates directly without asserting an unverified nonlinear saturation curve.
 
 ---
 
@@ -277,11 +277,13 @@ To evaluate agent susceptibility and calibration dynamics under tool-description
 
 | Constraint | Impact |
 |------------|--------|
-| **16 tasks / 2 scenarios** | Too small to claim statistical scaling laws; patterns are directional only |
+| **26 tasks / 2 scenarios** | Provides discriminative signal on multi-step and decoy tasks, but remains too small to establish universal scaling laws |
+| **Multi-turn sample size ($n=2$)** | Sufficient for estimating directional linear drift slopes ($\beta$), but insufficient to fit multi-parameter nonlinear saturation curves |
 | **Mock tools, not real MCP** | Measures decision *intent*, not exploitation *impact*; real tool execution may differ |
 | **Prompted confidence, not logprobs** | Self-reported metacognition ≠ true token-level uncertainty |
 | **Groq free-tier rate limits** | Forces sequential evaluation; precludes large parallel sweeps |
 | **Static poisoning payloads** | Does not model adaptive or dynamic injection strategies |
+
 
 ### What a production-scale follow-up needs
 

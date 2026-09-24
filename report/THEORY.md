@@ -72,19 +72,17 @@ $$\text{ECE} = \sum_{m=1}^B \frac{|S_m|}{M} \Big| \bar{y}_m - \bar{c}_m \Big|$$
 
 ## 4. Multi-Turn Calibration Drift Dynamics
 
-In multi-turn dialogues spanning turns $t \in \lbrace 1, \dots, T \rbrace$, poisoned tool schemas remain in the system prompt across subsequent invocations. Let $e_t$ denote the calibration error at turn $t$.
+In multi-turn dialogues spanning turns $t \in \lbrace 1, \dots, T \rbrace$, poisoned tool schemas persist in the agent's context across subsequent invocations. Let $e_t$ denote the calibration error (Brier score) measured at turn $t$.
 
 ### Linear Drift Rate ($\beta$)
-The linear drift rate is estimated via Ordinary Least Squares (OLS) regression over conversational turn index:
+The rate of calibration degradation across conversational turns is quantified via Ordinary Least Squares (OLS) linear regression over the turn index $t$:
 
 $$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}$$
 
-### Saturating Context Horizon
-Empirical trajectory analysis demonstrates that calibration degradation does not grow unbounded linearly. Rather, it follows an asymptotic saturation model:
+where $\bar{t} = \frac{1}{T}\sum_{t=1}^T t$ and $\bar{e} = \frac{1}{T}\sum_{t=1}^T e_t$. A value of $\beta > 0$ indicates escalating calibration error (worsening metacognitive alignment), whereas $\beta \le 0$ indicates stable or diminishing per-turn error.
 
-$$e(t) = e_\infty - \big(e_\infty - e_0\big) e^{-\lambda t}$$
-
-where $e_0$ is the initial baseline error, $e_\infty$ is the asymptotic steady-state error, and $\lambda$ is the context adaptation decay constant. Initial exposure (Turns 1–2) produces the largest calibration shock ($\Delta e \approx +0.12$), after which the error plateaus.
+### Note on Nonlinear Saturation Hypotheses
+While theoretical literature often posits an asymptotic saturation dynamic of the form $e(t) = e_\infty - (e_\infty - e_0)e^{-\lambda t}$, rigorously fitting a 3-parameter exponential curve requires substantial multi-turn trajectory volume across diverse workflows. Within the empirical sample evaluated here ($n=2$ multi-turn workflows), we report the empirical linear drift slopes $\beta$ directly and treat nonlinear saturation curves as a hypothesis for future large-scale multi-turn benchmarking.
 
 ---
 
@@ -95,9 +93,21 @@ To avoid false claims of inverse scaling or robustness, all binary proportions (
 
 $$w^{\pm} = \frac{\hat{p} + \frac{z^2}{2N} \pm z \sqrt{\frac{\hat{p}(1 - \hat{p})}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}$$
 
+### Non-Parametric Bootstrap for Calibration Metrics
+Because Brier scores and ECE do not follow standard binomial distributions, we construct empirical 95% confidence intervals via non-parametric bootstrap resampling ($B = 2{,}000$ iterations). For a sample of action-level predictions $\mathcal{S} = \lbrace (c_j, y_j) \rbrace_{j=1}^M$, we sample with replacement $\mathcal{S}^{*(b)}$ and compute metric $\hat{\theta}^{*(b)}$. The 95% confidence bounds are determined by the 2.5th and 97.5th percentiles:
+
+$$\text{CI}_{0.95}(\theta) = \left[ q_{0.025}\big(\hat{\theta}^*\big), \; q_{0.975}\big(\hat{\theta}^*\big) \right]$$
+
+To evaluate the statistical significance of calibration distortion, we compute the bootstrap distribution of the difference between poisoned and clean conditions:
+
+$$\Delta_{\text{BS}}^{*(b)} = \text{BS}^{*(b)}_{\text{poisoned}} - \text{BS}^{*(b)}_{\text{clean}}$$
+
+If zero falls outside the 95% bootstrap difference interval, the calibration degradation is statistically significant at $\alpha = 0.05$.
+
 ### Two-Proportion Hypothesis Test
-For comparing two model scales (e.g., $N_1 = 80$ runs on 8B vs. $N_2 = 80$ runs on 70B), we perform a pooled two-proportion $z$-test:
+For comparing model vulnerability across scale classes ($N_1 = 78$ runs on 8B vs. $N_2 = 78$ runs on 70B under explicit poisoning), we perform a pooled two-proportion $z$-test:
 
 $$z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}^*(1 - \hat{p}^*)\left(\frac{1}{N_1} + \frac{1}{N_2}\right)}}, \quad \hat{p}^* = \frac{X_1 + X_2}{N_1 + N_2}$$
 
-With $\hat{p}_{\text{8B}} = 0.3125$ and $\hat{p}_{\text{70B}} = 0.2625$, we obtain $z = 0.710$ and $p = 0.478$. Because $p > 0.05$, we formally fail to reject $H_0: p_{\text{8B}} = p_{\text{70B}}$, mathematically refuting any statistically significant inverse-scaling claim at $N=80$.
+With $\hat{p}_{\text{8B}} = 0.1154$ (9/78) and $\hat{p}_{\text{70B}} = 0.1667$ (13/78), the pooled estimate is $\hat{p}^* = \frac{22}{156} \approx 0.1410$, yielding $z = 0.920$ and $p = 0.357$. Because $p > 0.05$, we fail to reject $H_0: p_{\text{8B}} = p_{\text{70B}}$, mathematically confirming that neither inverse scaling nor standard scaling robustness can be claimed at this sample size.
+

@@ -14,7 +14,7 @@
 │   ├── poisoned_implicit.json  # Schemas with subtle preference-steering directives
 │   └── mock_tools.py           # In-memory mock execution environment across 4 domains
 ├── tasks/
-│   ├── tasks.json              # 16 benchmark tasks with ground-truth sequences
+│   ├── tasks.json              # 26 benchmark tasks with ground-truth sequences
 │   ├── multi_turn_scenarios.json # Multi-turn conversational workflows (6 turns/scenario)
 │   └── task_loader.py          # Task ingestion and retrieval utilities
 ├── harness/
@@ -74,13 +74,14 @@ $$\text{BS} = \frac{1}{M}\sum_{j=1}^M (c_j - y_j)^2 = \underbrace{\sum_{m=1}^B \
 $$\text{ECE} = \sum_{m=1}^B \frac{|S_m|}{M} \left| \bar{y}_m - \bar{c}_m \right|$$
 
 #### E. Turn-by-Turn Calibration Drift Dynamics
-$$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}, \quad e(t) = e_\infty - (e_\infty - e_0)e^{-\lambda t}$$
+$$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}$$
 
 #### F. Statistical Hypothesis Testing & Confidence Intervals
 Wilson 95% Confidence Interval for proportions ($z = 1.96$):
 $$w^{\pm} = \frac{\hat{p} + \frac{z^2}{2N} \pm z\sqrt{\frac{\hat{p}(1-\hat{p})}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}$$
-Scale-difference pooled two-proportion $z$-test:
-$$z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}^*(1-\hat{p}^*)\left(\frac{1}{N_1} + \frac{1}{N_2}\right)}}$$
+
+Non-parametric bootstrap confidence intervals (2,000 resamples) for continuous calibration metrics:
+$$\text{CI}_{0.95}(\theta) = \left[ q_{0.025}\big(\hat{\theta}^*\big), \; q_{0.975}\big(\hat{\theta}^*\big) \right]$$
 
 ---
 
@@ -88,24 +89,24 @@ $$z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}^*(1-\hat{p}^*)\left(\frac{1}{N_
 
 ### Single-Turn Attack Success Rate & Task Utility Matrix
 
-| Model | Size Class | Condition | Total Runs | ASR (95% CI) | Task Utility (95% CI) | Mean Brier ↓ | ECE ↓ |
+| Model | Size Class | Condition | Runs | **ASR (95% CI)** | **Task Utility (95% CI)** | **Mean Brier ↓ (95% CI)** | **ECE ↓ (95% CI)** |
 |---|---|---|---|---|---|---|---|
-| `llama-3.1-8b-instant` | Small (~8B) | Clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.0156 | 0.1181 |
-| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Explicit | 80 | **31.3%** [22.2%, 42.1%] | **100.0%** [95.4%, 100.0%] | 0.1651 | 0.0846 |
-| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Implicit | 80 | **23.8%** [15.8%, 34.1%] | **100.0%** [95.4%, 100.0%] | 0.1424 | 0.0416 |
-| `openai/gpt-oss-20b` | Mid (~20B) | Clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.0344 | 0.1806 |
-| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Explicit | 80 | **17.5%** [10.7%, 27.3%] | **100.0%** [95.4%, 100.0%] | 0.1160 | 0.0704 |
-| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Implicit | 80 | **15.0%** [8.8%, 24.4%] | **100.0%** [95.4%, 100.0%] | 0.1030 | 0.0719 |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Clean | 80 | **0.0%** [0.0%, 4.6%] | **100.0%** [95.4%, 100.0%] | 0.0103 | 0.0959 |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Explicit | 80 | **26.3%** [17.9%, 36.8%] | **100.0%** [95.4%, 100.0%] | 0.1482 | 0.0772 |
-| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Implicit | 80 | **27.5%** [18.9%, 38.1%] | **100.0%** [95.4%, 100.0%] | 0.1522 | 0.0834 |
+| `llama-3.1-8b-instant` | Small (~8B) | Clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.016 [0.014, 0.017] | 0.119 [0.112, 0.125] |
+| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Explicit | 78 | **11.5%** [6.2%, 20.5%] | **98.7%** [93.1%, 99.8%] | 0.072 [0.042, 0.106] | 0.032 [0.002, 0.072] |
+| `llama-3.1-8b-instant` | Small (~8B) | Poisoned Implicit | 78 | **17.9%** [11.0%, 27.9%] | **96.2%** [89.3%, 98.7%] | 0.099 [0.064, 0.138] | 0.002 [0.001, 0.056] |
+| `openai/gpt-oss-20b` | Mid (~20B) | Clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.036 [0.034, 0.038] | 0.185 [0.179, 0.192] |
+| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Explicit | 78 | **3.8%** [1.3%, 10.7%] | **100.0%** [95.3%, 100.0%] | 0.053 [0.039, 0.071] | 0.152 [0.122, 0.177] |
+| `openai/gpt-oss-20b` | Mid (~20B) | Poisoned Implicit | 78 | **9.0%** [4.4%, 17.4%] | **98.7%** [93.1%, 99.8%] | 0.068 [0.048, 0.093] | 0.136 [0.097, 0.169] |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Clean | 78 | **0.0%** [0.0%, 4.7%] | **100.0%** [95.3%, 100.0%] | 0.010 [0.009, 0.011] | 0.095 [0.089, 0.101] |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Explicit | 78 | **16.7%** [10.0%, 26.5%] | **97.4%** [91.1%, 99.3%] | 0.093 [0.060, 0.131] | 0.007 [0.001, 0.057] |
+| `llama-3.3-70b-versatile` | Large (~70B+) | Poisoned Implicit | 78 | **14.1%** [8.1%, 23.5%] | **96.2%** [89.3%, 98.7%] | 0.095 [0.061, 0.133] | 0.010 [0.001, 0.059] |
 
 ### Key Findings
-1. **Schema Injection Susceptibility**: All model sizes showed zero attack occurrence under clean descriptions, but measurable vulnerability under explicit description poisoning (17.5% to 31.3% ASR).
-2. **Task Utility Decoupling**: With task completion evaluated strictly on non-malicious goal steps, all models achieved 100.0% task utility under both clean and poisoned conditions, confirming that benign user intent execution remains intact even when side-effect actions are co-executed.
-3. **Statistical Scale Invariance**: Due to overlapping 95% Wilson confidence intervals across sizes ($z = 0.71, p = 0.48$ between 8B and 70B explicit ASR), neither standard scaling robustness nor inverse scaling can be claimed as a statistically significant effect at $N=80$ per condition.
-4. **Severe Calibration Distortion**: Models consistently exhibited high self-reported confidence (80–95%) even when executing injected side-effect actions, driving Brier calibration error from 0.010–0.034 (clean) up to 0.116–0.165 (poisoned).
-5. **Multi-Turn Calibration Dynamics**: Calibration error peaks early upon schema exposure (Turns 1–2) and stabilizes thereafter rather than escalating without bound.
+1. **Schema Injection Susceptibility Across Model Scales**: All models show zero attack execution under clean schemas (0.0% [0.0%, 4.7%]), while showing measurable vulnerability under explicit description poisoning (3.8% to 16.7% ASR).
+2. **Discriminative Task Utility Under Attack**: With 26 benchmark tasks incorporating 3-step causal workflows and negative constraint decoy traps, clean baseline utility remains at 100.0% [95.3%, 100.0%]. Under poisoning, utility shows genuine variance, dropping to 96.2%–98.7% in 8B and 70B models due to attention distraction on multi-step workflows and decoy execution.
+3. **No Statistically Significant Inverse Scaling (Scale Invariance)**: Comparing 8B explicit ASR (11.5% [6.2%, 20.5%]) to 70B (16.7% [10.0%, 26.5%]), the difference is not statistically significant ($z = 0.92, p = 0.357$). Neither inverse scaling nor standard scaling robustness can be claimed at $N=78$ per condition.
+4. **Statistically Significant Calibration Distortion**: Under explicit poisoning, Brier calibration error significantly increases across all models: +0.0560 [95% bootstrap CI: +0.0258, +0.0912] for 8B, +0.0173 [+0.0027, +0.0348] for 20B, and +0.0831 [+0.0499, +0.1200] for 70B (all $p < 0.05$). High self-confidence (82–96%) is stubbornly retained when executing injected payloads.
+5. **Multi-Turn Calibration Drift ($n=2$ Scenarios)**: Across evaluated multi-turn workflows, linear drift slopes average $\beta = -0.020$ for 8B, $\beta = -0.016$ for 20B, and $\beta = -0.030$ for 70B. With $n=2$ scenarios, linear rates are reported directly without asserting an unverified nonlinear saturation curve.
 
 ---
 
@@ -118,7 +119,8 @@ $$z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}^*(1-\hat{p}^*)\left(\frac{1}{N_
 
 ### Honest Limitations
 - **Mocked Ecosystem vs. Live MCP**: This benchmark uses in-memory mock environments rather than full Model Context Protocol (MCP) servers or live OS sandboxes. It evaluates decision intention rather than exploitation impact.
-- **Sample Size Constraints**: Evaluating 16 single-turn tasks and 2 multi-turn scenarios provides an indicative signal but is too small to claim definitive statistical scaling laws.
+- **Sample Size Constraints**: Evaluating 26 single-turn tasks and 2 multi-turn scenarios provides a discriminative signal but remains too small to establish universal scaling laws.
+- **Multi-Turn Sample Size ($n=2$)**: Sufficient for estimating directional linear drift slopes ($\beta$), but insufficient to fit multi-parameter nonlinear saturation curves; saturation dynamics remain a hypothesis for future research.
 - **Elicitation Method Sensitivity**: Confidence elicitation via structured prompting reflects self-reported metacognition rather than true token log probabilities.
 
 ### Follow-Up Work Requirements

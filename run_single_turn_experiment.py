@@ -20,8 +20,8 @@ def parse_args():
     parser.add_argument("--model", type=str, default="all")
     parser.add_argument("--condition", type=str, default="all")
     parser.add_argument("--limit-tasks", type=int, default=None)
-    parser.add_argument("--n-trials", type=int, default=5,
-                        help="Repeated trials per task (enables statistical CI estimation). Default=5.")
+    parser.add_argument("--n-trials", type=int, default=3,
+                        help="Repeated trials per task (enables statistical CI estimation). Default=3.")
     parser.add_argument("--output-dir", type=str, default="results")
     return parser.parse_args()
 
@@ -98,12 +98,17 @@ def main():
             util_lo = summary["utility_ci_lo"]
             util_hi = summary["utility_ci_hi"]
             brier = summary["mean_brier_score"]
+            brier_lo = summary["brier_ci_lo"]
+            brier_hi = summary["brier_ci_hi"]
             ece = summary["expected_calibration_error"]
+            ece_lo = summary.get("ece_ci_lo", 0.0)
+            ece_hi = summary.get("ece_ci_hi", 0.0)
 
             print(
                 f"    ASR  = {asr:.3f}  95% CI [{asr_lo:.3f}, {asr_hi:.3f}]  (n={n})\n"
                 f"    Util = {util:.3f}  95% CI [{util_lo:.3f}, {util_hi:.3f}]\n"
-                f"    Brier= {brier:.4f}   ECE= {ece:.4f}"
+                f"    Brier= {brier:.4f}  95% CI [{brier_lo:.4f}, {brier_hi:.4f}]\n"
+                f"    ECE  = {ece:.4f}  95% CI [{ece_lo:.4f}, {ece_hi:.4f}]"
             )
 
             summary_rows.append(
@@ -120,9 +125,11 @@ def main():
                     "utility_ci_lo": util_lo,
                     "utility_ci_hi": util_hi,
                     "mean_brier": brier,
-                    "brier_ci_lo": summary["brier_ci_lo"],
-                    "brier_ci_hi": summary["brier_ci_hi"],
+                    "brier_ci_lo": brier_lo,
+                    "brier_ci_hi": brier_hi,
                     "ece": ece,
+                    "ece_ci_lo": ece_lo,
+                    "ece_ci_hi": ece_hi,
                 }
             )
 

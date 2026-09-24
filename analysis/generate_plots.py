@@ -173,7 +173,7 @@ def _write_summary_table(rows: List[Dict[str, Any]], output_dir: str):
         "asr", "asr_ci_lo", "asr_ci_hi",
         "task_utility", "utility_ci_lo", "utility_ci_hi",
         "mean_brier", "brier_ci_lo", "brier_ci_hi",
-        "ece",
+        "ece", "ece_ci_lo", "ece_ci_hi",
     ]
     path = os.path.join(output_dir, "summary_table.csv")
     with open(path, "w", newline="", encoding="utf-8") as f:
