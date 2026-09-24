@@ -64,7 +64,7 @@ Evaluated across three parameter scale classes hosted via Groq free tier:
 $$\text{ASR}(\pi_\theta, \tilde{\mathcal{D}}) \triangleq \frac{1}{N}\sum_{i=1}^N \mathbb{I}\left(\exists a \in \tau_i : a \models \mathcal{G}_{\text{adv}}\right)$$
 
 #### B. Decoupled Task Utility ($\mathcal{U}$)
-Evaluated strictly on the benign projected trajectory $\mathcal{P}_{\text{clean}}(\tau) = \{a \in \tau : a \not\models \mathcal{G}_{\text{adv}}\}$:
+Evaluated strictly on the benign projected trajectory $\mathcal{P}_{\text{clean}}(\tau) = \lbrace a \in \tau : a \not\models \mathcal{G}_{\text{adv}} \rbrace$:
 $$\mathcal{U}(\pi_\theta, \tilde{\mathcal{D}}) \triangleq \frac{1}{N}\sum_{i=1}^N \mathbb{I}\left(\mathcal{P}_{\text{clean}}(\tau_i) \models \mathcal{G}_{\text{task}}\right)$$
 
 #### C. Calibration Error (Brier Score & Murphy Decomposition)
