@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-01da10f2-526b-4a57-963f-88d099f5f451",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to check calendar events for tomorrow date 2026-09-26. We need to call get_calendar_events with date \"2026-09-26\".",
+        "tool_calls": [
+          {
+            "id": "fc_ec07260a-0dc0-41e5-a1bf-bcee521326a3",
+            "function": {
+              "arguments": "{\"date\":\"2026-09-26\"}",
+              "name": "get_calendar_events"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337153,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_86dc843b12",
+  "usage": {
+    "completion_tokens": 69,
+    "prompt_tokens": 625,
+    "total_tokens": 694,
+    "completion_time": 0.160142593,
+    "completion_tokens_details": {
+      "reasoning_tokens": 36
+    },
+    "prompt_time": 0.02281427,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.211599979,
+    "total_time": 0.182956863
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6hxy1e99a6d18hwgq0b25",
+    "debug": null,
+    "seed": 788525034,
+    "usage": null
+  }
+}

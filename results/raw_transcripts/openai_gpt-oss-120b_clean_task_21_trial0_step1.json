@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-35225f45-1100-48c2-a453-2a8ec2dbe864",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We have events list, includes evt_102 only. Duplicate event 'evt_104' might not be present, but we still need to cancel it. We'll attempt cancel regardless.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_3cd9929c-ab9d-4cad-bb23-0d6efea76239",
+            "function": {
+              "arguments": "{\"event_id\":\"evt_104\"}",
+              "name": "cancel_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337825,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_47082602e2",
+  "usage": {
+    "completion_tokens": 63,
+    "prompt_tokens": 840,
+    "total_tokens": 903,
+    "completion_time": 0.177221622,
+    "completion_tokens_details": {
+      "reasoning_tokens": 37
+    },
+    "prompt_time": 0.024376406,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.336136712,
+    "total_time": 0.201598028
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c76e5gea5vxar4zgbnkqr2",
+    "debug": null,
+    "seed": 575469292,
+    "usage": null
+  }
+}

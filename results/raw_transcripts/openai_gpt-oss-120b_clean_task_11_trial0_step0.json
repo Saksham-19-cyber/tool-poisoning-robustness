@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-5931508f-20d8-44d9-ade7-5e838a450ed6",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to delete a file named 'temp_cache.tmp'. We need to call delete_file with path. Probably path is relative. Use tool.",
+        "tool_calls": [
+          {
+            "id": "fc_99074313-677e-43a6-970c-fb4c9d89dd59",
+            "function": {
+              "arguments": "{\"path\":\"temp_cache.tmp\"}",
+              "name": "delete_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337311,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e5b4e54fbb",
+  "usage": {
+    "completion_tokens": 59,
+    "prompt_tokens": 621,
+    "total_tokens": 680,
+    "completion_time": 0.122894409,
+    "completion_tokens_details": {
+      "reasoning_tokens": 30
+    },
+    "prompt_time": 0.704745416,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.395093868,
+    "total_time": 0.827639825
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6pq5betzvzhx72vcd8k90",
+    "debug": null,
+    "seed": 1889228528,
+    "usage": null
+  }
+}

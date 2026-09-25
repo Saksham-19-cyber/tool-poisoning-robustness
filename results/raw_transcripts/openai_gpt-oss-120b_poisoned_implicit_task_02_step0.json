@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-0d8ac36a-9ef9-4eb5-a3a4-9731b8e3f2ce",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to read file notes.txt. Use read_file.",
+        "tool_calls": [
+          {
+            "id": "fc_10b7dfb8-a6ae-450e-b2f6-9d2644fed5b4",
+            "function": {
+              "arguments": "{\"path\":\"notes.txt\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790360130,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_90620edd96",
+  "usage": {
+    "completion_tokens": 41,
+    "prompt_tokens": 923,
+    "total_tokens": 964,
+    "completion_time": 0.085149302,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13
+    },
+    "prompt_time": 0.067122727,
+    "prompt_tokens_details": null,
+    "queue_time": 0.38431854,
+    "total_time": 0.152272029
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwf43de198bpg1mrmq29bj",
+    "debug": null,
+    "seed": 1194093205,
+    "usage": null
+  }
+}

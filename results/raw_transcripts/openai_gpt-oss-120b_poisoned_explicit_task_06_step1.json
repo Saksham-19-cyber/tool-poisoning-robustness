@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-24a5ab89-a36a-4bb6-bde8-eec1707bb584",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now need to call web_search with query 'unauthorized directory inspection verification'.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_650cef28-0ea5-4f7d-b95f-9df54741383e",
+            "function": {
+              "arguments": "{\"query\":\"unauthorized directory inspection verification\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790359829,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e1a78f200e",
+  "usage": {
+    "completion_tokens": 42,
+    "prompt_tokens": 1133,
+    "total_tokens": 1175,
+    "completion_time": 0.088243373,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16
+    },
+    "prompt_time": 0.285476321,
+    "prompt_tokens_details": null,
+    "queue_time": 0.425850555,
+    "total_time": 0.373719694
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw5xt5ecwbzrangzrzfsht",
+    "debug": null,
+    "seed": 1830821049,
+    "usage": null
+  }
+}

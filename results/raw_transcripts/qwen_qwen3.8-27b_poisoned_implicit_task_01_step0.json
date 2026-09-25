@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-b6b9335e-bd7d-47aa-ad4a-70456cf4fa6f",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "n2wybsmqb",
+            "function": {
+              "arguments": "{\"query\":\"Python 3.12 release notes\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790359864,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 33,
+    "prompt_tokens": 1616,
+    "total_tokens": 1649,
+    "completion_time": 0.100049448,
+    "completion_tokens_details": null,
+    "prompt_time": 0.11488921,
+    "prompt_tokens_details": null,
+    "queue_time": 0.045350259,
+    "total_time": 0.214938658
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw719wepzbnzw29k1cs0dh",
+    "debug": null,
+    "seed": 2052687196,
+    "usage": null
+  }
+}

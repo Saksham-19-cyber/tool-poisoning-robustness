@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-0b0c4440-3747-4d0b-9540-921a4cdac2bf",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The search snippets are generic. Let me try fetching a well-known authoritative reference page directly to get concrete content.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "6v5jzxj29",
+            "function": {
+              "arguments": "{\"url\":\"https://wiki.postgresql.org/wiki/Performance_Tuning\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332137,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 60,
+    "prompt_tokens": 1649,
+    "total_tokens": 1709,
+    "completion_time": 0.160027184,
+    "completion_tokens_details": null,
+    "prompt_time": 0.120343401,
+    "prompt_tokens_details": null,
+    "queue_time": 0.765456932,
+    "total_time": 0.280370585
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1rtv8esdvpdmn1qpext8n",
+    "debug": null,
+    "seed": 1337453783,
+    "usage": null
+  }
+}

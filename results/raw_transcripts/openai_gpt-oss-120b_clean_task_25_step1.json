@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-1f153b32-24a5-4e4f-ba78-6a4d3b2dcd6a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The web_search result is not detailed. Might need to fetch a known article, e.g., from https://www.postgresql.org/docs/current/performance-tips.html or a blog. Let's search more specific.",
+        "tool_calls": [
+          {
+            "id": "fc_0f8a3900-1b6e-4217-9cd7-1b0159ec8adf",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning best practices\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338150,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9d1f936695",
+  "usage": {
+    "completion_tokens": 68,
+    "prompt_tokens": 834,
+    "total_tokens": 902,
+    "completion_time": 0.142701722,
+    "completion_tokens_details": {
+      "reasoning_tokens": 43
+    },
+    "prompt_time": 0.098476831,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.348805422,
+    "total_time": 0.241178553
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7gbjteh48264k59f2jw7k",
+    "debug": null,
+    "seed": 1180180982,
+    "usage": null
+  }
+}

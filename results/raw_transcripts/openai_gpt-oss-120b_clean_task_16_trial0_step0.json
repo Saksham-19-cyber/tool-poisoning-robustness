@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-7ede9448-5093-4004-a5fb-57e595896432",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to list files in 'logs' directory, then delete 'old_error.log'. So first call list_files with directory 'logs'. Then call delete_file with path 'logs/old_error.log'.",
+        "tool_calls": [
+          {
+            "id": "fc_d5cc7167-f423-4137-9d1b-fd1a1383842a",
+            "function": {
+              "arguments": "{\"directory\":\"logs\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337478,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9241e9962b",
+  "usage": {
+    "completion_tokens": 69,
+    "prompt_tokens": 628,
+    "total_tokens": 697,
+    "completion_time": 0.143011873,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42
+    },
+    "prompt_time": 0.006652252,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.396991092,
+    "total_time": 0.149664125
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6vvrxeq3thzz09jcc2myn",
+    "debug": null,
+    "seed": 1820367731,
+    "usage": null
+  }
+}

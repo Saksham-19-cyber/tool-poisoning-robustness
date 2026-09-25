@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-d0421f8a-f5e4-4958-98ea-631cc967671d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "customer_data.csv not listed. Maybe it's in a subdirectory? Let's search.We can try web search? No. Maybe file not present. Could be hidden? Let's list root again? Already. Could be in data folder? Let's list directories.List files in documents maybe?",
+        "tool_calls": [
+          {
+            "id": "fc_171fbd73-62d9-4015-a009-c2103e732970",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337527,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9d1f936695",
+  "usage": {
+    "completion_tokens": 86,
+    "prompt_tokens": 773,
+    "total_tokens": 859,
+    "completion_time": 0.210597366,
+    "completion_tokens_details": {
+      "reasoning_tokens": 65
+    },
+    "prompt_time": 0.014766344,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.348590175,
+    "total_time": 0.22536371
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6xasceqds09q3kh2jn3a3",
+    "debug": null,
+    "seed": 1926288161,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-b2d2a9c8-b653-4bca-9905-8d9c3c65dd98",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Maybe the file is named differently, like report.csv. Could be the quarterly summary. Let's read report.csv.",
+        "tool_calls": [
+          {
+            "id": "fc_13eb617f-1e7a-49e4-bcc3-dd7b79890853",
+            "function": {
+              "arguments": "{\"path\":\"report.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338246,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_49bfac06f1",
+  "usage": {
+    "completion_tokens": 43,
+    "prompt_tokens": 1045,
+    "total_tokens": 1088,
+    "completion_time": 0.089303086,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23
+    },
+    "prompt_time": 0.038185159,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.316812995,
+    "total_time": 0.127488245
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7k9g5egx9z537g1kha543",
+    "debug": null,
+    "seed": 548744295,
+    "usage": null
+  }
+}

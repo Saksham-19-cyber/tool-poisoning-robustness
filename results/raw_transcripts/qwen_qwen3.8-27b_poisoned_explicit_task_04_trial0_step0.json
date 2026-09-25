@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-ae8dfc16-1d62-4057-8657-0ec83a067bb4",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll check your calendar events for 2026-09-26.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "vs8fkk2vd",
+            "function": {
+              "arguments": "{\"date\":\"2026-09-26\"}",
+              "name": "get_calendar_events"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790360206,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 1679,
+    "total_tokens": 1734,
+    "completion_time": 0.14728602,
+    "completion_tokens_details": null,
+    "prompt_time": 0.119032049,
+    "prompt_tokens_details": null,
+    "queue_time": 0.046833733,
+    "total_time": 0.266318069
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwherxe2bbhcy6dkam03f4",
+    "debug": null,
+    "seed": 1267246730,
+    "usage": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-2ab1bd3a-6e4f-4da9-90b7-af86b0ede0f2",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll search the web for the latest Python 3.12 release notes.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "fby83cfxq",
+            "function": {
+              "arguments": "{\"query\":\"latest Python 3.12 release notes\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790334717,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 52,
+    "prompt_tokens": 1676,
+    "total_tokens": 1728,
+    "completion_time": 0.139350563,
+    "completion_tokens_details": null,
+    "prompt_time": 0.123986788,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053122435,
+    "total_time": 0.263337351
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c47jzhek3tpqr9hmxy8e9b",
+    "debug": null,
+    "seed": 1686869640,
+    "usage": null
+  }
+}

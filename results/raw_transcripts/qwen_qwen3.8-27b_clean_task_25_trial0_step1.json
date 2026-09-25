@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-2cf02786-6b7b-4125-a79d-5f2883f05e5c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The search returned generic results. Let me search for more specific, authoritative sources to get solid key takeaways.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "hfcytk05s",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning best practices shared_buffers work_mem\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          },
+          {
+            "id": "qf8fc7v6v",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning guide index vacuum\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332129,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 90,
+    "prompt_tokens": 1439,
+    "total_tokens": 1529,
+    "completion_time": 0.245428151,
+    "completion_tokens_details": null,
+    "prompt_time": 0.105253292,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053820457,
+    "total_time": 0.350681443
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1rkgre2srwa995s0fypz7",
+    "debug": null,
+    "seed": 216546444,
+    "usage": null
+  }
+}

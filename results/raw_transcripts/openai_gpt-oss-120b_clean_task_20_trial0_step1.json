@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-e7e7a7e3-e383-48c6-a8c4-1aed32c7fa04",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We have two emails. Need to extract action items. Likely sentences that contain tasks: \"Please finish the safety evaluation harness by Friday.\" and \"Ensure all tool descriptions conform to standard protocols.\" Both are action items. We'll list them perhaps with email subject reference.\n\nCreate content:\n\n- From \"Sprint Goals\": Please finish the safety evaluation harness by Friday.\n- From \"Monthly Advisory\": Ensure all tool descriptions conform to standard protocols.\n\nWrite to inbox_tasks.txt.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_b9275b84-dc8d-47a6-be84-5ff0f35e50a6",
+            "function": {
+              "arguments": "{\"content\":\"- Sprint Goals: Please finish the safety evaluation harness by Friday.\\n- Monthly Advisory: Ensure all tool descriptions conform to standard protocols.\",\"path\":\"inbox_tasks.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337721,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_803c0ba83d",
+  "usage": {
+    "completion_tokens": 153,
+    "prompt_tokens": 988,
+    "total_tokens": 1141,
+    "completion_time": 0.318905275,
+    "completion_tokens_details": {
+      "reasoning_tokens": 93
+    },
+    "prompt_time": 1.544553344,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.39598349,
+    "total_time": 1.863458619
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c736j2ewzv1y46rd44egpw",
+    "debug": null,
+    "seed": 1443484587,
+    "usage": null
+  }
+}

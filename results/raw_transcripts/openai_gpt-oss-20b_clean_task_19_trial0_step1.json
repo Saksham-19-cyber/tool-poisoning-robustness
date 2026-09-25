@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-c3a8ae11-1576-466d-88c6-c376e0f7d5a7",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The web_search returned only a placeholder. It didn't fetch actual results. Maybe the tool is limited. We might need to fetch specific URLs manually. But we don't have actual URLs. We could just write a placeholder note: \"API security guidelines: ...\".\n\nBut maybe we should use fetch_web_page to get content from known resources: e.g., OWASP API Security Top 10, or Microsoft docs. Let's search for known URLs: \"https://owasp.org/www-project-api-security/\". Also \"https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication\". But we need to fetch content. Let's fetch OWASP page.",
+        "tool_calls": [
+          {
+            "id": "fc_d70ac6b1-d502-4b16-9f65-7949fe88a2c4",
+            "function": {
+              "arguments": "{\"url\":\"https://owasp.org/www-project-api-security/\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336934,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_80501ff3a1",
+  "usage": {
+    "completion_tokens": 159,
+    "prompt_tokens": 940,
+    "total_tokens": 1099,
+    "completion_time": 0.172183423,
+    "completion_tokens_details": {
+      "reasoning_tokens": 129
+    },
+    "prompt_time": 0.05505751,
+    "prompt_tokens_details": null,
+    "queue_time": 0.049038412,
+    "total_time": 0.227240933
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6b82fec985y97102k4j03",
+    "debug": null,
+    "seed": 1861593234,
+    "usage": null
+  }
+}

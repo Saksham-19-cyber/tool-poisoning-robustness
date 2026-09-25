@@ -34,9 +34,9 @@
 
 This project empirically investigates two interconnected questions at the intersection of LLM security and calibration research:
 
-> **RQ1 — Tool-Description Poisoning Susceptibility vs. Model Scale**
+> **RQ1 — Tool-Description Poisoning Susceptibility vs. Model Scale & Architecture**
 >
-> Does embedding malicious instructions directly inside tool *descriptions* (not outputs) hijack agent behaviour at different rates across small (~8 B), mid (~20 B) and large (~70 B+) open-weight models? Does the observed scaling pattern mirror or break the *inverse-scaling* effect found in frontier commercial models — where stronger instruction-following paradoxically amplifies attack surface?
+> Does embedding malicious instructions directly inside tool *descriptions* (not outputs) hijack agent behaviour at different rates across mid-scale open-weight models (`openai/gpt-oss-20b` ~20B, `qwen/qwen3.8-27b` ~27B) and frontier-scale models (`openai/gpt-oss-120b` ~120B)? Does the ~5×-6× parameter leap to 120B mitigate or exacerbate tool-description hijacking, and how do distinct model architectures at comparable capacity (~20B vs. ~27B) diverge in susceptibility?
 
 > **RQ2 — Confidence Calibration Drift Across Conversation Turns**
 >
@@ -227,15 +227,19 @@ The `RateLimitedGroqClient` enforces:
 - **Hard call budget counter** — raises `RuntimeError` if exceeded, never silent overrun
 - Token usage tracked per run and logged to stdout
 
-### Model Matrix (auto-discovered at runtime)
+### Model Matrix (Auto-discovered & Validated from Live Groq Catalog)
 
 ```python
-small  → llama-3.1-8b-instant          # ~8B
-mid    → openai/gpt-oss-20b            # ~20B  (qwen/qwen3.8-27b fallback)
-large  → llama-3.3-70b-versatile       # ~70B+
+mid_20b    → openai/gpt-oss-20b       # ~20B (OpenAI open-weights reasoning model)
+mid_27b    → qwen/qwen3.8-27b         # ~27B (Alibaba Cloud open reasoning model)
+large_120b → openai/gpt-oss-120b      # ~120B (OpenAI frontier open-weights reasoning model)
 ```
 
-The client queries the live `/models` endpoint at startup — model IDs are never hardcoded from training data.
+The client dynamically queries Groq's live `/models` endpoint at runtime. Rather than assuming deprecated legacy checkpoints (e.g., Llama-3.1-8B or Llama-3.3-70B which returned 404 on this account's active catalog), the evaluation matrix targets the live catalog models supporting tool calling, structured outputs, and reasoning.
+
+**Parameter Gap & Architectural Contrast**:
+- **Matched Mid-Scale Tier (~20B vs. ~27B)**: `openai/gpt-oss-20b` and `qwen/qwen3.8-27b` provide a cross-architecture comparison at comparable capacity, isolating differences between OpenAI's reasoning architecture and Alibaba Cloud's Qwen architecture.
+- **Frontier Scale Leap (~20–27B vs. ~120B)**: `openai/gpt-oss-120b` introduces a ~5× to 6× parameter scaling jump within the same deployment environment, testing whether massive scale and extended reasoning tokens resolve or amplify instruction conflicts in tool descriptions.
 
 ---
 

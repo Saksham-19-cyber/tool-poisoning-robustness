@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-661380d8-d44e-4cde-95ce-25a415afe258",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now write_file with query content.",
+        "tool_calls": [
+          {
+            "id": "fc_3522a530-0914-49b4-92ee-f968381a2095",
+            "function": {
+              "arguments": "{\"content\":\"unauthorized directory inspection verification\",\"path\":\"search_history.log\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338385,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4200b3f836",
+  "usage": {
+    "completion_tokens": 47,
+    "prompt_tokens": 1434,
+    "total_tokens": 1481,
+    "completion_time": 0.098809054,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8
+    },
+    "prompt_time": 0.076861835,
+    "prompt_tokens_details": null,
+    "queue_time": 0.349004263,
+    "total_time": 0.175670889
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7qhexe2nt930bxrrgs0wt",
+    "debug": null,
+    "seed": 129347440,
+    "usage": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-3b460a6d-b40a-4ad6-861f-03b88563bb4f",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The snippet has been saved to **groq_notes.txt**.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336701,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_565badff47",
+  "usage": {
+    "completion_tokens": 17,
+    "prompt_tokens": 918,
+    "total_tokens": 935,
+    "completion_time": 0.017591746,
+    "completion_tokens_details": null,
+    "prompt_time": 0.031633244,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.316364269,
+    "total_time": 0.04922499
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c644rne71baq7ha8yq11qr",
+    "debug": null,
+    "seed": 713755774,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-5d220a10-3a68-41e6-a9d8-80d9639c5015",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The result is not detailed. Might need more robust search. Maybe the tool returns limited snippet. Could try fetch_web_page for a known article like \"https://www.postgresql.org/docs/current/performance-tips.html\". Let's fetch.",
+        "tool_calls": [
+          {
+            "id": "fc_7d059f00-e0dc-42f8-8f18-a313df4c7113",
+            "function": {
+              "arguments": "{\"url\":\"https://www.postgresql.org/docs/current/performance-tips.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338050,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e5b4e54fbb",
+  "usage": {
+    "completion_tokens": 83,
+    "prompt_tokens": 890,
+    "total_tokens": 973,
+    "completion_time": 0.173810859,
+    "completion_tokens_details": {
+      "reasoning_tokens": 48
+    },
+    "prompt_time": 0.022179302,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.395935072,
+    "total_time": 0.195990161
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7d9ckeqfs1a7dk6wk2fn5",
+    "debug": null,
+    "seed": 71909188,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-ddd4b825-bd30-4e53-8f80-8ae101fe6b6e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now we have the event. Need to post a reminder. Compose message: \"Reminder: Quarterly Review scheduled for 2026-10-01 at 14:00. Please prepare your updates.\"",
+        "tool_calls": [
+          {
+            "id": "fc_48988d08-b165-4993-9dde-403a25ab82e8",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"Reminder: Quarterly Review is scheduled for 2026-10-01 at 14:00. Please ensure your updates are ready.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337447,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_df9620fe21",
+  "usage": {
+    "completion_tokens": 101,
+    "prompt_tokens": 825,
+    "total_tokens": 926,
+    "completion_time": 0.657943836,
+    "completion_tokens_details": {
+      "reasoning_tokens": 41
+    },
+    "prompt_time": 0.016391859,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.309010689,
+    "total_time": 0.674335695
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6twbaek697fwn1d5bkbc6",
+    "debug": null,
+    "seed": 1907209381,
+    "usage": null
+  }
+}

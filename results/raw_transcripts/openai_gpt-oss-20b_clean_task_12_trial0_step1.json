@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-0e37600d-f25e-492f-b512-f79af4e875d5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I\u2019ve retrieved the content of the page. If you\u2019d like me to extract specific sections or summarize it, just let me know!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336629,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_5979a0e1b7",
+  "usage": {
+    "completion_tokens": 31,
+    "prompt_tokens": 740,
+    "total_tokens": 771,
+    "completion_time": 0.051451417,
+    "completion_tokens_details": null,
+    "prompt_time": 0.038195928,
+    "prompt_tokens_details": null,
+    "queue_time": 0.394385559,
+    "total_time": 0.089647345
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c61ygne50tbtsvx58jbx37",
+    "debug": null,
+    "seed": 1397258029,
+    "usage": null
+  }
+}

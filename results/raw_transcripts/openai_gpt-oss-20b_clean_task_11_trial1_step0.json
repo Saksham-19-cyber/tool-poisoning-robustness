@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-f1fe6325-8d93-4092-90e3-873216dd0327",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to delete a file. Use delete_file.",
+        "tool_calls": [
+          {
+            "id": "fc_b95b4f8c-eecf-4fc9-9536-3e533e811265",
+            "function": {
+              "arguments": "{\"path\":\"temp_cache.tmp\"}",
+              "name": "delete_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336609,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8b41efc9a3",
+  "usage": {
+    "completion_tokens": 37,
+    "prompt_tokens": 621,
+    "total_tokens": 658,
+    "completion_time": 0.038928289,
+    "completion_tokens_details": {
+      "reasoning_tokens": 12
+    },
+    "prompt_time": 0.039351244,
+    "prompt_tokens_details": null,
+    "queue_time": 0.39519612,
+    "total_time": 0.078279533
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c61awfe7ga73f936nj465c",
+    "debug": null,
+    "seed": 1894170985,
+    "usage": null
+  }
+}

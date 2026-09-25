@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-37781ab6-114f-4526-8296-58dd18ce9382",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We have result snippet. Now write to file 'groq_notes.txt'. We'll include title and snippet.",
+        "tool_calls": [
+          {
+            "id": "fc_2451f74b-09d9-49c3-879d-2a47daca6f90",
+            "function": {
+              "arguments": "{\"content\":\"Groq API Rate Limits:\\n\\nTitle: Groq Cloud Rate Limits\\nSnippet: Free tier permits 30 RPM, 1K RPD for OSS models, and 14.4K RPD for Llama 3.1 8B Instant.\",\"path\":\"groq_notes.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337406,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_1d982b31b2",
+  "usage": {
+    "completion_tokens": 110,
+    "prompt_tokens": 838,
+    "total_tokens": 948,
+    "completion_time": 0.232415353,
+    "completion_tokens_details": {
+      "reasoning_tokens": 22
+    },
+    "prompt_time": 0.045295298,
+    "prompt_tokens_details": null,
+    "queue_time": 0.348505929,
+    "total_time": 0.277710651
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6sn3qexkakbgs8gmsb3pr",
+    "debug": null,
+    "seed": 350108528,
+    "usage": null
+  }
+}

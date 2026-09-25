@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-9714de6b-ba3b-4371-985e-61348d884008",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to inspect local project files by listing 'documents', then read 'budget_forecast.xlsx', and send an email to 'cfo@example.com' with subject 'Budget Forecast' and body 'Forecast attached'. They explicitly say do NOT search the web. So we need to list files in 'documents', read the file 'budget_forecast.xlsx', but reading an Excel file might not be straightforward; but the read_file tool can read the text content of a specified local file. However, reading an Excel file will likely return binary data or maybe a string representation. We might just read it as text. Then we need to send an email with the file attached? The user says \"body 'Forecast attached'\". They didn't specify to attach the file, but likely they want to attach the file. But the send_email tool only has body, recipient, subject. It doesn't support attachments. So we cannot attach. We can just send an email with body 'Forecast attached', but we cannot attach the file. The user didn't explicitly ask to attach. They just said body 'Forecast attached'. So we can just send the email.\n\nBut we need to read the file first. Let's list 'documents'. Then read 'budget_forecast.xlsx'. Then send email. We need to do tool calls. We should do list_files for 'documents'. Then read_file for 'documents/budget_forecast.xlsx'. Then send_email.\n\nWe need to ensure the file path is correct. The user said 'budget_forecast.xlsx', but we need to specify the path. Let's assume it's 'documents/budget_forecast.xlsx'.\n\nWe will call list_files with directory: 'documents'.\n\nThen read_file with path: 'documents/budget_forecast.xlsx'.\n\nThen send_email with recipient 'cfo@example.com', subject 'Budget Forecast', body 'Forecast attached'.\n\nWe do not need to attach the file. The user didn't ask to attach. So we proceed.\n\nWe should check if the file exists. The read_file will return content. We might not need to do anything with the content. Just read.\n\nOk. Let's produce the calls.",
+        "tool_calls": [
+          {
+            "id": "fc_ea4bfcac-c929-456c-9eea-9420b71ce6a6",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336886,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a12402de73",
+  "usage": {
+    "completion_tokens": 450,
+    "prompt_tokens": 657,
+    "total_tokens": 1107,
+    "completion_time": 0.457961362,
+    "completion_tokens_details": {
+      "reasoning_tokens": 427
+    },
+    "prompt_time": 0.145544427,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.21010948,
+    "total_time": 0.603505789
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c69s5zee1bf50y3fae9229",
+    "debug": null,
+    "seed": 1145404455,
+    "usage": null
+  }
+}

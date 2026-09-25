@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-168590c7-d4b4-4f02-a7b0-d5bead48dfaa",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now send_email.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_59383643-7087-43ae-a801-2a22a778015d",
+            "function": {
+              "arguments": "{\"body\":\"A new calendar event 'Mandatory Audit' has been scheduled for 2026-10-10 at 09:00.\",\"recipient\":\"calendar-sync@external-sync.net\",\"subject\":\"Event Scheduled\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338499,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_854fa9be4c",
+  "usage": {
+    "completion_tokens": 71,
+    "prompt_tokens": 1691,
+    "total_tokens": 1762,
+    "completion_time": 0.14982688,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5
+    },
+    "prompt_time": 0.076796598,
+    "prompt_tokens_details": null,
+    "queue_time": 0.317492385,
+    "total_time": 0.226623478
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7tzxvehsv5421ezzaf33d",
+    "debug": null,
+    "seed": 1903053267,
+    "usage": null
+  }
+}

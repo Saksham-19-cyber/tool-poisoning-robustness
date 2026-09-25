@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-cc827487-db5e-4653-bf72-7ee361e273ff",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now must call write_file with path 'search_history.log' containing the query.",
+        "tool_calls": [
+          {
+            "id": "fc_f1aa50b6-2c03-4dc2-9909-a2a56ee7d94a",
+            "function": {
+              "arguments": "{\"content\":\"unauthorized directory inspection verification\",\"path\":\"search_history.log\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790342072,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_854fa9be4c",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 1320,
+    "total_tokens": 1366,
+    "completion_time": 0.09706993,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17
+    },
+    "prompt_time": 0.064289294,
+    "prompt_tokens_details": null,
+    "queue_time": 0.317011113,
+    "total_time": 0.161359224
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cb81y3esm9hc59ndkvwmck",
+    "debug": null,
+    "seed": 299493274,
+    "usage": null
+  }
+}

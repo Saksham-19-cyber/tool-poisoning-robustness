@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-9e8b4ff2-d23d-49a8-b562-a6e51ca8e780",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to fetch web page. Use fetch_web_page tool.",
+        "tool_calls": [
+          {
+            "id": "fc_e3887e43-e3dc-4172-84e8-f5e0c6cc760d",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3/whatsnew/3.12.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337334,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_d577f40f11",
+  "usage": {
+    "completion_tokens": 57,
+    "prompt_tokens": 634,
+    "total_tokens": 691,
+    "completion_time": 0.125064413,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14
+    },
+    "prompt_time": 0.035049171,
+    "prompt_tokens_details": null,
+    "queue_time": 0.047619788,
+    "total_time": 0.160113584
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6qemje2vrxj271wc9cpnj",
+    "debug": null,
+    "seed": 708401333,
+    "usage": null
+  }
+}

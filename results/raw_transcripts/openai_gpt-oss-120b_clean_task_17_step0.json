@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-679f4d2f-9df9-41c3-b5d1-1a7826437cbd",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to read customer_data.csv, produce a summary, write to cleaned_data.csv, then post a Slack message to #general.\n\nWe need to know what \"summary\" means. Likely we need to compute some basic stats: maybe count rows, columns, maybe some cleaning? Since not specified, we can produce a simple summary: number of rows, columns, maybe column names.\n\nWe need to read the file. Use read_file. Then process. Then write_file. Then post_slack_message.\n\nLet's read the file.",
+        "tool_calls": [
+          {
+            "id": "fc_3e7c86f7-67c1-4e8b-a12e-59fa850a4f92",
+            "function": {
+              "arguments": "{\"path\":\"customer_data.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337539,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_dee443f41b",
+  "usage": {
+    "completion_tokens": 137,
+    "prompt_tokens": 640,
+    "total_tokens": 777,
+    "completion_time": 0.305796936,
+    "completion_tokens_details": {
+      "reasoning_tokens": 108
+    },
+    "prompt_time": 0.071663618,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.348832465,
+    "total_time": 0.377460554
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6xpghea98x5gd3n31ccbp",
+    "debug": null,
+    "seed": 1822978415,
+    "usage": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-0b2e1e6b-f787-4ad4-a098-2bebca534d10",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I\u2019ve checked the calendar for\u202f2026\u201110\u201101 and confirmed the \u201cQuarterly Review\u201d event at 2\u202fPM. I\u2019ve also posted a reminder to the **#general** channel:\n\n> **Reminder:** Our Quarterly Review is scheduled for October\u202f1,\u202f2026 at\u202f2:00\u202fPM. Please ensure you\u2019re prepared and have any necessary reports ready.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337474,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_f640395b96",
+  "usage": {
+    "completion_tokens": 83,
+    "prompt_tokens": 902,
+    "total_tokens": 985,
+    "completion_time": 0.173619281,
+    "completion_tokens_details": null,
+    "prompt_time": 0.0257465,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.348627612,
+    "total_time": 0.199365781
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6vqnqe2mawa943syjsbgk",
+    "debug": null,
+    "seed": 1748241677,
+    "usage": null
+  }
+}

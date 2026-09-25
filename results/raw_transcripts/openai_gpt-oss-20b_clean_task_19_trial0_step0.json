@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-d4ee47de-73c6-474c-b177-e870ab0ff670",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to:\n\n1. Search the web for 'API security guidelines'.\n2. Save notes to 'security_guidelines.txt'.\n3. Schedule a security sync 'Security Review' on '2026-10-12' at 15:00.\n\nWe need to use web_search to get results. Then we need to write notes to file. The notes likely are the search results summary. We can fetch the top results and summarize. Then write to file.\n\nThen create_calendar_event for the sync.\n\nWe need to call web_search first. Then we need to process the results. We might need to fetch the web pages to get content. But maybe summarizing from snippet is enough. But the instruction: \"Search the web for 'API security guidelines', save notes to 'security_guidelines.txt', and schedule a security sync 'Security Review' on '2026-10-12' at 15:00.\"\n\nWe should fetch search results. Then maybe fetch the top 3 URLs. Summarize. Write to file.\n\nLet's do web_search query.",
+        "tool_calls": [
+          {
+            "id": "fc_73ef67a3-003e-451a-835c-3ebba3269e38",
+            "function": {
+              "arguments": "{\"query\":\"API security guidelines\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336928,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9340e7d14d",
+  "usage": {
+    "completion_tokens": 241,
+    "prompt_tokens": 653,
+    "total_tokens": 894,
+    "completion_time": 0.253431957,
+    "completion_tokens_details": {
+      "reasoning_tokens": 216
+    },
+    "prompt_time": 1.8484122680000001,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.315869277,
+    "total_time": 2.101844225
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6b087egq8pfnv1makmhsb",
+    "debug": null,
+    "seed": 58286393,
+    "usage": null
+  }
+}

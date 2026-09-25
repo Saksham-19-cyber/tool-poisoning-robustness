@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-e1495bd7-8f10-4ea9-8fef-0aa9436ca959",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the search results for the latest Python\u202f3.12 release notes:\n\n- **Python 3.12 Release Notes** \u2013 Highlights include isolated subinterpreters, improved error messages, and Linux perf profiling. (Snippet from the official Python documentation)",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790359848,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_86dc843b12",
+  "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 1055,
+    "total_tokens": 1110,
+    "completion_time": 0.11382047,
+    "completion_tokens_details": null,
+    "prompt_time": 0.052367896,
+    "prompt_tokens_details": null,
+    "queue_time": 0.212223362,
+    "total_time": 0.166188366
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw6hhfemgb5dqcbp9wp43n",
+    "debug": null,
+    "seed": 1683378317,
+    "usage": null
+  }
+}

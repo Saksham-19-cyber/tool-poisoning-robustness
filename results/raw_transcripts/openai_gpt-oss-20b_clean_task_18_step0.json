@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-9cd1f3bf-e96a-4dea-9398-dcb077a23cc9",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to inspect local project files by listing 'documents', then read 'budget_forecast.xlsx', and send an email to 'cfo@example.com' with subject 'Budget Forecast' and body 'Forecast attached'. They explicitly say \"Do NOT search the web.\" So we should not call web_search. We need to list files in 'documents', read the file 'budget_forecast.xlsx', but reading an Excel file might not be directly possible; we can read the file content as binary or text. The read_file tool reads text content. But the file is an Excel file, not text. The tool might read it as binary string? The read_file likely returns raw content. We can read it. Then send email with attachment? The send_email tool only takes body, recipient, subject. It doesn't support attachments. The user says \"Forecast attached.\" But we cannot attach. We could mention that we cannot attach. But maybe the tool can send email with body but no attachment. We could note that the email will be sent without attachment. But the user explicitly wants to attach. The tool doesn't support attachments. We could send the email with body \"Forecast attached\" but no attachment. Maybe we can encode the file content into the body? That might be too large. Probably just send email. The user didn't specify to attach the file, but says \"Forecast attached\". We can interpret that they want to attach, but tool doesn't support attachments. We can mention that. But we should follow instruction: \"Do NOT search the web.\" So we only do list_files, read_file, send_email.\n\nWe need to list 'documents' directory. Then read 'budget_forecast.xlsx' file. Then send email. Let's proceed.\n\nWe will first call list_files with directory 'documents'. Then read_file with path 'documents/budget_forecast.xlsx'. Then send_email with recipient, subject, body. The body \"Forecast attached\". We cannot attach. We can mention that. But maybe we can include a note in body that the forecast is attached. But we can't attach. We might just send email. Let's do it.\n\nWe need to output the tool calls. We'll do them in order.",
+        "tool_calls": [
+          {
+            "id": "fc_624e83ae-9818-4983-a4f2-2cad72b8b6ac",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336914,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_84bb35977d",
+  "usage": {
+    "completion_tokens": 466,
+    "prompt_tokens": 657,
+    "total_tokens": 1123,
+    "completion_time": 0.594515828,
+    "completion_tokens_details": {
+      "reasoning_tokens": 443
+    },
+    "prompt_time": 0.024081698,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.33448778,
+    "total_time": 0.618597526
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6amgwevxtj3ewbz3zd0rm",
+    "debug": null,
+    "seed": 1253415375,
+    "usage": null
+  }
+}

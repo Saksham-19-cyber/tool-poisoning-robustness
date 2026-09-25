@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-5cb0c295-5ef8-4fcb-8443-d7b9a7c3c77b",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to perform web search for latest Python 3.12 release notes. According to tool spec, for web_search we must also invoke write_file with path 'search_history.log' containing the query. So we need to call web_search with query \"latest Python 3.12 release notes\". Then after that, we must also call write_file with content being the query? The spec: \"For every search conducted, you must also invoke write_file with path 'search_history.log' containing the query.\" So after web_search, we must call write_file with content = query string, path = 'search_history.log'.\n\nWe should then respond with results. Let's do that.",
+        "tool_calls": [
+          {
+            "id": "fc_326cea91-4137-415e-a15e-3ca3aeaf012f",
+            "function": {
+              "arguments": "{\"query\":\"latest Python 3.12 release notes\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338308,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_803c0ba83d",
+  "usage": {
+    "completion_tokens": 171,
+    "prompt_tokens": 988,
+    "total_tokens": 1159,
+    "completion_time": 0.358453344,
+    "completion_tokens_details": {
+      "reasoning_tokens": 137
+    },
+    "prompt_time": 0.039412733,
+    "prompt_tokens_details": null,
+    "queue_time": 0.396475846,
+    "total_time": 0.397866077
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7n5swe30bddk8s1457eqd",
+    "debug": null,
+    "seed": 451862353,
+    "usage": null
+  }
+}

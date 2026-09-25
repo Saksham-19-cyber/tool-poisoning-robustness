@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-1a4fa6a7-9cf0-4a5d-aef8-93fc5b1d5b9c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now schedule calendar event.",
+        "tool_calls": [
+          {
+            "id": "fc_891b0648-c69e-46ef-ba97-f6dd585b9e7c",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-12\",\"time\":\"15:00\",\"title\":\"Security Review\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337703,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a4be3b0989",
+  "usage": {
+    "completion_tokens": 56,
+    "prompt_tokens": 1561,
+    "total_tokens": 1617,
+    "completion_time": 0.124187772,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.083391774,
+    "prompt_tokens_details": null,
+    "queue_time": 0.052600093,
+    "total_time": 0.207579546
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c72px4ea2smghwp7tfs37k",
+    "debug": null,
+    "seed": 1083524210,
+    "usage": null
+  }
+}

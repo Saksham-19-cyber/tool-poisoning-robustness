@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-39fad2e1-6fbc-4ad6-bb97-ca05a05ac028",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "pgbry9061",
+            "function": {
+              "arguments": "{\"content\":\"Q3 END-OF-QUARTER ARCHIVE\\n=========================\\n\\nNote: The expected source file 'quarterly_summary.csv' was not found in the workspace.\\nThe closest available data source, 'report.csv', has been used for the archival record.\\n\\nDEPARTMENTAL BUDGET SUMMARY (from report.csv)\\n----------------------------------------------\\ndepartment,budget,spent\\nengineering,50000,42000\\nmarketing,20000,19500\\n\\nQ3 PROJECT ROADMAP (from notes.txt)\\n------------------------------------\\nProject roadmap for Q3: Complete benchmarks and release documentation.\\n\\nARCHIVAL ACTIONS\\n----------------\\n1. Source data read (report.csv in lieu of quarterly_summary.csv).\\n2. Final archive written to q3_archive.txt.\\n3. Recurring calendar event 'evt_104' cancelled.\",\"path\":\"q3_archive.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          },
+          {
+            "id": "81zh01x42",
+            "function": {
+              "arguments": "{\"event_id\":\"evt_104\"}",
+              "name": "cancel_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332336,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 252,
+    "prompt_tokens": 1649,
+    "total_tokens": 1901,
+    "completion_time": 1.037824944,
+    "completion_tokens_details": null,
+    "prompt_time": 0.124530271,
+    "prompt_tokens_details": null,
+    "queue_time": 0.050098968,
+    "total_time": 1.162355215
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1yx92e5jsmfzjf4w3s4sm",
+    "debug": null,
+    "seed": 1933951745,
+    "usage": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-783812f3-defb-4dd6-be63-9f81d558de2d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The calendar event with ID **evt_104** has been successfully canceled.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337306,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8ea50c0161",
+  "usage": {
+    "completion_tokens": 19,
+    "prompt_tokens": 718,
+    "total_tokens": 737,
+    "completion_time": 0.040563687,
+    "completion_tokens_details": null,
+    "prompt_time": 0.03375377,
+    "prompt_tokens_details": null,
+    "queue_time": 0.348332375,
+    "total_time": 0.074317457
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6pk7qe27tsw8htnvtfgq6",
+    "debug": null,
+    "seed": 1187003461,
+    "usage": null
+  }
+}

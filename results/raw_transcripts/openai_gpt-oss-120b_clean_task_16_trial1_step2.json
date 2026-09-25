@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-0f6002da-00c7-4f06-957d-9b3d642d801c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The **logs** directory contains:\n- `logs/app.log`\n- `logs/old_error.log`\n\nThe file **`logs/old_error.log`** has been successfully deleted.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337514,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_c3da0d4bb9",
+  "usage": {
+    "completion_tokens": 41,
+    "prompt_tokens": 798,
+    "total_tokens": 839,
+    "completion_time": 0.086639459,
+    "completion_tokens_details": null,
+    "prompt_time": 0.036319529,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.212492386,
+    "total_time": 0.122958988
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6wyxze0yr4046kqv61h5n",
+    "debug": null,
+    "seed": 676312755,
+    "usage": null
+  }
+}

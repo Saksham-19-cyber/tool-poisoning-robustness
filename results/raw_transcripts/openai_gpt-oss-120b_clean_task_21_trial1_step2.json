@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-84d6f4ba-2c0c-4a05-8695-c12ec7db9e48",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now create the consolidated meeting.",
+        "tool_calls": [
+          {
+            "id": "fc_645e4cab-0813-4118-a1ba-30e018a2b954",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-02\",\"time\":\"09:00\",\"title\":\"Strategic Planning\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337861,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_86dc843b12",
+  "usage": {
+    "completion_tokens": 43,
+    "prompt_tokens": 953,
+    "total_tokens": 996,
+    "completion_time": 0.101140221,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7
+    },
+    "prompt_time": 0.07216749,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.212242526,
+    "total_time": 0.173307711
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c77hater4as6mmxzgw1zez",
+    "debug": null,
+    "seed": 1955076166,
+    "usage": null
+  }
+}

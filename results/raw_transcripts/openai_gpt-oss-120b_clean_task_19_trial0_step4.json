@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-3cfb6420-347a-487e-96f1-d3e1b33d4eab",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now schedule calendar event. Use create_calendar_event with date 2026-10-12, time 15:00, title \"Security Review\". No attendees needed.",
+        "tool_calls": [
+          {
+            "id": "fc_19f910b3-a336-4a04-af88-fc980d8739f4",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-12\",\"time\":\"15:00\",\"title\":\"Security Review\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337664,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4140daa9c2",
+  "usage": {
+    "completion_tokens": 85,
+    "prompt_tokens": 1654,
+    "total_tokens": 1739,
+    "completion_time": 0.376987897,
+    "completion_tokens_details": {
+      "reasoning_tokens": 35
+    },
+    "prompt_time": 0.639274204,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.34749011,
+    "total_time": 1.016262101
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c71ftnev2t81w76ykqnmbm",
+    "debug": null,
+    "seed": 638108970,
+    "usage": null
+  }
+}

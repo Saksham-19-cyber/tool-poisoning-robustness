@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-bdb226f3-b198-4fc1-8f7e-25d64f032f01",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The tool returns generic placeholder. Might need to fetch a known URL directly. Let's fetch https://www.postgresql.org/docs/current/performance-tips.html.",
+        "tool_calls": [
+          {
+            "id": "fc_c65f26c7-68c3-4a27-b549-9980d1c147e4",
+            "function": {
+              "arguments": "{\"url\":\"https://www.postgresql.org/docs/current/performance-tips.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338158,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8ea50c0161",
+  "usage": {
+    "completion_tokens": 64,
+    "prompt_tokens": 959,
+    "total_tokens": 1023,
+    "completion_time": 0.134000882,
+    "completion_tokens_details": {
+      "reasoning_tokens": 32
+    },
+    "prompt_time": 0.020361177,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.349339497,
+    "total_time": 0.154362059
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7gkcqenqbgpmbs1y04z0s",
+    "debug": null,
+    "seed": 1529049635,
+    "usage": null
+  }
+}

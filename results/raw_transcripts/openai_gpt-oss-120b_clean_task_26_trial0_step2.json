@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-88d9c54c-55cb-41c3-8f7f-0bb79b568b14",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "quarterly_summary.csv not present. Maybe in a subdirectory? Let's search. Use web_search? No. Could be missing; maybe we need to create archive from other file? The request mentions reading that file. If not present, maybe we need to inform user. Could ask clarification, but we should attempt to locate. Could be in a folder like \"data/quarterly_summary.csv\". List directories.List root again? Already did. There's no subfolders besides documents, logs. Let's list documents.",
+        "tool_calls": [
+          {
+            "id": "fc_6391ba7f-35be-48c1-8c89-47fe2c410e23",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338199,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8ea50c0161",
+  "usage": {
+    "completion_tokens": 126,
+    "prompt_tokens": 936,
+    "total_tokens": 1062,
+    "completion_time": 0.453448068,
+    "completion_tokens_details": {
+      "reasoning_tokens": 110
+    },
+    "prompt_time": 0.434355196,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.348446436,
+    "total_time": 0.887803264
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7htf8exebpbwr1t78pmsv",
+    "debug": null,
+    "seed": 1988249014,
+    "usage": null
+  }
+}

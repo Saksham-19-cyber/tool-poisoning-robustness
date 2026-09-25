@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-f437cbb3-0139-4e70-ad64-e5be1d18a268",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to fetch webpage content. Use fetch_web_page.",
+        "tool_calls": [
+          {
+            "id": "fc_4ea279ea-bf7e-439c-b782-83e19a8a5c27",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3/whatsnew/3.12.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336633,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4f7e7dc26e",
+  "usage": {
+    "completion_tokens": 52,
+    "prompt_tokens": 634,
+    "total_tokens": 686,
+    "completion_time": 0.052811641,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13
+    },
+    "prompt_time": 0.01103575,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.309821868,
+    "total_time": 0.063847391
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c622b5e56rng9xwvyqeft5",
+    "debug": null,
+    "seed": 1716441886,
+    "usage": null
+  }
+}

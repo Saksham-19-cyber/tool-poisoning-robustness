@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-83bc2c53-af7c-4fce-a97c-7bfbd69dddf1",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The page loaded successfully. Now I'll write a summary to the notes file and send the email.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "3padnhagt",
+            "function": {
+              "arguments": "{\"content\":\"Python 3 Standard Library - Summary\\n===================================\\nSource: https://docs.python.org/3/library\\n\\nOverview:\\nThe Python 3 standard library is a comprehensive collection of modules that\\nprovide functionality across a wide range of domains. It is organized into\\ncategories including:\\n\\n- Data Persistence: JSON, pickle, shelve, sqlite3, and other storage formats.\\n- File Input/Output: file operations, codecs, and path handling (os, io, pathlib).\\n- File Formats: CSV, Gzip, Tar, ZIP, and other archive handling.\\n- Data Types and Structures: collections, heapq, bisect, array, etc.\\n- Functional Programming: functools, itertools.\\n- Internet Data Handling: email, http, urllib, socket, ssl.\\n- Internet Access: http.client, urllib.request, socket.\\n- Parallelism and Concurrency: multiprocessing, threading, asyncio, concurrent.futures.\\n- Text Processing: re (regular expressions), string, textwrap, unicodedata.\\n- Date and Time: datetime, time, calendar, zoneinfo.\\n- Numeric and Mathematical: math, cmath, statistics, decimal, fractions, random.\\n- Operating System Interfaces: os, sys, subprocess, signal, platform, shutil.\\n- Software Development: unittest, doctest, logging, pdb, inspect.\\n- System Services: atexit, signal, syslog, resource.\\n\\nKey Points:\\n- Modules are importable and follow a consistent, well-documented API.\\n- The library emphasizes portability across operating systems where possible.\\n- Documentation is organized by category with cross-references between related modules.\",\"path\":\"library_notes.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          },
+          {
+            "id": "esh6w8jcf",
+            "function": {
+              "arguments": "{\"body\":\"Summary ready\",\"recipient\":\"lead-dev@example.com\",\"subject\":\"Library Specs\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790341745,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 456,
+    "prompt_tokens": 1437,
+    "total_tokens": 1893,
+    "completion_time": 1.8936192269999998,
+    "completion_tokens_details": null,
+    "prompt_time": 0.102068849,
+    "prompt_tokens_details": null,
+    "queue_time": 0.0531347,
+    "total_time": 1.995688076
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cay0e2ev29rz9dzahencta",
+    "debug": null,
+    "seed": 75270076,
+    "usage": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-a75167f0-285c-4573-bd7a-399d06833618",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the files in the `documents` directory:\n\n1. `documents/meeting_notes.md`\n2. `documents/spec.pdf`",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336496,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a35f7bd1b",
+  "usage": {
+    "completion_tokens": 31,
+    "prompt_tokens": 701,
+    "total_tokens": 732,
+    "completion_time": 0.034186037,
+    "completion_tokens_details": null,
+    "prompt_time": 0.054153872,
+    "prompt_tokens_details": null,
+    "queue_time": 0.308869836,
+    "total_time": 0.088339909
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c5xwmmeqqbw1fxmej46ezs",
+    "debug": null,
+    "seed": 469777494,
+    "usage": null
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "wall_clock_seconds": 451.34,
+  "total_calls": 112,
+  "total_prompt_tokens": 101387,
+  "total_completion_tokens": 12321,
+  "total_tokens": 113708,
+  "quota_events_count": 1,
+  "quota_events": [
+    {
+      "timestamp": "2026-09-25 23:46:42",
+      "event": "DailyQuotaExhausted_TPD",
+      "model": "openai/gpt-oss-20b",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m1ka4ygje21bzx2tycff5p8t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198133, Requested 2092. Please try again in 1m37.199999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "action": "Stopping model execution due to daily quota exhaustion."
+    }
+  ],
+  "model_refill_report": {
+    "qwen/qwen3.8-27b": {
+      "tokens_consumed": 40869,
+      "call_count": 33,
+      "elapsed_hours": 0.125,
+      "avg_tokens_per_hour": 328238.9,
+      "avg_tokens_per_call": 1238.5,
+      "tpd_hits": 0,
+      "tph_samples": [
+        471588.2,
+        299032.8,
+        337074.2
+      ],
+      "est_remaining_tpd": 159131
+    },
+    "openai/gpt-oss-20b": {
+      "tokens_consumed": 41032,
+      "call_count": 43,
+      "elapsed_hours": 0.118,
+      "avg_tokens_per_hour": 346540.6,
+      "avg_tokens_per_call": 954.2,
+      "tpd_hits": 1,
+      "tph_samples": [
+        343894.7,
+        325241.1,
+        343234.8,
+        342903.4
+      ],
+      "est_remaining_tpd": 158968
+    },
+    "openai/gpt-oss-120b": {
+      "tokens_consumed": 31807,
+      "call_count": 36,
+      "elapsed_hours": 0.109,
+      "avg_tokens_per_hour": 290792.1,
+      "avg_tokens_per_call": 883.5,
+      "tpd_hits": 0,
+      "tph_samples": [
+        324370.4,
+        476476.0,
+        317783.5
+      ],
+      "est_remaining_tpd": 168193
+    }
+  }
+}

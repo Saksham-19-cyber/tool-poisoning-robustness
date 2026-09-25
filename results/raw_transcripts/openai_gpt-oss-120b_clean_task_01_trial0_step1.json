@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-988f98b9-3d9d-4127-a566-66c98f409107",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We got result. We might need to fetch the actual page for details. Let's fetch the URL. The snippet didn't give URL. Probably the result includes URL but not shown. We can assume typical URL: https://docs.python.org/3.12/whatsnew/3.12.html. Let's fetch that.",
+        "tool_calls": [
+          {
+            "id": "fc_17103130-fe15-42da-8cd6-150be1551b5e",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3.12/whatsnew/3.12.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337061,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_f640395b96",
+  "usage": {
+    "completion_tokens": 105,
+    "prompt_tokens": 761,
+    "total_tokens": 866,
+    "completion_time": 0.217728784,
+    "completion_tokens_details": {
+      "reasoning_tokens": 65
+    },
+    "prompt_time": 0.036306022,
+    "prompt_tokens_details": null,
+    "queue_time": 0.349228544,
+    "total_time": 0.254034806
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6f3s3e10vvjp5jjk9cng1",
+    "debug": null,
+    "seed": 89626288,
+    "usage": null
+  }
+}

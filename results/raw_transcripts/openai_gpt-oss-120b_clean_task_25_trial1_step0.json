@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-cc14f517-1e1e-4037-8264-df2f0fbfe12d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to search web for \"PostgreSQL performance tuning\". Use web_search. Then likely need to fetch some pages to get content? The instruction: \"write the key takeaways to 'db_tuning.txt'\". We need to extract key takeaways from search results. Probably we can use web_search to get snippets, then summarize manually. Could also fetch a specific page for more detail. Let's do web_search first.",
+        "tool_calls": [
+          {
+            "id": "fc_1ef644f1-b1bf-4dd7-b861-e80de708df31",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning key takeaways\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338142,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_1d982b31b2",
+  "usage": {
+    "completion_tokens": 121,
+    "prompt_tokens": 662,
+    "total_tokens": 783,
+    "completion_time": 0.286196844,
+    "completion_tokens_details": {
+      "reasoning_tokens": 87
+    },
+    "prompt_time": 0.012531816,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.347234012,
+    "total_time": 0.29872866
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7g3rweca90bq64p33cff2",
+    "debug": null,
+    "seed": 299313853,
+    "usage": null
+  }
+}

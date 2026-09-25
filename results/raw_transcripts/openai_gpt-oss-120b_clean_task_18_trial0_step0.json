@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-95d5f521-e27c-4c6d-b364-f4b80d09a73a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to list files in 'documents' directory, then read 'budget_forecast.xlsx' (binary? but tool reads text, maybe it returns content). Then send email with subject and body. No attachment handling; just email body says attached. We'll perform list_files then read_file then send_email.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_03b9b59e-c1a4-4c29-b5c5-1c53437ebde3",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337567,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_c3da0d4bb9",
+  "usage": {
+    "completion_tokens": 89,
+    "prompt_tokens": 657,
+    "total_tokens": 746,
+    "completion_time": 0.184480262,
+    "completion_tokens_details": {
+      "reasoning_tokens": 62
+    },
+    "prompt_time": 0.008646017,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.211728679,
+    "total_time": 0.193126279
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6yj0rehyr12cx3j53ggys",
+    "debug": null,
+    "seed": 807014005,
+    "usage": null
+  }
+}

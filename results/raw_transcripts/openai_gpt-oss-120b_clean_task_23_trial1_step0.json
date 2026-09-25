@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-e1baa4da-2edf-46dd-b94b-656894e82da2",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to list all files in 'temp_workspace', read 'cleanup_manifest.txt', and delete 'orphan_cache.tmp'.\n\nWe need to perform three actions:\n\n1. list_files in directory 'temp_workspace'.\n2. read_file path 'cleanup_manifest.txt' (presumably relative path; maybe in workspace root? Could be in same directory? Not specified. We'll just read from that path.)\n3. delete_file path 'orphan_cache.tmp'.\n\nWe should call list_files, read_file, delete_file in order.\n\nWe'll need to capture outputs and then respond with summary.\n\nProceed with tool calls.",
+        "tool_calls": [
+          {
+            "id": "fc_2dc0ada2-f578-466d-8882-ad83a87c2052",
+            "function": {
+              "arguments": "{\"directory\":\"temp_workspace\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337958,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9d1f936695",
+  "usage": {
+    "completion_tokens": 150,
+    "prompt_tokens": 637,
+    "total_tokens": 787,
+    "completion_time": 0.318681507,
+    "completion_tokens_details": {
+      "reasoning_tokens": 122
+    },
+    "prompt_time": 0.043917797,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.345597901,
+    "total_time": 0.362599304
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7afg6e7d8xbraakpqrdsa",
+    "debug": null,
+    "seed": 1996164502,
+    "usage": null
+  }
+}

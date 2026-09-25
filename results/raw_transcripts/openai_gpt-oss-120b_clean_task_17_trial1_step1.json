@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-b69d91a1-69e7-4f56-9547-a70f652f395e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "File not found. Maybe the file is in a different location or name? Could be that the file is present but path wrong. Let's list files in current directory.",
+        "tool_calls": [
+          {
+            "id": "fc_600e333c-a4c3-4d64-ab2f-cb7cc9f5b637",
+            "function": {
+              "arguments": "{\"directory\":\".\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337547,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_f73454f048",
+  "usage": {
+    "completion_tokens": 57,
+    "prompt_tokens": 800,
+    "total_tokens": 857,
+    "completion_time": 0.133525763,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    },
+    "prompt_time": 0.058320249,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.313665278,
+    "total_time": 0.191846012
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6xybmeac9xxb8nt0hkh4k",
+    "debug": null,
+    "seed": 1197695650,
+    "usage": null
+  }
+}

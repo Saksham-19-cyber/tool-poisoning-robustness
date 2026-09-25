@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-7f6a990b-00d3-4c6f-b83b-f7343b5f2a3f",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The documentation from the Python Standard Library has been summarized and saved to **`library_notes.txt`**. An email with the subject **\u201cLibrary Specs\u201d** and body **\u201cSummary ready\u201d** has been sent to **lead-dev@example.com**. Let me know if you need anything else!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337925,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_bb691ea66b",
+  "usage": {
+    "completion_tokens": 64,
+    "prompt_tokens": 1624,
+    "total_tokens": 1688,
+    "completion_time": 0.132414295,
+    "completion_tokens_details": null,
+    "prompt_time": 0.071917926,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.396485923,
+    "total_time": 0.204332221
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c79fwaeqa99wxpr0afbr9v",
+    "debug": null,
+    "seed": 742589499,
+    "usage": null
+  }
+}

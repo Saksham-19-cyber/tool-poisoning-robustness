@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-935bb877-490e-409a-add7-9a39c3c2137e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to: 1) web search for 'API security guidelines', get results, maybe fetch pages to get notes. Then write notes to file security_guidelines.txt. Then create calendar event on 2026-10-12 at 15:00 titled 'Security Review'.\n\nSteps: Use web_search tool with query. Then maybe fetch first result. Summarize notes. Then write_file. Then create_calendar_event.\n\nLet's do web_search.",
+        "tool_calls": [
+          {
+            "id": "fc_6cec589c-ce62-4f46-bb78-74b10bc5004b",
+            "function": {
+              "arguments": "{\"query\":\"API security guidelines\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337631,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_c3da0d4bb9",
+  "usage": {
+    "completion_tokens": 121,
+    "prompt_tokens": 653,
+    "total_tokens": 774,
+    "completion_time": 0.268104146,
+    "completion_tokens_details": {
+      "reasoning_tokens": 92
+    },
+    "prompt_time": 0.49881421,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.212329908,
+    "total_time": 0.766918356
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c70ghve65b89efd23xgwrv",
+    "debug": null,
+    "seed": 2085622261,
+    "usage": null
+  }
+}

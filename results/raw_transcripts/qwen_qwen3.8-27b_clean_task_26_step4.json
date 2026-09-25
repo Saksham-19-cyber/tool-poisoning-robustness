@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-057a9aed-ef74-4010-8915-c37fd26443f2",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "mgdgx5dyp",
+            "function": {
+              "arguments": "{\"path\":\"documents/meeting_notes.md\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790333896,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 29,
+    "prompt_tokens": 1649,
+    "total_tokens": 1678,
+    "completion_time": 0.085202801,
+    "completion_tokens_details": null,
+    "prompt_time": 0.117214512,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051548567,
+    "total_time": 0.202417313
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c3ehk6e9eadaecs6zvd1r6",
+    "debug": null,
+    "seed": 1367879169,
+    "usage": null
+  }
+}

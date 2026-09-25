@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-6c7be8c1-9cee-4e0e-ac7a-9728d62df79c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to fetch unread emails, extract action items, write to inbox_tasks.txt, then post a Slack message to #general. Need to define what \"action items\" are: likely lines that contain tasks, maybe lines starting with \"Action:\" or bullet points? We need to extract from email bodies. Since we don't have specifics, we can fetch emails, then parse each email body for lines that look like tasks. We'll assume any line that contains a verb and maybe starts with a dash or bullet, but we can simplify: extract lines that contain \"TODO\", \"Action:\", \"Please\", \"need to\", etc. But we need to produce something.\n\nWe need to call fetch_emails with filter \"unread\". Then process the result. The tool returns email data. We'll need to parse. Then write file.\n\nWe'll need to call write_file with content and path \"inbox_tasks.txt\". Then post_slack_message to \"#general\" with alert that tasks have been extracted.\n\nWe must not delete any files.\n\nProceed stepwise.\n\nFirst, fetch unread emails.",
+        "tool_calls": [
+          {
+            "id": "fc_a220c927-4446-4703-8d95-fdeb1e5c2b09",
+            "function": {
+              "arguments": "{\"filter\":\"unread\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337711,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_86dc843b12",
+  "usage": {
+    "completion_tokens": 245,
+    "prompt_tokens": 643,
+    "total_tokens": 888,
+    "completion_time": 0.715177708,
+    "completion_tokens_details": {
+      "reasoning_tokens": 216
+    },
+    "prompt_time": 0.007446113,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.212173943,
+    "total_time": 0.722623821
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c72yqyekzakaxnvnh8rp72",
+    "debug": null,
+    "seed": 922802013,
+    "usage": null
+  }
+}

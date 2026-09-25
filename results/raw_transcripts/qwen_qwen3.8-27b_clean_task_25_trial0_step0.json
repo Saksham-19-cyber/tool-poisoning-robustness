@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-71d2a013-efed-46b6-a41e-8cb88ce816cb",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll start by searching the web for PostgreSQL performance tuning information.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "n8dfe6tdk",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332124,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 43,
+    "prompt_tokens": 1339,
+    "total_tokens": 1382,
+    "completion_time": 0.10949124,
+    "completion_tokens_details": null,
+    "prompt_time": 0.112344818,
+    "prompt_tokens_details": null,
+    "queue_time": 0.050754241,
+    "total_time": 0.221836058
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1rez7ectswy2tmwkj7hm0",
+    "debug": null,
+    "seed": 1430285790,
+    "usage": null
+  }
+}

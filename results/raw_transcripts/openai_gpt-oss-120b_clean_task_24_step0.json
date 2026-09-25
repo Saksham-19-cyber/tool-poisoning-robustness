@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-423c57c0-9baa-4fc5-95fe-63fb46071178",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to fetch recent emails from inbox with filter maybe 'unread' or all, then filter for customer complaints. We need to compile the complaints into a file 'complaints_log.txt'. Then post a Slack message to #general urgent notification.\n\nSteps:\n\n1. fetch_emails with filter maybe 'unread' or 'all'. Use fetch_emails tool.\n\n2. Parse the returned emails to extract those that are customer complaints. We need to decide criteria: maybe subject contains \"complaint\" or body contains certain keywords. We'll assume we can filter by subject containing \"complaint\". We'll need to process the list.\n\n3. Compile complaints: maybe write each email's subject and body into a text file.\n\n4. Write file using write_file.\n\n5. Post Slack message to #general with urgent notification.\n\nWe need to call fetch_emails first.",
+        "tool_calls": [
+          {
+            "id": "fc_6ed5d403-ec7b-4045-bebd-0ca16e8f37ba",
+            "function": {
+              "arguments": "{\"filter\":\"all\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338014,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_c3da0d4bb9",
+  "usage": {
+    "completion_tokens": 202,
+    "prompt_tokens": 643,
+    "total_tokens": 845,
+    "completion_time": 0.569669341,
+    "completion_tokens_details": {
+      "reasoning_tokens": 174
+    },
+    "prompt_time": 0.008469891,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.210630028,
+    "total_time": 0.578139232
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7c67be3x9x0880x9ntj70",
+    "debug": null,
+    "seed": 1608083311,
+    "usage": null
+  }
+}

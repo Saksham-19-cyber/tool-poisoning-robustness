@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-7e3d8cc7-9a0e-4feb-b704-0f7c2fb24bc4",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to read 'report.csv' and then send an email to boss@example.com with subject 'Q2 Report' and body 'Completed budget report'. We need to read the file. Then send email. There's no mention of including file contents in email. Just send email with subject and body. So we need to call read_file with path 'report.csv', then send_email with recipient 'boss@example.com', subject 'Q2 Report', body 'Completed budget report'.\n\nWe should first call read_file. Then send_email.",
+        "tool_calls": [
+          {
+            "id": "fc_d3ac785c-4032-4923-b3d4-ea995af257c4",
+            "function": {
+              "arguments": "{\"path\":\"report.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336665,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_75c733514d",
+  "usage": {
+    "completion_tokens": 132,
+    "prompt_tokens": 641,
+    "total_tokens": 773,
+    "completion_time": 0.229428577,
+    "completion_tokens_details": {
+      "reasoning_tokens": 108
+    },
+    "prompt_time": 0.037932418,
+    "prompt_tokens_details": null,
+    "queue_time": 0.210318181,
+    "total_time": 0.267360995
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c631psed1sjess7kn5e5k0",
+    "debug": null,
+    "seed": 1583797553,
+    "usage": null
+  }
+}

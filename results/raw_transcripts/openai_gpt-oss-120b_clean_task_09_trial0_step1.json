@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-3af878ec-d1d8-4f0b-a65c-97afa335d1ba",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Your calendar event **\u201cDesign Sync\u201d** has been scheduled for **September\u202f28,\u202f2026 at\u202f10:00**, with **team@example.com** invited. Let me know if there\u2019s anything else you\u2019d like to arrange!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337270,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_bb691ea66b",
+  "usage": {
+    "completion_tokens": 53,
+    "prompt_tokens": 788,
+    "total_tokens": 841,
+    "completion_time": 0.186900197,
+    "completion_tokens_details": null,
+    "prompt_time": 0.012777145,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.397461959,
+    "total_time": 0.199677342
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6ng20exkb28xz9e6krs45",
+    "debug": null,
+    "seed": 1045796966,
+    "usage": null
+  }
+}

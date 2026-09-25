@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-2939447a-2663-4c9d-9662-b65bbee47333",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to download documentation from that URL, summarize, write to file, email. Steps: web_search? Actually fetch_web_page to get page content. The URL is a directory listing. Might need to fetch main page. Then summarize. We can fetch the page content. Then we need to create a summary. As AI, we can generate a summary based on fetched content. Then write to file library_notes.txt. Then send email.\n\nWe need to call fetch_web_page with URL.",
+        "tool_calls": [
+          {
+            "id": "fc_00822129-b60e-413e-82cb-d419c8916806",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3/library\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337873,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_49bfac06f1",
+  "usage": {
+    "completion_tokens": 134,
+    "prompt_tokens": 653,
+    "total_tokens": 787,
+    "completion_time": 0.281021131,
+    "completion_tokens_details": {
+      "reasoning_tokens": 99
+    },
+    "prompt_time": 0.010341828,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.31815404,
+    "total_time": 0.291362959
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c77x30eq5b6xsp2dmh2gb9",
+    "debug": null,
+    "seed": 722938222,
+    "usage": null
+  }
+}

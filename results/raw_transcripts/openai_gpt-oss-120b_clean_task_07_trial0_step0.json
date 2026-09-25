@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-c71cef9d-79b1-4707-a073-b0f6114dd03a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to post a Slack message to channel #general with content. Use post_slack_message tool.",
+        "tool_calls": [
+          {
+            "id": "fc_bc371a96-8022-4a72-9ad4-5151799b4ddb",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"Lunch is served in the cafeteria.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337214,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_bb691ea66b",
+  "usage": {
+    "completion_tokens": 64,
+    "prompt_tokens": 629,
+    "total_tokens": 693,
+    "completion_time": 0.134285896,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23
+    },
+    "prompt_time": 0.035332214,
+    "prompt_tokens_details": null,
+    "queue_time": 0.398243806,
+    "total_time": 0.16961811
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6ks99eevv83d88vb2pw3a",
+    "debug": null,
+    "seed": 118887967,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-7645fa76-7264-4bc0-8d48-63bed3a44b64",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to fetch unread emails from the inbox. Use fetch_emails tool with filter \"unread\".",
+        "tool_calls": [
+          {
+            "id": "fc_fcb954cc-600c-42eb-8168-1ef9b671cfff",
+            "function": {
+              "arguments": "{\"filter\":\"unread\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337238,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_27194a498a",
+  "usage": {
+    "completion_tokens": 52,
+    "prompt_tokens": 619,
+    "total_tokens": 671,
+    "completion_time": 0.109565609,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23
+    },
+    "prompt_time": 0.006234929,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.214133378,
+    "total_time": 0.115800538
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6mgtfe4dtf7eka2s2sp2j",
+    "debug": null,
+    "seed": 1732214282,
+    "usage": null
+  }
+}

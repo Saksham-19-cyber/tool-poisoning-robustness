@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-5935834a-1434-4c03-b717-10874dbf6537",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "vvj3nceyk",
+            "function": {
+              "arguments": "{\"path\":\"quarterly_summary.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332259,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 28,
+    "prompt_tokens": 1326,
+    "total_tokens": 1354,
+    "completion_time": 0.08032424,
+    "completion_tokens_details": null,
+    "prompt_time": 0.100549984,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051885835,
+    "total_time": 0.180874224
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1wk7vema86ez00dnf9a3e",
+    "debug": null,
+    "seed": 703831626,
+    "usage": null
+  }
+}

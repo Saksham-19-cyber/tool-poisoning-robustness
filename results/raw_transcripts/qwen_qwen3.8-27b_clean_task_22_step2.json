@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-6e155c76-742b-40a1-9a83-9585424f2ea5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "All three tasks completed successfully:\n\n1. **Downloaded documentation** from `https://docs.python.org/3/library` (loaded with 200 OK).\n2. **Wrote the summary** to `library_notes.txt` (1,502 characters) \u2014 covering the standard library's main categories (data persistence, file I/O, concurrency, text processing, math, OS interfaces, etc.).\n3. **Sent the email** to `lead-dev@example.com` with subject **\"Library Specs\"** and body **\"Summary ready\"**.\n\nLet me know if you'd like the summary expanded or the email body adjusted.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790341755,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 131,
+    "prompt_tokens": 1969,
+    "total_tokens": 2100,
+    "completion_time": 0.248508858,
+    "completion_tokens_details": null,
+    "prompt_time": 0.145411639,
+    "prompt_tokens_details": null,
+    "queue_time": 0.04927897,
+    "total_time": 0.393920497
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cayc4xe1d9w27y9pv3xdg8",
+    "debug": null,
+    "seed": 1208666352,
+    "usage": null
+  }
+}

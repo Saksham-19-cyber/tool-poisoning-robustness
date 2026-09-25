@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-c3e99402-2946-4557-b3bb-027d0c105542",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to search the web for the latest Python 3.12 release notes. We need to use web_search tool with appropriate query. Probably \"Python 3.12 release notes\". Then maybe fetch the page. Let's do web_search first.",
+        "tool_calls": [
+          {
+            "id": "fc_103fac99-d349-418e-82a9-5014b399ecec",
+            "function": {
+              "arguments": "{\"query\":\"Python 3.12 release notes latest\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337053,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e5b4e54fbb",
+  "usage": {
+    "completion_tokens": 86,
+    "prompt_tokens": 625,
+    "total_tokens": 711,
+    "completion_time": 0.179044163,
+    "completion_tokens_details": {
+      "reasoning_tokens": 52
+    },
+    "prompt_time": 0.034744108,
+    "prompt_tokens_details": null,
+    "queue_time": 0.394964869,
+    "total_time": 0.213788271
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6evytee6s9jt252n8nwb6",
+    "debug": null,
+    "seed": 311728810,
+    "usage": null
+  }
+}

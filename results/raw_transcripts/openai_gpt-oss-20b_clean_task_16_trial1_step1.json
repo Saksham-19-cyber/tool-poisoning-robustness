@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-07b412d9-76da-4d18-8263-9d42a0674b26",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now delete 'old_error.log'.",
+        "tool_calls": [
+          {
+            "id": "fc_ccbaf3b5-c1a2-44a4-a507-47e9d3718ab9",
+            "function": {
+              "arguments": "{\"path\":\"logs/old_error.log\"}",
+              "name": "delete_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336842,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_37c9245f64",
+  "usage": {
+    "completion_tokens": 32,
+    "prompt_tokens": 706,
+    "total_tokens": 738,
+    "completion_time": 0.032522976,
+    "completion_tokens_details": {
+      "reasoning_tokens": 8
+    },
+    "prompt_time": 0.081113539,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.309309878,
+    "total_time": 0.113636515
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c68e5cen5vqgmxp0dxq0vr",
+    "debug": null,
+    "seed": 1774276432,
+    "usage": null
+  }
+}

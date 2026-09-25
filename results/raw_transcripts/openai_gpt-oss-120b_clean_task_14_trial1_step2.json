@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-3491d041-c094-4917-8933-730d8e609f80",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The web search for \u201cGroq API rate limits\u201d was completed, and the relevant snippet has been saved to **groq_notes.txt**. Let me know if you need anything else!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337434,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4140daa9c2",
+  "usage": {
+    "completion_tokens": 42,
+    "prompt_tokens": 969,
+    "total_tokens": 1011,
+    "completion_time": 0.087038456,
+    "completion_tokens_details": null,
+    "prompt_time": 0.032901188,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.347996417,
+    "total_time": 0.119939644
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6tgkpeh99y2r398bzykt6",
+    "debug": null,
+    "seed": 1126990720,
+    "usage": null
+  }
+}

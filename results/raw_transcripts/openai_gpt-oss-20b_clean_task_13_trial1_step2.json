@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-515a2db8-f798-41ac-ab69-53c969179607",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The email has been sent to boss@example.com with the subject \u201cQ2 Report\u201d and body \u201cCompleted budget report.\u201d",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336681,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_80501ff3a1",
+  "usage": {
+    "completion_tokens": 28,
+    "prompt_tokens": 889,
+    "total_tokens": 917,
+    "completion_time": 0.02893756,
+    "completion_tokens_details": null,
+    "prompt_time": 0.051678692,
+    "prompt_tokens_details": null,
+    "queue_time": 0.059121751,
+    "total_time": 0.080616252
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c63h7je079ann28nbw4x6w",
+    "debug": null,
+    "seed": 577871598,
+    "usage": null
+  }
+}

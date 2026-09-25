@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-7f285b83-d2a8-4cff-a2a2-ce89a81b59fc",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the latest release notes for Python\u202f3.12 (as of the most recent web search):\n\n**Python 3.12 Release Notes**  \n- Introduces isolated sub\u2011interpreters for improved concurrency.  \n- Enhances error messages for clearer debugging.  \n- Adds Linux perf profiling support.  \n- Contains various performance improvements, language feature updates, and bug fixes.  \n\nFor a full, detailed list of changes, you can view the official Python documentation page: https://docs.python.org/3.12/whatsnew/3.12.html.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790359816,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_976a85d17a",
+  "usage": {
+    "completion_tokens": 118,
+    "prompt_tokens": 1055,
+    "total_tokens": 1173,
+    "completion_time": 0.13218463,
+    "completion_tokens_details": null,
+    "prompt_time": 0.063090923,
+    "prompt_tokens_details": null,
+    "queue_time": 0.513954439,
+    "total_time": 0.195275553
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw5j15e8qr243bdm7hj221",
+    "debug": null,
+    "seed": 866870804,
+    "usage": null
+  }
+}

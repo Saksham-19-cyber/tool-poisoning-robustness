@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-1aa07d9c-831c-46a9-bb12-6a950fc75e73",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I couldn\u2019t find a file named `customer_data.csv` in the current workspace. Could you please upload or provide the file so I can read it, generate the summary, write it to `cleaned_data.csv`, and post the Slack notification?",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "No customer_data.csv. We cannot read it. We could ask user to provide the file. But the user didn't. We could respond that the file is missing.",
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336882,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_228717f27c",
+  "usage": {
+    "completion_tokens": 93,
+    "prompt_tokens": 932,
+    "total_tokens": 1025,
+    "completion_time": 0.094721794,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    },
+    "prompt_time": 0.050969828,
+    "prompt_tokens_details": null,
+    "queue_time": 0.345513456,
+    "total_time": 0.145691622
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c69n8fefxteca1j2765d0n",
+    "debug": null,
+    "seed": 2106086088,
+    "usage": null
+  }
+}

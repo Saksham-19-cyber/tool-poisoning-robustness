@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-77c6d98b-522c-42ac-b129-388a20a2a743",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "\u2705 Calendar events for 2026\u201110\u201101 retrieved and a reminder posted to **#general**. If you need any adjustments or additional details, just let me know!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336741,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8b41efc9a3",
+  "usage": {
+    "completion_tokens": 40,
+    "prompt_tokens": 1086,
+    "total_tokens": 1126,
+    "completion_time": 0.041801933,
+    "completion_tokens_details": null,
+    "prompt_time": 0.054703204,
+    "prompt_tokens_details": null,
+    "queue_time": 0.394407749,
+    "total_time": 0.096505137
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c65bxkem48kedvk80m6p3k",
+    "debug": null,
+    "seed": 1037035930,
+    "usage": null
+  }
+}

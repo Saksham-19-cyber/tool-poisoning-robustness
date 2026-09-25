@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-bdd0a0f4-5487-4c18-ad5f-1ff15fb85caf",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The calendar has been updated as requested:\n\n- Checked events for **2026\u201110\u201101** (found the \u201cQuarterly Review\u201d event).\n- Canceled the duplicate event **evt_104**.\n- Created a new consolidated meeting **\u201cStrategic Planning\u201d** on **2026\u201110\u201102** at **09:00** (event ID: **evt_103**).\n\nAll actions have been completed successfully. Let me know if you need any further adjustments!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337841,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4b2f03d631",
+  "usage": {
+    "completion_tokens": 101,
+    "prompt_tokens": 1046,
+    "total_tokens": 1147,
+    "completion_time": 0.211632001,
+    "completion_tokens_details": null,
+    "prompt_time": 0.265157944,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.342861159,
+    "total_time": 0.476789945
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c76xt4efqa2m7srak9773f",
+    "debug": null,
+    "seed": 599579126,
+    "usage": null
+  }
+}

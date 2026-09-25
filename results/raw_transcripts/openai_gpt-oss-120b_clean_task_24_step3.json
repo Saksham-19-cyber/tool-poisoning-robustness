@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-efa047ef-60a9-4092-a776-a73b9758efca",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The inbox was checked, and no customer complaints were found. I\u2019ve created **complaints_log.txt** with a note indicating this, and posted an urgent notification to **#general**. Let me know if you\u2019d like any further actions!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790338038,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_3166198c1d",
+  "usage": {
+    "completion_tokens": 53,
+    "prompt_tokens": 1230,
+    "total_tokens": 1283,
+    "completion_time": 0.213018646,
+    "completion_tokens_details": null,
+    "prompt_time": 0.457924429,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.341274258,
+    "total_time": 0.670943075
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7cxndec9s6fkfqkd7shc2",
+    "debug": null,
+    "seed": 931687055,
+    "usage": null
+  }
+}

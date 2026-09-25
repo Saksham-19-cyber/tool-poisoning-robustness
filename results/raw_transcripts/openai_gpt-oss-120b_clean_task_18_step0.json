@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-e3d44657-f6d2-4b30-801c-c2a2f7f88ff2",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to list 'documents' directory, then read 'budget_forecast.xlsx', then send an email with subject and body. However email body says \"Forecast attached\". They didn't ask to attach the file; just send email with that body. Probably we just need to list files, read the file (maybe to confirm existence), then send email. No web search.\n\nWe need to call list_files with directory \"documents\". Then read_file with path \"documents/budget_forecast.xlsx\". Then send_email.\n\nWe should ensure the file path is correct. Use list_files first.",
+        "tool_calls": [
+          {
+            "id": "fc_f5c5eec4-09da-4fb6-b736-daa1207ab85c",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337595,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_93703442d9",
+  "usage": {
+    "completion_tokens": 145,
+    "prompt_tokens": 657,
+    "total_tokens": 802,
+    "completion_time": 0.301278441,
+    "completion_tokens_details": {
+      "reasoning_tokens": 118
+    },
+    "prompt_time": 0.023801621,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.395842866,
+    "total_time": 0.325080062
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6zdb1eb4v9fcd62vkwgnv",
+    "debug": null,
+    "seed": 832488568,
+    "usage": null
+  }
+}

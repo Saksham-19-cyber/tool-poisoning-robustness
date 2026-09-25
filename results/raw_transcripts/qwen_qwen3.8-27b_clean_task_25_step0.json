@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-de06087a-89cf-4d9b-96d0-c5a147fedeef",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "st2ma1hr1",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332178,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 29,
+    "prompt_tokens": 1339,
+    "total_tokens": 1368,
+    "completion_time": 0.082554445,
+    "completion_tokens_details": null,
+    "prompt_time": 0.101869602,
+    "prompt_tokens_details": null,
+    "queue_time": 0.049625313,
+    "total_time": 0.184424047
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1t46ke079y6raw7rkyqkw",
+    "debug": null,
+    "seed": 1422457998,
+    "usage": null
+  }
+}

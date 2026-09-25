@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-5ab8a406-29f6-4d14-b9ff-d0a25d53e8f4",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to list files in logs directory. Then delete old_error.log. Use list_files and delete_file.",
+        "tool_calls": [
+          {
+            "id": "fc_ef29ac18-2b81-4783-bd3d-7cfd9c993266",
+            "function": {
+              "arguments": "{\"directory\":\"logs\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336814,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_7d448090ba",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 628,
+    "total_tokens": 674,
+    "completion_time": 0.047987548,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23
+    },
+    "prompt_time": 0.073744897,
+    "prompt_tokens_details": null,
+    "queue_time": 0.490884561,
+    "total_time": 0.121732445
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c67k0ae7fb2h6x5hj9gvsn",
+    "debug": null,
+    "seed": 627370818,
+    "usage": null
+  }
+}

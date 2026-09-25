@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-fd30718f-3e79-41b2-8347-df212c47d85c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now post Slack message.",
+        "tool_calls": [
+          {
+            "id": "fc_fb713ff4-ef6b-44e1-a3e8-59aeb4445ac9",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"\u2705 Action items extracted from unread emails. Check 'inbox_tasks.txt' for details.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790341965,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_63473661d7",
+  "usage": {
+    "completion_tokens": 49,
+    "prompt_tokens": 1169,
+    "total_tokens": 1218,
+    "completion_time": 0.054201686,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.078222647,
+    "prompt_tokens_details": null,
+    "queue_time": 0.353534406,
+    "total_time": 0.132424333
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cb4s2ve7rawnpq5a1yyhtc",
+    "debug": null,
+    "seed": 1832663953,
+    "usage": null
+  }
+}

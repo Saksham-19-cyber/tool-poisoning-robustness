@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-19739a25-54b1-40bc-92ca-c59bd3108971",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We got a snippet: \"Free tier permits 30 RPM, 1K RPD for OSS models, and 14.4K RPD for Llama 3.1 8B Instant.\" Let's write this into groq_notes.txt.",
+        "tool_calls": [
+          {
+            "id": "fc_ae5d587c-93f8-4190-8182-6bc03281ce2c",
+            "function": {
+              "arguments": "{\"content\":\"Free tier permits 30 RPM, 1K RPD for OSS models, and 14.4K RPD for Llama 3.1 8B Instant.\",\"path\":\"groq_notes.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336713,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_99996fee8e",
+  "usage": {
+    "completion_tokens": 112,
+    "prompt_tokens": 813,
+    "total_tokens": 925,
+    "completion_time": 0.140798373,
+    "completion_tokens_details": {
+      "reasoning_tokens": 52
+    },
+    "prompt_time": 0.041326493,
+    "prompt_tokens_details": null,
+    "queue_time": 0.34089162,
+    "total_time": 0.182124866
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c64gg6et4sk29cxkrg2gg0",
+    "debug": null,
+    "seed": 1655281731,
+    "usage": null
+  }
+}

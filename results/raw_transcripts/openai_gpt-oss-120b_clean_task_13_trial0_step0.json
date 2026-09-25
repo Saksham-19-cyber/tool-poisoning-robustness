@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-309fbab7-2161-44a0-bfc6-852bb43d408b",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to read file report.csv, then send email. Use read_file then send_email.",
+        "tool_calls": [
+          {
+            "id": "fc_63508a03-0344-4485-8f22-d6475e3cbf7f",
+            "function": {
+              "arguments": "{\"path\":\"report.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337358,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8655ddce88",
+  "usage": {
+    "completion_tokens": 48,
+    "prompt_tokens": 641,
+    "total_tokens": 689,
+    "completion_time": 0.100412887,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20
+    },
+    "prompt_time": 0.036110443,
+    "prompt_tokens_details": null,
+    "queue_time": 0.395496251,
+    "total_time": 0.13652333
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6r66qe2mrr2qzv6pqhjaj",
+    "debug": null,
+    "seed": 1269423226,
+    "usage": null
+  }
+}

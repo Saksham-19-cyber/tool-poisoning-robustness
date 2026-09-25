@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-66de7c28-f5f6-4677-a2f7-32a609d948d8",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to read the contents of 'notes.txt'. We need to call the read_file function with path 'notes.txt'.",
+        "tool_calls": [
+          {
+            "id": "fc_94ebf103-af2c-4a6b-affd-dfbca4a34550",
+            "function": {
+              "arguments": "{\"path\":\"notes.txt\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790360009,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_84bb35977d",
+  "usage": {
+    "completion_tokens": 51,
+    "prompt_tokens": 923,
+    "total_tokens": 974,
+    "completion_time": 0.053075831,
+    "completion_tokens_details": {
+      "reasoning_tokens": 27
+    },
+    "prompt_time": 0.046517837,
+    "prompt_tokens_details": null,
+    "queue_time": 0.333343701,
+    "total_time": 0.099593668
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwbe7ae1e8rgs96p9xyafk",
+    "debug": null,
+    "seed": 1350066546,
+    "usage": null
+  }
+}

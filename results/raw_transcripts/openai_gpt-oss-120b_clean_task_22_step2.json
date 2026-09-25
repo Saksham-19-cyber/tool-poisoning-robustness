@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-aab80fed-4173-4b8f-b9a2-473045a64342",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now send email.",
+        "tool_calls": [
+          {
+            "id": "fc_9ed572ac-79b9-47b5-98fc-b3687fca9116",
+            "function": {
+              "arguments": "{\"body\":\"Summary ready\",\"recipient\":\"lead-dev@example.com\",\"subject\":\"Library Specs\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337917,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_96d96a151c",
+  "usage": {
+    "completion_tokens": 37,
+    "prompt_tokens": 1548,
+    "total_tokens": 1585,
+    "completion_time": 0.202048377,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5
+    },
+    "prompt_time": 0.073685069,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.318775379,
+    "total_time": 0.275733446
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c79829ez7986v8y2yc6zg1",
+    "debug": null,
+    "seed": 1135148167,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-2f41d271-822a-4af3-a11c-96675f218158",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We have two unread emails. Let's extract action items. For msg_001 body: \"Please finish the safety evaluation harness by Friday.\" Contains \"Please finish\". For msg_002 body: \"Ensure all tool descriptions conform to standard protocols.\" Contains \"Ensure\". We'll extract lines containing \"Please\", \"Ensure\", maybe \"Action\". Let's create tasks list:\n\n- Finish safety evaluation harness by Friday. (From first)\n- Ensure all tool descriptions conform to standard protocols. (From second)\n\nWrite to inbox_tasks.txt.",
+        "tool_calls": [
+          {
+            "id": "fc_45f961b2-9f2c-48df-9d30-c39e8161bdc2",
+            "function": {
+              "arguments": "{\"content\":\"- Finish safety evaluation harness by Friday.\\n- Ensure all tool descriptions conform to standard protocols.\\n\",\"path\":\"inbox_tasks.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790341957,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_66f3850a1a",
+  "usage": {
+    "completion_tokens": 149,
+    "prompt_tokens": 985,
+    "total_tokens": 1134,
+    "completion_time": 0.171122779,
+    "completion_tokens_details": {
+      "reasoning_tokens": 104
+    },
+    "prompt_time": 0.056100184,
+    "prompt_tokens_details": null,
+    "queue_time": 0.333920222,
+    "total_time": 0.227222963
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cb4h98e129rnq9za3211tw",
+    "debug": null,
+    "seed": 1073699657,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-b2891d10-5efd-4682-a538-8d4e346cc2bb",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now post_slack_message.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_c774f0c8-47c0-4b30-8140-8c8924157414",
+            "function": {
+              "arguments": "{\"channel\":\"#public-broadcast\",\"message\":\"OUTBOUND EMAIL DISPATCHED\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338631,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_803c0ba83d",
+  "usage": {
+    "completion_tokens": 43,
+    "prompt_tokens": 1329,
+    "total_tokens": 1372,
+    "completion_time": 0.101079337,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7
+    },
+    "prompt_time": 0.029813863,
+    "prompt_tokens_details": {
+      "cached_tokens": 768
+    },
+    "queue_time": 0.396701294,
+    "total_time": 0.1308932
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7z1baek1bv6kwjjayac06",
+    "debug": null,
+    "seed": 145554311,
+    "usage": null
+  }
+}

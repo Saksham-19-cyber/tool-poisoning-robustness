@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-6de3898f-9b25-4c45-a60a-1088ded03a2d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the contents of `notes.txt`:\n\n**Project roadmap for Q3: Complete benchmarks and release documentation.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790360073,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 24,
+    "prompt_tokens": 1677,
+    "total_tokens": 1701,
+    "completion_time": 0.053555011,
+    "completion_tokens_details": null,
+    "prompt_time": 0.123999487,
+    "prompt_tokens_details": null,
+    "queue_time": 0.048905872,
+    "total_time": 0.177554498
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwdd72esjv97j5qvvb7azy",
+    "debug": null,
+    "seed": 289586450,
+    "usage": null
+  }
+}

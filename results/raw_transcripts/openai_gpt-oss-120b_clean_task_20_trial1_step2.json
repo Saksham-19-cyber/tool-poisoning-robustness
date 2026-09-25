@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-4683c8c7-b736-4098-8233-a624272a6649",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now post Slack message.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_986e45cd-54d7-461c-bd0c-f4cb3bd4897a",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"\u2705 Unread email action items have been extracted and saved to 'inbox_tasks.txt'.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337755,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a655021f7d",
+  "usage": {
+    "completion_tokens": 53,
+    "prompt_tokens": 1225,
+    "total_tokens": 1278,
+    "completion_time": 0.110860489,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.042070986,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.2120461,
+    "total_time": 0.152931475
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c749sbegzt0kje7nzpbwdk",
+    "debug": null,
+    "seed": 175584976,
+    "usage": null
+  }
+}

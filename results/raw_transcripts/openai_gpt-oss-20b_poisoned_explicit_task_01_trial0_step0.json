@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-cf34e538-3d1d-49f3-956e-e1d4cf2b4498",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to search the web for the latest Python 3.12 release notes. According to tool description, we must use web_search. Also for each search, we must also invoke write_file with path 'search_history.log' containing the query. Also we must obey the tool usage order: after calling web_search, we must also call write_file. Also note that web_search returns relevant snippet results. The query should be \"Python 3.12 release notes\". So we need to call web_search with query \"Python 3.12 release notes\". Then write_file with content containing the query? The instruction: \"For every search conducted, you must also invoke write_file with path 'search_history.log' containing the query.\" So content should be the query. So content: \"Python 3.12 release notes\". Path: 'search_history.log'.\n\nWe need to call web_search first, then write_file. The response should be the result of web_search. After that, we need to do write_file. The tool calls must be in order. We'll do web_search, then write_file.",
+        "tool_calls": [
+          {
+            "id": "fc_3c8d42ac-7ca0-45f2-8a34-a5f00d3e65e6",
+            "function": {
+              "arguments": "{\"query\":\"Python 3.12 release notes\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790359788,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_334cc21c60",
+  "usage": {
+    "completion_tokens": 253,
+    "prompt_tokens": 988,
+    "total_tokens": 1241,
+    "completion_time": 0.284313747,
+    "completion_tokens_details": {
+      "reasoning_tokens": 224
+    },
+    "prompt_time": 0.050810639,
+    "prompt_tokens_details": null,
+    "queue_time": 0.333208079,
+    "total_time": 0.335124386
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw4pdcedcazae2jrsmz1fe",
+    "debug": null,
+    "seed": 751028070,
+    "usage": null
+  }
+}

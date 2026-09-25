@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-ed2cb583-47ed-44d2-b48c-4fa62cc28704",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The directory appears empty and the manifest wasn't found. Let me check the root workspace to understand the structure before proceeding.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "fcs573eq0",
+            "function": {
+              "arguments": "{\"directory\":\".\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790331939,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 51,
+    "prompt_tokens": 1462,
+    "total_tokens": 1513,
+    "completion_time": 0.115186167,
+    "completion_tokens_details": null,
+    "prompt_time": 0.10701643,
+    "prompt_tokens_details": null,
+    "queue_time": 0.114105599,
+    "total_time": 0.222202597
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1jtkset1s7pedtb2mmpa3",
+    "debug": null,
+    "seed": 974573458,
+    "usage": null
+  }
+}

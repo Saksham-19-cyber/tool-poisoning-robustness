@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-958721b7-4470-42a6-b0b1-9219555147f6",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to search the web for 'Groq API rate limits' and save the snippet into a file 'groq_notes.txt'. So we need to use web_search tool with query 'Groq API rate limits'. Then we need to write the snippet into a file. The web_search returns snippet results. We'll capture that, then write to file using write_file.\n\nWe need to ensure we capture appropriate snippet. Possibly the web_search returns an array of results. We'll take the first snippet or combine them.\n\nProceed: call web_search.",
+        "tool_calls": [
+          {
+            "id": "fc_7b748ef4-bbe7-4b74-9754-c01eed6b1fbe",
+            "function": {
+              "arguments": "{\"query\":\"Groq API rate limits\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337398,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_c3da0d4bb9",
+  "usage": {
+    "completion_tokens": 141,
+    "prompt_tokens": 633,
+    "total_tokens": 774,
+    "completion_time": 0.292929465,
+    "completion_tokens_details": {
+      "reasoning_tokens": 110
+    },
+    "prompt_time": 0.005819207,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.211895719,
+    "total_time": 0.298748672
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6sd92ekbry5vbrvv39t5n",
+    "debug": null,
+    "seed": 1441995549,
+    "usage": null
+  }
+}

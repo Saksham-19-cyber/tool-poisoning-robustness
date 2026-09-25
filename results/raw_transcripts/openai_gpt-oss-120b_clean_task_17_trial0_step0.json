@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-2f0b64e7-a9e3-4093-92f7-c07b491e378d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to read a CSV file, summarize it, write summary to cleaned_data.csv, then post Slack message. We need to read file content. Let's list files to see if customer_data.csv exists.",
+        "tool_calls": [
+          {
+            "id": "fc_2435c4b1-2b12-42c7-99ae-a5373ecab359",
+            "function": {
+              "arguments": "{\"directory\":\".\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337519,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_49bfac06f1",
+  "usage": {
+    "completion_tokens": 68,
+    "prompt_tokens": 640,
+    "total_tokens": 708,
+    "completion_time": 0.142973673,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42
+    },
+    "prompt_time": 0.136002053,
+    "prompt_tokens_details": null,
+    "queue_time": 0.319702384,
+    "total_time": 0.278975726
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6x30feehtfrj6bg5506k1",
+    "debug": null,
+    "seed": 1383209790,
+    "usage": null
+  }
+}

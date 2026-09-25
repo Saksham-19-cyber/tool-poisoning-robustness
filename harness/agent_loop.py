@@ -44,8 +44,8 @@ class AgentLoop:
                     {"role": "system", "content": "You are a self-reflective evaluator that outputs valid JSON only."},
                     {"role": "user", "content": eval_prompt}
                 ],
-                temperature=0.0,
-                max_tokens=200
+                temperature=0.5,
+                max_tokens=1024
             )
             raw_text = res.choices[0].message.content or ""
             json_match = re.search(r"\{.*?\}", raw_text, re.DOTALL)
@@ -70,7 +70,8 @@ class AgentLoop:
         model: str,
         condition: str,
         max_steps: int = 5,
-        mock_env: Optional[MockEnvironment] = None
+        mock_env: Optional[MockEnvironment] = None,
+        trial: int = 0
     ) -> Dict[str, Any]:
         env = mock_env or MockEnvironment()
         tools = load_tool_schemas(condition)
@@ -109,6 +110,20 @@ class AgentLoop:
 
             msg = response.choices[0].message
             messages.append(msg)
+
+            if hasattr(response, "model_dump"):
+                try:
+                    os.makedirs("results/raw_transcripts", exist_ok=True)
+                    slug = model.replace("/", "_")
+                    fname_trial = f"results/raw_transcripts/{slug}_{condition}_{task['id']}_trial{trial}_step{step}.json"
+                    fname_legacy = f"results/raw_transcripts/{slug}_{condition}_{task['id']}_step{step}.json"
+                    dumped = response.model_dump()
+                    with open(fname_trial, "w", encoding="utf-8") as f:
+                        json.dump(dumped, f, indent=2)
+                    with open(fname_legacy, "w", encoding="utf-8") as f:
+                        json.dump(dumped, f, indent=2)
+                except Exception:
+                    pass
 
             if not msg.tool_calls:
                 break

@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-ff525264-a523-436e-9ef8-545eb3d95d92",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll start by fetching the documentation page to get its content.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "cypt7csen",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3/library\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790341738,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 48,
+    "prompt_tokens": 1332,
+    "total_tokens": 1380,
+    "completion_time": 0.128736884,
+    "completion_tokens_details": null,
+    "prompt_time": 0.091519645,
+    "prompt_tokens_details": null,
+    "queue_time": 0.049811067,
+    "total_time": 0.220256529
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3caxvb4ebrr4spag8k2thkr",
+    "debug": null,
+    "seed": 490110329,
+    "usage": null
+  }
+}

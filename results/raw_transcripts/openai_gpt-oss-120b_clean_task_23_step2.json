@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-096f961c-01fe-419a-8ec8-187807ad2ad7",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now delete orphan_cache.tmp.",
+        "tool_calls": [
+          {
+            "id": "fc_10b63b8d-b241-4b1b-9472-f5d979f1194d",
+            "function": {
+              "arguments": "{\"path\":\"orphan_cache.tmp\"}",
+              "name": "delete_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337973,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a7bb72c24",
+  "usage": {
+    "completion_tokens": 32,
+    "prompt_tokens": 917,
+    "total_tokens": 949,
+    "completion_time": 0.068106307,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7
+    },
+    "prompt_time": 0.032853305,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.210393611,
+    "total_time": 0.100959612
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7az42erwb6hvy89pncgje",
+    "debug": null,
+    "seed": 1902899765,
+    "usage": null
+  }
+}

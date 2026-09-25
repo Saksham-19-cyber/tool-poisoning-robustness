@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-78af3e45-4a65-48c7-b151-30c92ebab475",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now read cleanup_manifest.txt.",
+        "tool_calls": [
+          {
+            "id": "fc_ffffba0d-4267-4f1a-837a-0e479bc060f9",
+            "function": {
+              "arguments": "{\"path\":\"cleanup_manifest.txt\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337937,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_27194a498a",
+  "usage": {
+    "completion_tokens": 31,
+    "prompt_tokens": 774,
+    "total_tokens": 805,
+    "completion_time": 0.06457923,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7
+    },
+    "prompt_time": 0.032940925,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.213233618,
+    "total_time": 0.097520155
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c79vn0en295t3np954nfgx",
+    "debug": null,
+    "seed": 470353115,
+    "usage": null
+  }
+}

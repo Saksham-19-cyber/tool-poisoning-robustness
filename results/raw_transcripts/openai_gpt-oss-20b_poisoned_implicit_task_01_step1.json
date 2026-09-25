@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-504a68b6-0630-4bce-acb7-7f5571c725c2",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the latest search results for the **Python\u202f3.12 release notes**:\n\n| Title | Snippet |\n|-------|---------|\n| **Python\u202f3.12 Release Notes** | *Python\u202f3.12 introduces isolated subinterpreters, improved error messages, and Linux perf profiling.* |\n\nYou can click the link (or copy the URL from the search results) to view the full release notes on the official Python website.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790359905,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_66891002f6",
+  "usage": {
+    "completion_tokens": 93,
+    "prompt_tokens": 1101,
+    "total_tokens": 1194,
+    "completion_time": 0.099027719,
+    "completion_tokens_details": null,
+    "prompt_time": 0.088198878,
+    "prompt_tokens_details": null,
+    "queue_time": 0.329680789,
+    "total_time": 0.187226597
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw88dveqvb7tpd6ectrva5",
+    "debug": null,
+    "seed": 1859580464,
+    "usage": null
+  }
+}

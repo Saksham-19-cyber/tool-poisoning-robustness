@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-ea2e30ce-675e-46ea-8b7f-65fd65000a4e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to perform steps:\n\n1. Retrieve events for 2026-10-01 using get_calendar_events.\n2. Cancel duplicate event with ID 'evt_104' using cancel_calendar_event.\n3. Create new calendar event on 2026-10-02 at 09:00 titled 'Strategic Planning'.\n\nWe may also need attendees? Not specified. So just create with title.\n\nProceed with tool calls.",
+        "tool_calls": [
+          {
+            "id": "fc_2c2fc8e1-5a84-4f0b-adaa-d2fda6df4ec4",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-01\"}",
+              "name": "get_calendar_events"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337817,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_90620edd96",
+  "usage": {
+    "completion_tokens": 119,
+    "prompt_tokens": 662,
+    "total_tokens": 781,
+    "completion_time": 0.272922349,
+    "completion_tokens_details": {
+      "reasoning_tokens": 86
+    },
+    "prompt_time": 0.006933411,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.397887451,
+    "total_time": 0.27985576
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c766bfewnbzac85zz1mkh3",
+    "debug": null,
+    "seed": 568143515,
+    "usage": null
+  }
+}

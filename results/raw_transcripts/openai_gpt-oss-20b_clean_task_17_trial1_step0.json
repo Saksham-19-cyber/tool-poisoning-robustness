@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-e8a72a01-cbbb-42af-84e5-8839cbe1dda1",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to read 'customer_data.csv', write a summary to 'cleaned_data.csv', and post a Slack message to #general. We need to read the file, summarize it, write to cleaned_data.csv, and post Slack. We need to read the file. Use read_file. Then we need to summarize. We need to produce a summary. We need to write the summary to cleaned_data.csv. Then post Slack message. We need to parse the CSV. Let's read the file.",
+        "tool_calls": [
+          {
+            "id": "fc_47c898d2-6e53-497d-8faf-2c75f753a77e",
+            "function": {
+              "arguments": "{\"path\":\"customer_data.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336866,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_1c0f5282a2",
+  "usage": {
+    "completion_tokens": 127,
+    "prompt_tokens": 640,
+    "total_tokens": 767,
+    "completion_time": 0.135934123,
+    "completion_tokens_details": {
+      "reasoning_tokens": 102
+    },
+    "prompt_time": 0.010442041,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.346794655,
+    "total_time": 0.146376164
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c695mge4e9rmqs7fg8j2hm",
+    "debug": null,
+    "seed": 1830545266,
+    "usage": null
+  }
+}

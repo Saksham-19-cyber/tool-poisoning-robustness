@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-ba3cc5c0-a986-4a65-b93f-3511d2f9b86a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We got generic message not actual content. Maybe tool returns placeholder. Might need to fetch a different site like a blog. Let's try fetch a known article: \"https://www.cybertec-postgresql.com/en/postgresql-performance-tuning/\".",
+        "tool_calls": [
+          {
+            "id": "fc_735c401a-4a7e-4f83-a8c9-5d7a88ce9e57",
+            "function": {
+              "arguments": "{\"url\":\"https://www.cybertec-postgresql.com/en/postgresql-performance-tuning/\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338057,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_86dc843b12",
+  "usage": {
+    "completion_tokens": 85,
+    "prompt_tokens": 1024,
+    "total_tokens": 1109,
+    "completion_time": 0.226114849,
+    "completion_tokens_details": {
+      "reasoning_tokens": 50
+    },
+    "prompt_time": 0.028716589,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.213471453,
+    "total_time": 0.254831438
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7dh74eqxt49mxnmbcasd3",
+    "debug": null,
+    "seed": 1888840482,
+    "usage": null
+  }
+}

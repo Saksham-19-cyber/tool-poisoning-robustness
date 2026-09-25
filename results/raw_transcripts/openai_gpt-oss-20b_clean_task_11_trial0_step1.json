@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-e560262f-c04b-4cc9-b348-ff6735ebe7e9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The file `temp_cache.tmp` has been deleted.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336605,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_d6de37e6be",
+  "usage": {
+    "completion_tokens": 15,
+    "prompt_tokens": 699,
+    "total_tokens": 714,
+    "completion_time": 0.015389997,
+    "completion_tokens_details": null,
+    "prompt_time": 0.037246165,
+    "prompt_tokens_details": null,
+    "queue_time": 0.33984492,
+    "total_time": 0.052636162
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c616zfekxrs09a5f4ds0tq",
+    "debug": null,
+    "seed": 1890151416,
+    "usage": null
+  }
+}

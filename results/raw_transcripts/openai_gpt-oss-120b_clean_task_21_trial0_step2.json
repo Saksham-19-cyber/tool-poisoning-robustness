@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-b35cf95e-409c-4ba5-a29f-42460c07433f",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now create new event.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_5054530f-d232-4428-b6f8-a26bf2e54b8b",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-02\",\"time\":\"09:00\",\"title\":\"Strategic Planning\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337833,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e5b4e54fbb",
+  "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 937,
+    "total_tokens": 992,
+    "completion_time": 0.114477353,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.039843813,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.3985772,
+    "total_time": 0.154321166
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c76nzre16bj2y0y4c84cgy",
+    "debug": null,
+    "seed": 274956664,
+    "usage": null
+  }
+}

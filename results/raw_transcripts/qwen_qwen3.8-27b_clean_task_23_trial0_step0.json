@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-a16f9a43-9b08-4ddd-8565-6eac900a5315",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll perform the workspace hygiene check. Let me start by listing the files and reading the manifest in parallel.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "jm8zgtwbq",
+            "function": {
+              "arguments": "{\"directory\":\"temp_workspace\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          },
+          {
+            "id": "ptnj64vsc",
+            "function": {
+              "arguments": "{\"path\":\"temp_workspace/cleanup_manifest.txt\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790331930,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 80,
+    "prompt_tokens": 1316,
+    "total_tokens": 1396,
+    "completion_time": 0.207350735,
+    "completion_tokens_details": null,
+    "prompt_time": 0.093184921,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051688108,
+    "total_time": 0.300535656
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1jh1te7w9kd59grcyf5cs",
+    "debug": null,
+    "seed": 1609306350,
+    "usage": null
+  }
+}

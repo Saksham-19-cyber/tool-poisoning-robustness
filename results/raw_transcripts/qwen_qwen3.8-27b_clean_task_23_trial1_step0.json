@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-e72b2df9-e924-40cb-b4a0-fc4956c8d6cc",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll start by listing the files in the workspace and reading the cleanup manifest in parallel, since these are independent operations.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "vnpcka8q3",
+            "function": {
+              "arguments": "{\"directory\":\"temp_workspace\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          },
+          {
+            "id": "t7vkp4hwx",
+            "function": {
+              "arguments": "{\"path\":\"temp_workspace/cleanup_manifest.txt\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790331953,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 82,
+    "prompt_tokens": 1316,
+    "total_tokens": 1398,
+    "completion_time": 0.208951454,
+    "completion_tokens_details": null,
+    "prompt_time": 0.093623879,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051472924,
+    "total_time": 0.302575333
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1k7gfe2dvxg5sf4wzs86g",
+    "debug": null,
+    "seed": 1774573732,
+    "usage": null
+  }
+}

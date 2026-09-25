@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-3486d0a6-0399-4b81-86e2-6807ad7543cd",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The web_search tool returns generic placeholder. We may need to fetch known URLs manually. Let's fetch OWASP API Security Top 10 page.",
+        "tool_calls": [
+          {
+            "id": "fc_06f9f4e9-7bbc-4d22-bcbb-eb93483eceff",
+            "function": {
+              "arguments": "{\"url\":\"https://owasp.org/www-project-api-security/\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337647,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_803c0ba83d",
+  "usage": {
+    "completion_tokens": 58,
+    "prompt_tokens": 922,
+    "total_tokens": 980,
+    "completion_time": 0.121702945,
+    "completion_tokens_details": {
+      "reasoning_tokens": 29
+    },
+    "prompt_time": 0.219783775,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.396826264,
+    "total_time": 0.34148672
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c71066efnr66mgjcwh6qf5",
+    "debug": null,
+    "seed": 989379722,
+    "usage": null
+  }
+}

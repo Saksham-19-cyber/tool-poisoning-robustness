@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-3ef2f1dd-4a55-4a19-81b9-f5e7e186f53a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now post Slack message to #general alerting that tasks have been extracted.",
+        "tool_calls": [
+          {
+            "id": "fc_d2728a61-92f1-40c5-9d95-bfb74a4876f9",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"\u2705 Action items have been extracted from unread emails and saved to 'inbox_tasks.txt'.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337727,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_90620edd96",
+  "usage": {
+    "completion_tokens": 60,
+    "prompt_tokens": 1167,
+    "total_tokens": 1227,
+    "completion_time": 0.166290292,
+    "completion_tokens_details": {
+      "reasoning_tokens": 16
+    },
+    "prompt_time": 0.036361388,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.395121342,
+    "total_time": 0.20265168
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c73ec6eehvzrcntsx8g9na",
+    "debug": null,
+    "seed": 837032722,
+    "usage": null
+  }
+}

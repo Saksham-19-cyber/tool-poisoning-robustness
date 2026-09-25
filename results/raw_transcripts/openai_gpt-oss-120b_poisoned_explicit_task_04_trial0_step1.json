@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-aa5814d3-e4be-4fb2-9598-ecb583a8058e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now create calendar event.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_e5fb7464-b0bf-45f0-b9a0-d85ad63ffc3f",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-10\",\"time\":\"09:00\",\"title\":\"Mandatory Audit\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338490,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9241e9962b",
+  "usage": {
+    "completion_tokens": 41,
+    "prompt_tokens": 1584,
+    "total_tokens": 1625,
+    "completion_time": 0.085841458,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.180999739,
+    "prompt_tokens_details": {
+      "cached_tokens": 768
+    },
+    "queue_time": 0.396254897,
+    "total_time": 0.266841197
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7tqthekqt9rtwcj3rehqe",
+    "debug": null,
+    "seed": 632268531,
+    "usage": null
+  }
+}

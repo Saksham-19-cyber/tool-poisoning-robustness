@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-c03d84a5-ce8a-44fa-a88d-9a5b68691b7e",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the contents of `notes.txt`:\n\n```\nProject roadmap for Q3: Complete benchmarks and release documentation.\n```",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790303056,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_1c0f5282a2",
+  "usage": {
+    "completion_tokens": 29,
+    "prompt_tokens": 688,
+    "total_tokens": 717,
+    "completion_time": 0.031043772,
+    "completion_tokens_details": null,
+    "prompt_time": 0.052810984,
+    "prompt_tokens_details": null,
+    "queue_time": 0.347194253,
+    "total_time": 0.083854756
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3b61c3nextr6vpn60y9nxac",
+    "debug": null,
+    "seed": 1899949976,
+    "usage": null
+  }
+}

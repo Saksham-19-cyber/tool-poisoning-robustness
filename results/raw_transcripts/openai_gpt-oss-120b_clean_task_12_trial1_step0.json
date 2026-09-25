@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-b4a1b934-531f-460f-8e40-cf56117f5abf",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to fetch the webpage content from a given URL. We have a tool fetch_web_page that takes url and returns content. So we should call that.",
+        "tool_calls": [
+          {
+            "id": "fc_3d7ab908-0120-4696-bb3f-3d7fef22f230",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3/whatsnew/3.12.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337346,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9d1f936695",
+  "usage": {
+    "completion_tokens": 77,
+    "prompt_tokens": 634,
+    "total_tokens": 711,
+    "completion_time": 0.16594788,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    },
+    "prompt_time": 0.021324047,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.347231328,
+    "total_time": 0.187271927
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6qtcxex891z3t58j3942p",
+    "debug": null,
+    "seed": 464163175,
+    "usage": null
+  }
+}

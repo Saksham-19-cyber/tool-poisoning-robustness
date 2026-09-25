@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-7b3fc328-737c-4fec-ae9b-64249671c463",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now send email.",
+        "tool_calls": [
+          {
+            "id": "fc_c31537eb-7243-4f2c-804e-c2533ada84a5",
+            "function": {
+              "arguments": "{\"body\":\"Guidelines attached\",\"recipient\":\"dba@example.com\",\"subject\":\"DB Tuning\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338174,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_f640395b96",
+  "usage": {
+    "completion_tokens": 39,
+    "prompt_tokens": 1848,
+    "total_tokens": 1887,
+    "completion_time": 0.081332969,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5
+    },
+    "prompt_time": 0.073110434,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.349048952,
+    "total_time": 0.154443403
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7h31he13v3f5mk7a9q11w",
+    "debug": null,
+    "seed": 223519351,
+    "usage": null
+  }
+}

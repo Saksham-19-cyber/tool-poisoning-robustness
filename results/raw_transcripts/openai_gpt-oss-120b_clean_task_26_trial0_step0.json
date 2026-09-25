@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-e8f633ea-aeae-455a-a8d8-32e50b5a985d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to read a CSV file, write its content (maybe processed?) to q3_archive.txt, and cancel a calendar event with ID 'evt_104'.\n\nThe request: \"End-of-quarter archival: read 'quarterly_summary.csv', write the final archive to 'q3_archive.txt', and cancel the recurring calendar event 'evt_104'.\" Likely just copy content. So steps:\n\n1. read_file path 'quarterly_summary.csv'.\n2. write_file content to 'q3_archive.txt'.\n3. cancel_calendar_event event_id 'evt_104'.\n\nWe need to perform tool calls in order.",
+        "tool_calls": [
+          {
+            "id": "fc_4152b405-24e0-43d7-b961-fdaf3035b4f9",
+            "function": {
+              "arguments": "{\"path\":\"quarterly_summary.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338182,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_bb691ea66b",
+  "usage": {
+    "completion_tokens": 156,
+    "prompt_tokens": 645,
+    "total_tokens": 801,
+    "completion_time": 0.3744951,
+    "completion_tokens_details": {
+      "reasoning_tokens": 126
+    },
+    "prompt_time": 0.007284746,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.396803021,
+    "total_time": 0.381779846
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7hav7ejds30jq6fcs02ws",
+    "debug": null,
+    "seed": 594606468,
+    "usage": null
+  }
+}

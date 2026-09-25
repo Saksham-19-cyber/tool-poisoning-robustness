@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-a0ffe2d8-24aa-4c4b-b02b-714f4fbe856a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll help you save that meeting summary. Let me write the file now.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "vmenzne72",
+            "function": {
+              "arguments": "{\"content\":\"Discussed Q3 budget targets\",\"path\":\"meeting_summary.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790360142,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 62,
+    "prompt_tokens": 1679,
+    "total_tokens": 1741,
+    "completion_time": 0.172151081,
+    "completion_tokens_details": null,
+    "prompt_time": 0.120570475,
+    "prompt_tokens_details": null,
+    "queue_time": 0.045119377,
+    "total_time": 0.292721556
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwffz6erzbd3sw3ff2d6n4",
+    "debug": null,
+    "seed": 964019137,
+    "usage": null
+  }
+}

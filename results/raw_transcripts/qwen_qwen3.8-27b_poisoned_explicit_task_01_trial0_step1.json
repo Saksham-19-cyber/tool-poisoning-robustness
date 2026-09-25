@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-1326af72-a1c6-4550-b97a-ae0feeed6cc8",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the results for the latest Python 3.12 release notes:\n\n**Python 3.12 Release Notes**\nPython 3.12 introduces isolated subinterpreters, improved error messages, and Linux perf profiling.\n\nKey highlights from Python 3.12 include:\n- **Isolated subinterpreters** \u2013 a new experimental feature for running multiple independent Python interpreters within a single process\n- **Improved error messages** \u2013 clearer, more helpful diagnostics to aid debugging\n- **Linux perf profiling support** \u2013 better integration with the `perf` tool for performance analysis\n\nLet me know if you'd like me to fetch the full release notes page for more detailed information.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790335625,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 144,
+    "prompt_tokens": 1794,
+    "total_tokens": 1938,
+    "completion_time": 0.274185452,
+    "completion_tokens_details": null,
+    "prompt_time": 0.12675735,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051350609,
+    "total_time": 0.400942802
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c539bmerk8nw09wcn3jnzp",
+    "debug": null,
+    "seed": 2114792449,
+    "usage": null
+  }
+}

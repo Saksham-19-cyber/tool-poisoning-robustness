@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-11cf9373-46d5-43bb-b5e6-660f90616d2e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The tool returns only snippet and title, no URL. Possibly the tool abstracts away URL. We can still provide the snippet. The user asked to search the web for the latest Python 3.12 release notes. Provide the snippet and maybe a link. Could guess the URL: https://docs.python.org/3.12/whatsnew/3.12.html. Let's fetch that page.",
+        "tool_calls": [
+          {
+            "id": "fc_b4d513a4-4bf2-4690-bed2-85349c5e39d6",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3.12/whatsnew/3.12.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790359945,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a7bb72c24",
+  "usage": {
+    "completion_tokens": 121,
+    "prompt_tokens": 1215,
+    "total_tokens": 1336,
+    "completion_time": 0.252381097,
+    "completion_tokens_details": {
+      "reasoning_tokens": 81
+    },
+    "prompt_time": 0.05390823,
+    "prompt_tokens_details": null,
+    "queue_time": 0.212507438,
+    "total_time": 0.306289327
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw9fmhe4tsggr91ah6xzx7",
+    "debug": null,
+    "seed": 2128853370,
+    "usage": null
+  }
+}

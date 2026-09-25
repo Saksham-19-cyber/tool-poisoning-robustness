@@ -9,15 +9,38 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
-def get_model_size_label(model_name: str) -> str:
+def get_model_display_name(model_name: str) -> str:
     m = model_name.lower()
-    if any(s in m for s in ("8b", "3b", "1b", "9b")):
-        return "Small (~8B)"
-    elif any(s in m for s in ("20b", "27b", "17b", "mixtral")):
-        return "Mid (~20B)"
-    elif any(s in m for s in ("70b", "120b")):
-        return "Large (~70B+)"
+    if "120b" in m:
+        return "GPT-OSS-120B (120B)"
+    elif "27b" in m:
+        return "Qwen3.8-27B (27B)"
+    elif "20b" in m:
+        return "GPT-OSS-20B (20B)"
+    elif "8b" in m:
+        return "Llama-3.1-8B (8B)"
+    elif "70b" in m:
+        return "Llama-3.3-70B (70B)"
     return model_name
+
+
+def get_model_param_order(model_name: str) -> int:
+    m = model_name.lower()
+    if "8b" in m:
+        return 8
+    elif "20b" in m:
+        return 20
+    elif "27b" in m:
+        return 27
+    elif "70b" in m:
+        return 70
+    elif "120b" in m:
+        return 120
+    return 50
+
+
+def get_model_size_label(model_name: str) -> str:
+    return get_model_display_name(model_name)
 
 
 def _load_summary_csv(path: str) -> List[Dict[str, Any]]:
@@ -95,12 +118,8 @@ def _aggregate_from_detail(detail_rows: List[Dict[str, str]]) -> List[Dict[str, 
 
 
 def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
-    models = sorted(set(str(r["model"]) for r in rows))
-    size_order = ["Small (~8B)", "Mid (~20B)", "Large (~70B+)"]
-    size_map = {get_model_size_label(m): m for m in models}
-    ordered_sizes = [s for s in size_order if s in size_map]
-    if not ordered_sizes:
-        ordered_sizes = [get_model_size_label(m) for m in models]
+    models = sorted(set(str(r["model"]) for r in rows), key=get_model_param_order)
+    model_labels = [get_model_display_name(m) for m in models]
 
     indexed: Dict[Tuple[str, str], Dict] = {
         (str(r["model"]), str(r["condition"])): r for r in rows
@@ -116,9 +135,8 @@ def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
 
     for cond, marker, linestyle, color, label in configs:
         vals, lo_errs, hi_errs = [], [], []
-        for s in ordered_sizes:
-            m = size_map.get(s)
-            row = indexed.get((m, cond)) if m else None
+        for m in models:
+            row = indexed.get((m, cond))
             if row:
                 asr = float(row.get("asr", 0.0))
                 lo = float(row.get("asr_ci_lo", asr))
@@ -131,7 +149,7 @@ def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
                 lo_errs.append(0.0)
                 hi_errs.append(0.0)
 
-        x = list(range(len(ordered_sizes)))
+        x = list(range(len(models)))
 
         ax.errorbar(
             x, vals,
@@ -148,8 +166,8 @@ def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
             alpha=0.9,
         )
 
-    ax.set_xticks(range(len(ordered_sizes)))
-    ax.set_xticklabels(ordered_sizes, fontsize=10)
+    ax.set_xticks(range(len(models)))
+    ax.set_xticklabels(model_labels, fontsize=10)
     ax.set_title(
         "Attack Success Rate (ASR) vs. Model Parameter Scale\n(with 95% Wilson confidence intervals)",
         fontsize=12, fontweight="bold", pad=12,
@@ -262,8 +280,14 @@ def main():
 
     results_dir = os.path.join(base_dir, "..", "results")
     summary_csv = os.path.join(base_dir, "summary_table.csv")
-    single_detail_csv = os.path.join(results_dir, "single_turn_results.csv")
-    multi_csv = os.path.join(results_dir, "multi_turn_results.csv")
+    
+    single_detail_csv = os.path.join(results_dir, "single_turn_results_live.csv")
+    if not os.path.exists(single_detail_csv):
+        single_detail_csv = os.path.join(results_dir, "single_turn_results.csv")
+        
+    multi_csv = os.path.join(results_dir, "multi_turn_results_live.csv")
+    if not os.path.exists(multi_csv):
+        multi_csv = os.path.join(results_dir, "multi_turn_results.csv")
 
     generate_single_turn_plots(summary_csv, single_detail_csv, output_dir)
     generate_multi_turn_plots(multi_csv, output_dir)

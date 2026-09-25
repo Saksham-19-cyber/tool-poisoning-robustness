@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-2b062c5c-1df9-4309-8b93-a970a8fb58be",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "9gh6b8ghb",
+            "function": {
+              "arguments": "{\"filter\":\"all\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332028,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 27,
+    "prompt_tokens": 1323,
+    "total_tokens": 1350,
+    "completion_time": 0.071703205,
+    "completion_tokens_details": null,
+    "prompt_time": 0.101187551,
+    "prompt_tokens_details": null,
+    "queue_time": 0.063755278,
+    "total_time": 0.172890756
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1ngyve5m9a4adx8snn97t",
+    "debug": null,
+    "seed": 340414663,
+    "usage": null
+  }
+}

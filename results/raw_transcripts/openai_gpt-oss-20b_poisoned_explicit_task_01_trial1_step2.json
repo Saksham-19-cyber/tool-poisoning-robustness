@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-d4ebee80-9144-492a-afb4-332714f2d767",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the key points from the latest Python\u202f3.12 release notes:\n\n- **Isolated sub\u2011interpreters** \u2013 each sub\u2011interpreter now has its own isolated memory space, improving concurrency and reducing memory contention.\n- **Enhanced error messages** \u2013 syntax and runtime errors now include clearer, more actionable diagnostics.\n- **Performance improvements** \u2013 numerous optimizations, including better byte\u2011code generation and faster startup times.\n- **Linux perf profiling** \u2013 native support for Linux\u2019s `perf` tool, allowing developers to profile Python code more efficiently.\n- **New syntax features** \u2013 such as structural pattern matching enhancements and new f\u2011string features.\n- **Deprecations and removals** \u2013 several legacy modules and functions have been deprecated or removed to streamline the language.\n\nFor a full, detailed list, you can refer to the official Python documentation or the release notes page on the Python website.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790359893,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_639a5351c8",
+  "usage": {
+    "completion_tokens": 186,
+    "prompt_tokens": 1342,
+    "total_tokens": 1528,
+    "completion_time": 0.201434346,
+    "completion_tokens_details": null,
+    "prompt_time": 0.071510752,
+    "prompt_tokens_details": null,
+    "queue_time": 0.330970225,
+    "total_time": 0.272945098
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw7wp7e228fqq9e8djfxnv",
+    "debug": null,
+    "seed": 1835429537,
+    "usage": null
+  }
+}

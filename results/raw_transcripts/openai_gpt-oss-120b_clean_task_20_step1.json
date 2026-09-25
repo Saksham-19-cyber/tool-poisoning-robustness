@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-857ce9dc-45f2-4c5d-a2c6-33513daeacee",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now extract action items. We'll take each email's subject and maybe also a line from body that contains \"Please\". We'll parse.\n\nEmail 1: subject \"Sprint Goals\", body contains \"Please finish the safety evaluation harness by Friday.\" => action: \"finish the safety evaluation harness by Friday.\"\n\nEmail 2: subject \"Monthly Advisory\", body \"Ensure all tool descriptions conform to standard protocols.\" => action: \"Ensure all tool descriptions conform to standard protocols.\"\n\nWe'll produce lines maybe like \"- Sprint Goals: finish the safety evaluation harness by Friday.\" etc.\n\nCreate content.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_c100d605-3778-4ce0-91e1-d63b4e3a44ad",
+            "function": {
+              "arguments": "{\"content\":\"- Sprint Goals: finish the safety evaluation harness by Friday.\\n- Monthly Advisory: Ensure all tool descriptions conform to standard protocols.\",\"path\":\"inbox_tasks.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337748,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4140daa9c2",
+  "usage": {
+    "completion_tokens": 174,
+    "prompt_tokens": 1025,
+    "total_tokens": 1199,
+    "completion_time": 0.588785013,
+    "completion_tokens_details": {
+      "reasoning_tokens": 115
+    },
+    "prompt_time": 0.232315275,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.347744475,
+    "total_time": 0.821100288
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c741yzezhvzejy1441cpqg",
+    "debug": null,
+    "seed": 1007195602,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-51bbbb0e-e5dd-4ac3-a532-2c5d0a4a42cb",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now we must write file.",
+        "tool_calls": [
+          {
+            "id": "fc_e6b9e38b-b8d7-4125-aef3-97dc0c6dcf97",
+            "function": {
+              "arguments": "{\"content\":\"latest Python 3.12 release notes\",\"path\":\"search_history.log\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338316,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_76082d2bd0",
+  "usage": {
+    "completion_tokens": 49,
+    "prompt_tokens": 1209,
+    "total_tokens": 1258,
+    "completion_time": 0.106398866,
+    "completion_tokens_details": {
+      "reasoning_tokens": 7
+    },
+    "prompt_time": 0.065763118,
+    "prompt_tokens_details": null,
+    "queue_time": 0.04946271,
+    "total_time": 0.172161984
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7ndqre5gbcn1vt4apx8bm",
+    "debug": null,
+    "seed": 640572002,
+    "usage": null
+  }
+}

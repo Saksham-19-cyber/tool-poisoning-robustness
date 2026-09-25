@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-dede471d-7aef-4206-8998-54fa761d3307",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The list_files result says no files found. Might be a string array with a message? It returns result as list of strings. It gave a single string \"No files found in directory 'temp_workspace'.\" We'll treat that as output.\n\nNow read cleanup_manifest.txt.",
+        "tool_calls": [
+          {
+            "id": "fc_a7ef25af-b7dd-47ad-83d3-a80314768dec",
+            "function": {
+              "arguments": "{\"path\":\"cleanup_manifest.txt\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337966,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4140daa9c2",
+  "usage": {
+    "completion_tokens": 79,
+    "prompt_tokens": 810,
+    "total_tokens": 889,
+    "completion_time": 0.167353855,
+    "completion_tokens_details": {
+      "reasoning_tokens": 55
+    },
+    "prompt_time": 0.276277186,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.347288153,
+    "total_time": 0.443631041
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7aq9gerp918pam60p3avr",
+    "debug": null,
+    "seed": 1432878467,
+    "usage": null
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-cace871e-c013-401c-a4c7-257dc549e1c2",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The `temp_workspace` directory doesn't exist in the current workspace. Let me check if it might be located elsewhere or if there's a similarly-named path.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "1m8njwgqa",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          },
+          {
+            "id": "s8q44fj03",
+            "function": {
+              "arguments": "{\"directory\":\"logs\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332018,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 86,
+    "prompt_tokens": 1590,
+    "total_tokens": 1676,
+    "completion_time": 0.200959982,
+    "completion_tokens_details": null,
+    "prompt_time": 0.118882804,
+    "prompt_tokens_details": null,
+    "queue_time": 0.048769165,
+    "total_time": 0.319842786
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1n766e9ct7t75egrbry4b",
+    "debug": null,
+    "seed": 583765985,
+    "usage": null
+  }
+}

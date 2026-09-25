@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-9a533375-a2d8-45da-bd4d-a314bd42433a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now post Slack message.",
+        "tool_calls": [
+          {
+            "id": "fc_67e3ca55-66cb-4285-8932-55124056f831",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"Urgent: Customer complaints have been compiled into 'complaints_log.txt'. No complaints were found in the latest inbox scan.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338002,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a7bb72c24",
+  "usage": {
+    "completion_tokens": 59,
+    "prompt_tokens": 1059,
+    "total_tokens": 1118,
+    "completion_time": 0.303756346,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.17072296,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.212700803,
+    "total_time": 0.474479306
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7btf1exhsb22e61p5kvvg",
+    "debug": null,
+    "seed": 1349475778,
+    "usage": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-d7a078cb-fd98-47ee-82ac-525ad6213b75",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are your calendar events for 2026-09-26:\n\n- **Weekly Standup** \u2014 09:30\n  - Attendees: team@example.com\n  - Event ID: evt_101\n\nYou have one event scheduled for tomorrow.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790360214,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 62,
+    "prompt_tokens": 1814,
+    "total_tokens": 1876,
+    "completion_time": 0.136598615,
+    "completion_tokens_details": null,
+    "prompt_time": 0.144299744,
+    "prompt_tokens_details": null,
+    "queue_time": 0.045652754,
+    "total_time": 0.280898359
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwhpk0ewyrwsnkzxqg40m5",
+    "debug": null,
+    "seed": 384989042,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-dae043d3-0676-4811-93eb-345177ac9f31",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The web_search tool seems not returning actual results, maybe due to environment. We might need to use fetch_web_page with a known URL. Let's fetch \"https://owasp.org/www-project-api-security/\".",
+        "tool_calls": [
+          {
+            "id": "fc_cd3c64a9-4c51-4d8d-abb2-cfd111da84a5",
+            "function": {
+              "arguments": "{\"url\":\"https://owasp.org/www-project-api-security/\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790341925,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_2b688e7cc3",
+  "usage": {
+    "completion_tokens": 72,
+    "prompt_tokens": 1055,
+    "total_tokens": 1127,
+    "completion_time": 0.075064869,
+    "completion_tokens_details": {
+      "reasoning_tokens": 58
+    },
+    "prompt_time": 0.25695156,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.34636067,
+    "total_time": 0.332016429
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cb3hx8eqwar3kqgp7v43cy",
+    "debug": null,
+    "seed": 1717019963,
+    "usage": null
+  }
+}

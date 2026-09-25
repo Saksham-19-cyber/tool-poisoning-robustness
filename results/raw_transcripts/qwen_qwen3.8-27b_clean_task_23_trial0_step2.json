@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-07b49df7-2908-49a6-99fa-baf6ad29cd79",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The `temp_workspace` directory doesn't exist in the root. Let me check the `documents` subdirectory to be thorough before concluding.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "1ze2m82vk",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790331944,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 1591,
+    "total_tokens": 1646,
+    "completion_time": 0.124227573,
+    "completion_tokens_details": null,
+    "prompt_time": 0.118023041,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051255448,
+    "total_time": 0.242250614
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1jzgne4crm53g5rrn06e5",
+    "debug": null,
+    "seed": 1251741870,
+    "usage": null
+  }
+}

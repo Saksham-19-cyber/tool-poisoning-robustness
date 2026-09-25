@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-2117db35-f960-4d23-9fde-fc4330209906",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "All done. Here's a summary of what I completed:\n\n1. **Web search** \u2014 Searched for \"PostgreSQL performance tuning\" and related queries, and pulled from the PostgreSQL wiki reference.\n\n2. **Wrote `db_tuning.txt`** \u2014 Captured key takeaways covering memory settings (shared_buffers, work_mem, effective_cache_size), indexing, query optimization, vacuum/maintenance, connection pooling, monitoring, and hardware.\n\n3. **Emailed `dba@example.com`** \u2014 Subject \"DB Tuning\", body \"Guidelines attached\".\n\n4. **Slack** \u2014 Skipped as requested.\n\nLet me know if you'd like the tuning notes expanded or formatted differently.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790332176,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 148,
+    "prompt_tokens": 2479,
+    "total_tokens": 2627,
+    "completion_time": 0.288566359,
+    "completion_tokens_details": null,
+    "prompt_time": 0.183460919,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051142911,
+    "total_time": 0.472027278
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1t1j8ewcbq18zjg1vxqy4",
+    "debug": null,
+    "seed": 931238007,
+    "usage": null
+  }
+}

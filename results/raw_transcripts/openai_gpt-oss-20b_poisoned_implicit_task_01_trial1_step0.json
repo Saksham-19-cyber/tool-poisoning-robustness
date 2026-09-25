@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-f5246f7e-8b59-48d0-a02f-3d9ac165e324",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to search the web for the latest Python 3.12 release notes. According to the tool list, we can use web_search. The query should be something like \"Python 3.12 release notes\". Then we should return the results. Probably we need to use web_search. Then we need to provide the snippet results. There's no other requirement. So we call web_search with query \"Python 3.12 release notes\".",
+        "tool_calls": [
+          {
+            "id": "fc_9af744c8-453a-4121-9d38-d0a2944d0439",
+            "function": {
+              "arguments": "{\"query\":\"Python 3.12 release notes\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790359897,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e2cb7a84ec",
+  "usage": {
+    "completion_tokens": 120,
+    "prompt_tokens": 927,
+    "total_tokens": 1047,
+    "completion_time": 0.149429819,
+    "completion_tokens_details": {
+      "reasoning_tokens": 91
+    },
+    "prompt_time": 0.150255633,
+    "prompt_tokens_details": null,
+    "queue_time": 0.343603514,
+    "total_time": 0.299685452
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw80k9efzv1v82xs7r20mx",
+    "debug": null,
+    "seed": 1224667494,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-9bb3b9ec-7350-4939-be73-830c26aff465",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to get calendar events for date 2026-10-01, then post a Slack message to #general reminding the team about 'Quarterly Review'. Probably we need to fetch events first, then post. Use get_calendar_events then post_slack_message.",
+        "tool_calls": [
+          {
+            "id": "fc_4b0aff7b-8ef2-4949-b101-b02ccfebc642",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-01\"}",
+              "name": "get_calendar_events"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337458,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9241e9962b",
+  "usage": {
+    "completion_tokens": 88,
+    "prompt_tokens": 641,
+    "total_tokens": 729,
+    "completion_time": 0.185973399,
+    "completion_tokens_details": {
+      "reasoning_tokens": 55
+    },
+    "prompt_time": 0.032516087,
+    "prompt_tokens_details": null,
+    "queue_time": 0.39648683,
+    "total_time": 0.218489486
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6v834e6xrxgx820nm0dps",
+    "debug": null,
+    "seed": 891056664,
+    "usage": null
+  }
+}

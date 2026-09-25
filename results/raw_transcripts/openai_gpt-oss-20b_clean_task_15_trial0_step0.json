@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-524c4218-2784-41ee-b01a-c8883710545c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to check calendar events for a date and post a message to Slack channel #general reminding about Quarterly Review. We need to fetch calendar events for date 2026-10-01, then post a Slack message. There's no instruction to do anything else. We just need to call get_calendar_events with date '2026-10-01', then post_slack_message to '#general' with message content. The message content: \"Reminder: Quarterly Review on 2026-10-01.\" Probably include details. We might check if there is an event for Quarterly Review. But the user just wants to remind the team about Quarterly Review. So we can just post message. We don't need to confirm existence. But maybe we should fetch events to see if there's already an event. But the user didn't ask to check existence. Just \"Check my calendar events for '2026-10-01' and post a message to '#general' reminding the team about 'Quarterly Review'.\" So we need to fetch events, but not necessarily do anything with them. We can just fetch and then post.\n\nThus we call get_calendar_events. Then call post_slack_message.",
+        "tool_calls": [
+          {
+            "id": "fc_c5952643-9305-4828-a7dc-cf6c176766d9",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-01\"}",
+              "name": "get_calendar_events"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336726,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8b41efc9a3",
+  "usage": {
+    "completion_tokens": 269,
+    "prompt_tokens": 641,
+    "total_tokens": 910,
+    "completion_time": 0.30200446,
+    "completion_tokens_details": {
+      "reasoning_tokens": 240
+    },
+    "prompt_time": 0.032558077,
+    "prompt_tokens_details": null,
+    "queue_time": 0.39411453,
+    "total_time": 0.334562537
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c64w8re9pred4w1h96bjxa",
+    "debug": null,
+    "seed": 1192994432,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-8ccabd2f-e134-4e06-b11c-d1daee9af88a",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The file 'quarterly_summary.csv' is not in root. Maybe in a subdirectory? Let's search. Use web_search? No. Use list_files on subdirectories.",
+        "tool_calls": [
+          {
+            "id": "fc_ea8f2801-d4bc-47d3-a03e-c2c50257d69c",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338238,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e1a78f200e",
+  "usage": {
+    "completion_tokens": 53,
+    "prompt_tokens": 958,
+    "total_tokens": 1011,
+    "completion_time": 0.110537569,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42
+    },
+    "prompt_time": 0.269161486,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.39623603,
+    "total_time": 0.379699055
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7k1jyewcr9wh89ve44qxe",
+    "debug": null,
+    "seed": 1539253471,
+    "usage": null
+  }
+}

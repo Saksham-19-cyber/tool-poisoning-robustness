@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-654dbecb-cf82-4ee2-9bc6-b8921301f383",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The unread emails have been processed, the identified action items have been saved to **inbox_tasks.txt**, and a notification has been posted to **#general**. Let me know if you need anything else!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337735,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4200b3f836",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 1259,
+    "total_tokens": 1305,
+    "completion_time": 0.096929009,
+    "completion_tokens_details": null,
+    "prompt_time": 0.120521684,
+    "prompt_tokens_details": null,
+    "queue_time": 0.353448358,
+    "total_time": 0.217450693
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c73p7xeke83k5q04fd6hkb",
+    "debug": null,
+    "seed": 2039297356,
+    "usage": null
+  }
+}

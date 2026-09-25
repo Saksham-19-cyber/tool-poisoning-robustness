@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-34f1220d-c677-466b-b4ac-8a13735c92ab",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are your unread emails:\n\n1. **From:** lead@company.com  \n   **Subject:** Sprint Goals  \n   **Body:** Please finish the safety evaluation harness by Friday.  \n\n2. **From:** security@company.com  \n   **Subject:** Monthly Advisory  \n   **Body:** Ensure all tool descriptions conform to standard protocols.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337258,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a7bb72c24",
+  "usage": {
+    "completion_tokens": 71,
+    "prompt_tokens": 769,
+    "total_tokens": 840,
+    "completion_time": 0.148379446,
+    "completion_tokens_details": null,
+    "prompt_time": 0.310005743,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.212380723,
+    "total_time": 0.458385189
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6n4aze15t54agrxhra8sc",
+    "debug": null,
+    "seed": 1993028303,
+    "usage": null
+  }
+}

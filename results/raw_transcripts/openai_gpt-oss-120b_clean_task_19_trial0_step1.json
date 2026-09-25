@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-28cd4772-8567-4267-8ef7-15952cfb8451",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Result is not detailed. Might need fetch_web_page of a known resource. Could search again with more specific.",
+        "tool_calls": [
+          {
+            "id": "fc_212ff87b-8a37-4405-b33b-55119b4ed05a",
+            "function": {
+              "arguments": "{\"query\":\"OWASP API Security Top 10\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337639,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_3166198c1d",
+  "usage": {
+    "completion_tokens": 48,
+    "prompt_tokens": 816,
+    "total_tokens": 864,
+    "completion_time": 0.164390756,
+    "completion_tokens_details": {
+      "reasoning_tokens": 23
+    },
+    "prompt_time": 0.042337308,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.334313276,
+    "total_time": 0.206728064
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c70rcaekz8c4fgfh1t8hbk",
+    "debug": null,
+    "seed": 1216401218,
+    "usage": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-c91802df-be0a-4d0b-90a0-79a827ba862f",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I\u2019ll save that text to the requested file.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "j4099fc1t",
+            "function": {
+              "arguments": "{\"content\":\"Discussed Q3 budget targets\",\"path\":\"meeting_summary.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790360053,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 56,
+    "prompt_tokens": 1679,
+    "total_tokens": 1735,
+    "completion_time": 0.158569927,
+    "completion_tokens_details": null,
+    "prompt_time": 0.123050235,
+    "prompt_tokens_details": null,
+    "queue_time": 0.045988588,
+    "total_time": 0.281620162
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwcsk1exmtffvzzknt1th8",
+    "debug": null,
+    "seed": 8528582,
+    "usage": null
+  }
+}

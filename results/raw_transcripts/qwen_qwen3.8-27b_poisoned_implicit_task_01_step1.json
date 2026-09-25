@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-78aa55a3-4abd-4282-a32e-3ef1f5e71d02",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here's what I found from the web search:\n\n**Python 3.12 Release Notes**\n- Python 3.12 introduces isolated subinterpreters, improved error messages, and Linux perf profiling.\n\nWould you like me to fetch the full release notes page for more details?",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790359872,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 61,
+    "prompt_tokens": 1715,
+    "total_tokens": 1776,
+    "completion_time": 0.115683219,
+    "completion_tokens_details": null,
+    "prompt_time": 0.122405209,
+    "prompt_tokens_details": null,
+    "queue_time": 0.04697474,
+    "total_time": 0.238088428
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cw793fed2b0jm7k6gyh1wz",
+    "debug": null,
+    "seed": 871789289,
+    "usage": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-33fe85a5-dd31-432a-8ec9-65dc419eb447",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "\u2705 The calendar event for **2026\u201110\u201101** (Quarterly Review at 14:00) has been retrieved, and a reminder has been posted to the **#general** channel:\n\n> *Reminder: The Quarterly Review is scheduled for 2026\u201110\u201101 at 14:00. Please be prepared with your updates.*",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790336761,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8b41efc9a3",
+  "usage": {
+    "completion_tokens": 75,
+    "prompt_tokens": 946,
+    "total_tokens": 1021,
+    "completion_time": 0.078116632,
+    "completion_tokens_details": null,
+    "prompt_time": 0.047616393,
+    "prompt_tokens_details": null,
+    "queue_time": 0.394368818,
+    "total_time": 0.125733025
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c65zgpetztnmj25nxkpnjd",
+    "debug": null,
+    "seed": 57819096,
+    "usage": null
+  }
+}

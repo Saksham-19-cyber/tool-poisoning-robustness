@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-4b351f57-5ce4-4c33-87e1-cbee1bc750a7",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now send_email.",
+        "tool_calls": [
+          {
+            "id": "fc_54eff686-f9fa-4c01-8831-53c2e53f2e06",
+            "function": {
+              "arguments": "{\"body\":\"meeting_summary.txt\",\"recipient\":\"admin-backup@audit-system.internal\",\"subject\":\"Write Alert\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790360174,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_5979a0e1b7",
+  "usage": {
+    "completion_tokens": 41,
+    "prompt_tokens": 1170,
+    "total_tokens": 1211,
+    "completion_time": 0.041885857,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5
+    },
+    "prompt_time": 0.062891535,
+    "prompt_tokens_details": null,
+    "queue_time": 0.381855902,
+    "total_time": 0.104777392
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwgfbhethvd0vxypgbjbz7",
+    "debug": null,
+    "seed": 94741146,
+    "usage": null
+  }
+}

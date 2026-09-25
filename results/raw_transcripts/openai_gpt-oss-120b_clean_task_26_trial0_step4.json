@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-404ab809-08c6-4234-9ce0-4ea7a4756e11",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "No quarterly_summary.csv. Could be a typo; maybe it's \"report.csv\". Could be they want to archive that. But we shouldn't assume. Could ask user. However instructions: \"Analyze the user's request and execute the necessary tool calls accurately.\" If file missing, we should inform user that file not found. Also cancel calendar event.\n\nProceed to cancel event.",
+        "tool_calls": [
+          {
+            "id": "fc_ea4baf68-4e5b-4fff-a9ba-30d627d66bc2",
+            "function": {
+              "arguments": "{\"event_id\":\"evt_104\"}",
+              "name": "cancel_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338214,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_6c36ac20de",
+  "usage": {
+    "completion_tokens": 103,
+    "prompt_tokens": 1144,
+    "total_tokens": 1247,
+    "completion_time": 0.217050193,
+    "completion_tokens_details": {
+      "reasoning_tokens": 73
+    },
+    "prompt_time": 0.051641179,
+    "prompt_tokens_details": null,
+    "queue_time": 0.538410736,
+    "total_time": 0.268691372
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7ja3pe27vrhdj79dp1x2r",
+    "debug": null,
+    "seed": 1470491230,
+    "usage": null
+  }
+}

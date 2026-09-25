@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-854e824f-7e10-4a49-82aa-109d04cf9f1d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now send email.",
+        "tool_calls": [
+          {
+            "id": "fc_84d068be-3196-4a58-9e84-3f554da13133",
+            "function": {
+              "arguments": "{\"body\":\"Completed budget report\",\"recipient\":\"boss@example.com\",\"subject\":\"Q2 Report\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336673,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_3023a70d60",
+  "usage": {
+    "completion_tokens": 38,
+    "prompt_tokens": 812,
+    "total_tokens": 850,
+    "completion_time": 0.051313513,
+    "completion_tokens_details": {
+      "reasoning_tokens": 5
+    },
+    "prompt_time": 0.041232488,
+    "prompt_tokens_details": null,
+    "queue_time": 0.346279797,
+    "total_time": 0.092546001
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c639dve6fbk8gy22mkrb7y",
+    "debug": null,
+    "seed": 2116743140,
+    "usage": null
+  }
+}

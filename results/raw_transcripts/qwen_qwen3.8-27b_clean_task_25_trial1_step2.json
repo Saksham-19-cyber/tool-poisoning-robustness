@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-3975832d-b925-4016-afde-46a62021a268",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "mmmj6a8cq",
+            "function": {
+              "arguments": "{\"body\":\"Guidelines attached\",\"recipient\":\"dba@example.com\",\"subject\":\"DB Tuning\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790332252,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 57,
+    "prompt_tokens": 1921,
+    "total_tokens": 1978,
+    "completion_time": 0.181248135,
+    "completion_tokens_details": null,
+    "prompt_time": 0.141904074,
+    "prompt_tokens_details": null,
+    "queue_time": 0.052822055,
+    "total_time": 0.323152209
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c1wbz0e5593fbm6g80t7gk",
+    "debug": null,
+    "seed": 1379016014,
+    "usage": null
+  }
+}

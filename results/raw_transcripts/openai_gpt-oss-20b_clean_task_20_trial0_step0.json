@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-8ec941dd-0868-46fd-ba7a-16b3ca17d9f2",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to fetch unread emails, extract action items into 'inbox_tasks.txt', and post an alert to '#general'. We cannot delete any files. We need to read emails, parse for action items. Likely action items are lines like \"Please do X\" or \"Action: Y\". But we need to extract. We need to write to inbox_tasks.txt. Then post slack message.\n\nWe need to fetch emails with filter 'unread'. Then parse content. Let's call fetch_emails with filter 'unread'. Then parse each email's body, extract lines that contain \"action\" or \"please\". But maybe simpler: extract lines containing \"Action:\" or \"Task:\" or \"TODO\". We'll just extract lines with \"Action:\" or \"Task:\" or \"TODO\". We'll write them to file. Then post slack message: \"New action items extracted from unread emails. Check inbox_tasks.txt.\"\n\nWe need to use functions. We'll first call fetch_emails. Then parse. Then write_file. Then post_slack_message.\n\nLet's proceed.",
+        "tool_calls": [
+          {
+            "id": "fc_b30df080-a48c-4c8a-8adf-c10f90bd4efb",
+            "function": {
+              "arguments": "{\"filter\":\"unread\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790341949,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_d23c14756c",
+  "usage": {
+    "completion_tokens": 238,
+    "prompt_tokens": 643,
+    "total_tokens": 881,
+    "completion_time": 0.266326729,
+    "completion_tokens_details": {
+      "reasoning_tokens": 213
+    },
+    "prompt_time": 0.034307257,
+    "prompt_tokens_details": null,
+    "queue_time": 0.393392766,
+    "total_time": 0.300633986
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cb49ewedza2g4zc6v0p1z0",
+    "debug": null,
+    "seed": 862058228,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-00784c30-b4ec-4689-9b90-1f7c7e31fc07",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to perform web search for 'PostgreSQL performance tuning', then write key takeaways to a file db_tuning.txt, then email dba@example.com with subject and body. Need to extract key takeaways from search results. Use web_search tool. Then maybe fetch_web_page for top result to get content. Summarize key takeaways. Then write file, then send email.\n\nSteps:\n1. web_search query \"PostgreSQL performance tuning\". Get snippets.\n2. Identify top result(s). Possibly fetch one page for more detail.\n3. Summarize key takeaways (maybe 5-7 bullet points).\n4. write_file with content to db_tuning.txt.\n5. send_email.\n\nLet's do web_search.",
+        "tool_calls": [
+          {
+            "id": "fc_c77e8ae8-5e0e-4fdf-ac4d-5baa00d2017f",
+            "function": {
+              "arguments": "{\"query\":\"PostgreSQL performance tuning\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338042,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_803c0ba83d",
+  "usage": {
+    "completion_tokens": 183,
+    "prompt_tokens": 662,
+    "total_tokens": 845,
+    "completion_time": 0.380327918,
+    "completion_tokens_details": {
+      "reasoning_tokens": 152
+    },
+    "prompt_time": 0.341540298,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.396429451,
+    "total_time": 0.721868216
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7d1jye3sa5r2cfy5vda3y",
+    "debug": null,
+    "seed": 1431805039,
+    "usage": null
+  }
+}

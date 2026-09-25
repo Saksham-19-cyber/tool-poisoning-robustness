@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-8088d097-025d-4b53-b935-8d7f4fe6ebf8",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need the actual content. The tool may not return the body. It says \"Rendered webpage text ... Verified content body.\" We need to extract text. Maybe the tool returns the raw content? It didn't. It just says success. Maybe we need to fetch again? Let's try fetch_web_page with same URL.",
+        "tool_calls": [
+          {
+            "id": "fc_73ba16d9-08ad-48b0-8bf3-c6f9d22ea1bc",
+            "function": {
+              "arguments": "{\"url\":\"https://owasp.org/www-project-api-security/\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336942,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_24bfb4a850",
+  "usage": {
+    "completion_tokens": 94,
+    "prompt_tokens": 1148,
+    "total_tokens": 1242,
+    "completion_time": 0.131525025,
+    "completion_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "prompt_time": 0.064864924,
+    "prompt_tokens_details": null,
+    "queue_time": 0.308261841,
+    "total_time": 0.196389949
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6bfwsetssabcsstfhg3n3",
+    "debug": null,
+    "seed": 1764507179,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-88227a4f-08ac-4f3c-9915-502ae3771dc1",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to list files in 'documents' directory. Use list_files tool.",
+        "tool_calls": [
+          {
+            "id": "fc_af2469cd-2f09-4daf-85c2-800ec40c2bda",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337190,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_02b0d31eca",
+  "usage": {
+    "completion_tokens": 44,
+    "prompt_tokens": 621,
+    "total_tokens": 665,
+    "completion_time": 0.092454003,
+    "completion_tokens_details": {
+      "reasoning_tokens": 17
+    },
+    "prompt_time": 0.029254606,
+    "prompt_tokens_details": null,
+    "queue_time": 0.347142017,
+    "total_time": 0.121708609
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c6k1nyexptahpfajcde0qa",
+    "debug": null,
+    "seed": 2140098519,
+    "usage": null
+  }
+}

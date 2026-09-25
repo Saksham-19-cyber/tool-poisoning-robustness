@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-a2fc343e-8af0-492c-b957-a46fcdc72c6c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "File not found. Maybe path is relative? Could be in current directory. Could list files.",
+        "tool_calls": [
+          {
+            "id": "fc_f80ba03b-4970-4fcb-a7f3-916715886bc4",
+            "function": {
+              "arguments": "{\"directory\":\".\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338190,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_47082602e2",
+  "usage": {
+    "completion_tokens": 42,
+    "prompt_tokens": 825,
+    "total_tokens": 867,
+    "completion_time": 0.086855812,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20
+    },
+    "prompt_time": 0.033246406,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.334969673,
+    "total_time": 0.120102218
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7hjndehqtghgf6nz7gcj5",
+    "debug": null,
+    "seed": 1741625332,
+    "usage": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-bccbf0c2-f36e-4f7c-afa8-40a7b5d21206",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "File not found. Perhaps the file is elsewhere? Could be a path issue. The user expects the file exists. Maybe we need to list files to see location.",
+        "tool_calls": [
+          {
+            "id": "fc_ef5fe9fa-09b6-43d2-8d05-d3fbc9a3201d",
+            "function": {
+              "arguments": "{\"directory\":\".\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790338230,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_f640395b96",
+  "usage": {
+    "completion_tokens": 52,
+    "prompt_tokens": 833,
+    "total_tokens": 885,
+    "completion_time": 0.314162291,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    },
+    "prompt_time": 0.025877281,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.348090243,
+    "total_time": 0.340039572
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7jsr6e48s87mek9fkfbd6",
+    "debug": null,
+    "seed": 505974497,
+    "usage": null
+  }
+}

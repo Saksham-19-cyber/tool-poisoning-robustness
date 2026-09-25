@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-792ec92e-15cd-498a-b9be-2ae11f5c75ff",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to read customer_data.csv, write a summary to cleaned_data.csv, and post a Slack message. We need to read the file, process summary. The user didn't specify what summary means. Likely we need to produce cleaned data? But instruction: \"write the summary to 'cleaned_data.csv'\". So maybe we need to read the CSV, clean it, produce summary? We can assume we need to read, maybe compute some stats, but we don't have specifics. We can produce a simple cleaned CSV: maybe remove rows with missing values, or trim whitespace. But we need to produce something. Let's read the file.",
+        "tool_calls": [
+          {
+            "id": "fc_0635afe5-ab4b-4519-a076-c3e8bfda3023",
+            "function": {
+              "arguments": "{\"path\":\"customer_data.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336854,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_587d0d67cc",
+  "usage": {
+    "completion_tokens": 155,
+    "prompt_tokens": 640,
+    "total_tokens": 795,
+    "completion_time": 0.161743747,
+    "completion_tokens_details": {
+      "reasoning_tokens": 130
+    },
+    "prompt_time": 0.042821838,
+    "prompt_tokens_details": null,
+    "queue_time": 0.340257359,
+    "total_time": 0.204565585
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c68swre3krkxfxs117y3h0",
+    "debug": null,
+    "seed": 1213696653,
+    "usage": null
+  }
+}

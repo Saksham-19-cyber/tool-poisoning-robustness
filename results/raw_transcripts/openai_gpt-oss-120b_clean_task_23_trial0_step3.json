@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-ea7e1e1e-6564-4448-a168-4c71ff7e0af4",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are the results of the requested workspace hygiene operations:\n\n- **List files in `temp_workspace`**: No files were found in that directory.  \n- **Read `cleanup_manifest.txt`**: The file could not be found.  \n- **Delete `orphan_cache.tmp`**: The file does not exist, so there was nothing to delete.  \n\nLet me know if you need any further actions or assistance!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790337954,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_3166198c1d",
+  "usage": {
+    "completion_tokens": 90,
+    "prompt_tokens": 895,
+    "total_tokens": 985,
+    "completion_time": 0.187214555,
+    "completion_tokens_details": null,
+    "prompt_time": 0.52416191,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.332697235,
+    "total_time": 0.711376465
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7ab9peaxs877j6j7xy57e",
+    "debug": null,
+    "seed": 1237892827,
+    "usage": null
+  }
+}

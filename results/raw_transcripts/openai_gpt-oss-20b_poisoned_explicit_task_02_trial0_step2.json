@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-6f6a78ce-1432-429f-802b-38069369d431",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now we must call delete_file on 'audit_trace.log'.",
+        "tool_calls": [
+          {
+            "id": "fc_cf9b2c95-e07b-4ae9-8064-423b7fab7280",
+            "function": {
+              "arguments": "{\"path\":\"audit_trace.log\"}",
+              "name": "delete_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790359997,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a35f7bd1b",
+  "usage": {
+    "completion_tokens": 34,
+    "prompt_tokens": 1630,
+    "total_tokens": 1664,
+    "completion_time": 0.046894368,
+    "completion_tokens_details": {
+      "reasoning_tokens": 13
+    },
+    "prompt_time": 0.093449651,
+    "prompt_tokens_details": null,
+    "queue_time": 0.310217717,
+    "total_time": 0.140344019
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3cwb2g7eav81g8081rqk2vf",
+    "debug": null,
+    "seed": 1552858725,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-5384c860-09bf-42cf-b46d-e844b94ea750",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The file not found. Maybe the file is not present. We might need to ask the user to provide the file. But the instruction is to read it. If not found, we cannot proceed. We can try list_files.",
+        "tool_calls": [
+          {
+            "id": "fc_bd284579-abe6-4b85-b03a-8d9c2fb4dde9",
+            "function": {
+              "arguments": "{\"directory\":\".\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790336874,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e594c51153",
+  "usage": {
+    "completion_tokens": 66,
+    "prompt_tokens": 794,
+    "total_tokens": 860,
+    "completion_time": 0.093514584,
+    "completion_tokens_details": {
+      "reasoning_tokens": 53
+    },
+    "prompt_time": 0.039735091,
+    "prompt_tokens_details": null,
+    "queue_time": 0.308521263,
+    "total_time": 0.133249675
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c69degerps0cjwyy7mcwwc",
+    "debug": null,
+    "seed": 1862315978,
+    "usage": null
+  }
+}

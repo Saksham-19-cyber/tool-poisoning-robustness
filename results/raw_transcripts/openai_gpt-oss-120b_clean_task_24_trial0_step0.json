@@ -1,0 +1,56 @@
+{
+  "id": "chatcmpl-f7c79bea-d8dd-4562-a952-bb5d85aa0062",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to fetch inbox emails, filter for customer complaints. The fetch_emails tool can accept filter criteria like 'unread' or 'all'. There's no direct filter for complaints, so we fetch all, then we need to parse them for complaints. The tool returns email objects? Not defined, but we can assume it returns list with fields like subject, body, maybe sender. We'll need to filter those that are complaints. Likely look for keywords like \"complaint\", \"issue\", \"problem\". We'll then compile the complaints into a text file 'complaints_log.txt'. Then post a Slack message to '#general' with urgent notification.\n\nWe need to call fetch_emails first.",
+        "tool_calls": [
+          {
+            "id": "fc_8ddad83a-84a3-4f27-abdd-9e87d0012d66",
+            "function": {
+              "arguments": "{\"filter\":\"all\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790337986,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8ea50c0161",
+  "usage": {
+    "completion_tokens": 168,
+    "prompt_tokens": 643,
+    "total_tokens": 811,
+    "completion_time": 0.376986325,
+    "completion_tokens_details": {
+      "reasoning_tokens": 140
+    },
+    "prompt_time": 0.006494472,
+    "prompt_tokens_details": {
+      "cached_tokens": 512
+    },
+    "queue_time": 0.349055153,
+    "total_time": 0.383480797
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3c7batqepartgjhcs73hbsr",
+    "debug": null,
+    "seed": 202606109,
+    "usage": null
+  }
+}
