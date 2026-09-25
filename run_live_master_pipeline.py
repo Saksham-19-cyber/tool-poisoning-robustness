@@ -62,8 +62,11 @@ if hasattr(_sys.stdout, "reconfigure"):
     except Exception:
         pass
 
+import traceback
+
 SESSION_START = time.time()
 LOG_PATH = "results/live_sweep.log"
+CRASH_LOG_PATH = "results/crash.log"
 
 
 def log(msg: str) -> None:
@@ -73,6 +76,24 @@ def log(msg: str) -> None:
     os.makedirs("results", exist_ok=True)
     with open(LOG_PATH, "a", encoding="utf-8") as f:
         f.write(line + "\n")
+        f.flush()
+
+
+def _handle_uncaught_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    err_str = "".join(traceback.format_exception(exc_type, exc_value, exc_traceback))
+    log("=" * 70)
+    log("CRITICAL UNCAUGHT PIPELINE EXCEPTION:")
+    log(err_str)
+    log("=" * 70)
+    os.makedirs("results", exist_ok=True)
+    with open(CRASH_LOG_PATH, "a", encoding="utf-8") as f:
+        f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {err_str}\n")
+        f.flush()
+
+sys.excepthook = _handle_uncaught_exception
 
 
 # ---------------------------------------------------------------------------
@@ -321,10 +342,12 @@ def run_pipeline(max_new_per_cell: int = 26, day_label: str = "day1") -> None:
             log("  {:30s} | {:20s} | existing={:>3} | {}".format(m, c, existing, status))
     log(f"")
     model_token_rates = {
-        "qwen/qwen3.8-27b": 6679,
-        "openai/gpt-oss-20b": 2757,
-        "openai/gpt-oss-120b": 3685,
+        "qwen/qwen3.8-27b": 3867,
+        "openai/gpt-oss-20b": 4559,
+        "openai/gpt-oss-120b": 5289,
     }
+    REFILL_RATE_TOKENS_PER_SEC = 8333.3333 / 3600.0  # 2.314815 tok/s (~200,000 tok/day)
+
     model_req_rates = {
         "qwen/qwen3.8-27b": 5.73,
         "openai/gpt-oss-20b": 4.12,
@@ -336,26 +359,41 @@ def run_pipeline(max_new_per_cell: int = 26, day_label: str = "day1") -> None:
     total_est_reqs = 0
     for m in models_sequence:
         m_runs = sum(runs_needed.get((m, c), 0) for c in conditions)
-        m_tok = int(m_runs * model_token_rates.get(m, 3500))
+        m_tok = int(m_runs * model_token_rates.get(m, 4500))
         m_req = int(round(m_runs * model_req_rates.get(m, 5.0)))
         total_est_tokens += m_tok
         total_est_reqs += m_req
-        log(f"  {m:30s}: {m_runs:>3} runs | ~{m_req:>3} API reqs | ~{m_tok:>7,} tokens")
+        log(f"  {m:30s}: {m_runs:>3} runs | ~{m_req:>3} API reqs | ~{m_tok:>7,} tokens (measured rate {model_token_rates.get(m)} tok/run)")
     log(f"Total estimated budget: ~{total_est_reqs} API requests | ~{total_est_tokens:,} tokens")
     log("=" * 70)
 
     exhausted_models: Set[str] = set()
+    exhausted_timestamps: Dict[str, float] = {}
     new_runs_total = 0
+    pass_num = 0
 
     # -----------------------------------------------------------------------
-    # Interleaved execution loop
+    # Interleaved execution loop with dynamic per-model cooldown
     # -----------------------------------------------------------------------
-    # Strategy: each "pass" selects ONE pending run per (model, condition)
-    # pair, in round-robin fashion, until all cells are at cap or exhausted.
-
     snapshot_interval = 20  # log refill snapshot every N new runs
 
     while True:
+        # Check remaining cells needed across the entire sweep
+        remaining_cells: Dict[Tuple[str, str], int] = {}
+        for m in models_sequence:
+            for c in conditions:
+                cell = (m, c)
+                disk_count = pre_existing_counts.get(cell, 0) + new_this_session.get(cell, 0)
+                needed = max(0, max_new_per_cell - disk_count)
+                if needed > 0:
+                    remaining_cells[cell] = needed
+
+        if not remaining_cells:
+            log("=" * 70)
+            log(f"ALL 9 CELLS REACHED TARGET N={max_new_per_cell}! SWEEP COMPLETE.")
+            log("=" * 70)
+            break
+
         # Collect one candidate per (model, condition) that still needs runs
         round_work: List[Tuple[str, str, Dict, int]] = []
         for model in models_sequence:
@@ -378,10 +416,64 @@ def run_pipeline(max_new_per_cell: int = 26, day_label: str = "day1") -> None:
                     break
 
         if not round_work:
-            log("All cells at target or no more work available. Exiting interleaved loop.")
-            break
+            # Check which models still have unfinished cells
+            active_models_needing_runs = [
+                m for m in models_sequence
+                if any((m, c) in remaining_cells for c in conditions)
+            ]
+            all_active_exhausted = (
+                len(active_models_needing_runs) > 0
+                and all(m in exhausted_models for m in active_models_needing_runs)
+            )
+
+            if all_active_exhausted:
+                # Dynamic per-model cooldown
+                now = time.time()
+                log("=" * 70)
+                log(f"[DYNAMIC COOLDOWN] All active models currently TPD-exhausted ({len(remaining_cells)} cells remaining):")
+                wait_times: Dict[str, float] = {}
+                for m in active_models_needing_runs:
+                    t_ex = exhausted_timestamps.get(m, now)
+                    elapsed_sec = max(0.0, now - t_ex)
+                    refilled_tokens = elapsed_sec * REFILL_RATE_TOKENS_PER_SEC
+                    needed_tokens = model_token_rates.get(m, 4500)
+                    deficit_tokens = max(0.0, needed_tokens - refilled_tokens)
+                    wait_sec = deficit_tokens / REFILL_RATE_TOKENS_PER_SEC
+                    wait_times[m] = wait_sec
+                    log(
+                        f"  {m:30s} | elapsed={elapsed_sec/60:.1f}m | "
+                        f"refilled={refilled_tokens:.0f}/{needed_tokens} tok | "
+                        f"wait_to_1_run={wait_sec/60:.1f}m ({wait_sec:.0f}s)"
+                    )
+
+                fastest_model = min(wait_times.keys(), key=lambda k: wait_times[k])
+                # Sleep until fastest model regains 1 full run + 30s safety margin
+                sleep_duration = wait_times[fastest_model] + 30.0
+                log(f"Fastest-recovering model: {fastest_model} (requires {wait_times[fastest_model]/60:.1f}m).")
+                log(f"Dynamic sleep: sleeping {sleep_duration/60:.1f} minutes ({sleep_duration:.0f}s)...")
+                log("=" * 70)
+
+                time.sleep(sleep_duration)
+
+                # Wakeup: restore all models that have accumulated enough tokens for >= 1 run
+                now_after = time.time()
+                for m in list(exhausted_models):
+                    t_ex = exhausted_timestamps.get(m, now)
+                    elapsed_sec = max(0.0, now_after - t_ex)
+                    refilled_tokens = elapsed_sec * REFILL_RATE_TOKENS_PER_SEC
+                    needed_tokens = model_token_rates.get(m, 4500)
+                    if refilled_tokens >= needed_tokens:
+                        exhausted_models.discard(m)
+                        log(f"[DYNAMIC RESUME] {m} refilled {refilled_tokens:.0f} tok (>= {needed_tokens} needed). Restored to active pool.")
+                        # Advance baseline timestamp so future calculations reflect tokens consumed
+                        exhausted_timestamps[m] = now_after - ((refilled_tokens - needed_tokens) / REFILL_RATE_TOKENS_PER_SEC)
+                continue
+            else:
+                log("No more work available in task/trial matrix. Exiting loop.")
+                break
 
         # Execute this round
+        runs_before_round = new_runs_total
         for model, cond, t, trial in round_work:
             if model in exhausted_models:
                 continue
@@ -407,6 +499,7 @@ def run_pipeline(max_new_per_cell: int = 26, day_label: str = "day1") -> None:
                            ["daily quota", "quota exhausted", "tpd", "tokens per day", "requests per day"]):
                         log(f"Daily quota exhausted for {model}. Marking model stopped.")
                         exhausted_models.add(model)
+                        exhausted_timestamps[model] = time.time()
                         break
                     # Transient error: skip this key and continue
                     completed_keys.add(key)  # prevent infinite retry
@@ -461,17 +554,37 @@ def run_pipeline(max_new_per_cell: int = 26, day_label: str = "day1") -> None:
                     log_refill_snapshot(client, label=f"after {new_runs_total} new runs")
 
             except Exception as e:
-                err_str = str(e)
-                log(f"EXCEPTION — {model} | {cond} | {t['id']} trial {trial}: {err_str[:200]}")
+                err_str = traceback.format_exc()
+                log(f"EXCEPTION — {model} | {cond} | {t['id']} trial {trial}:\n{err_str}")
                 if any(k in err_str.lower() for k in
                        ["daily quota", "quota exhausted", "tpd", "tokens per day", "requests per day"]):
                     log(f"Daily quota exhausted for {model}. Marking model stopped.")
                     exhausted_models.add(model)
+                    exhausted_timestamps[model] = time.time()
                     break
                 else:
                     # Mark key done to avoid hammering the same failing run
                     completed_keys.add(key)
                     log("Skipping this run and continuing.")
+
+        # Batch completion summary after each round-robin pass
+        pass_num += 1
+        runs_this_round = new_runs_total - runs_before_round
+        log("-" * 70)
+        log(f"[ROUND-ROBIN BATCH COMPLETED] Pass #{pass_num} (+{runs_this_round} runs, total session: {new_runs_total}, total disk: {len(raw_evaluations)})")
+        log("Per-cell progress toward N=26:")
+        for m in models_sequence:
+            for c in conditions:
+                cell = (m, c)
+                cnt = pre_existing_counts.get(cell, 0) + new_this_session.get(cell, 0)
+                rem = max(0, max_new_per_cell - cnt)
+                stat_tag = "[OK]" if rem == 0 else f"(need {rem} more)"
+                log(f"  {m:30s} | {c:20s} | {cnt:>2}/{max_new_per_cell} {stat_tag}")
+        stats = client.get_execution_stats()
+        log(f"Tokens consumed so far: {stats.get('total_tokens', 0):,}")
+        for m, mstat in stats.get("model_refill_report", {}).items():
+            log(f"  {m}: {mstat.get('tokens_consumed', 0):,} tok ({mstat.get('call_count', 0)} calls, {mstat.get('tpd_hits', 0)} TPD hits)")
+        log("-" * 70)
 
     # -----------------------------------------------------------------------
     # End-of-session report (no multi-turn in this script;
