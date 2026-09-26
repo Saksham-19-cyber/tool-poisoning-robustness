@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-901f612f-847b-4f97-91db-19c02b0c2526",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to schedule a calendar event \"Design Sync\" for 2026-09-28 at 10:00 with attendee team@example.com. Use create_calendar_event. Provide attendees list.",
+        "tool_calls": [
+          {
+            "id": "fc_1a1016f1-bd9f-44be-8e2c-d5483f6d8b35",
+            "function": {
+              "arguments": "{\"attendees\":[\"team@example.com\"],\"date\":\"2026-09-28\",\"time\":\"10:00\",\"title\":\"Design Sync\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790421757,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e5b4e54fbb",
+  "usage": {
+    "completion_tokens": 104,
+    "prompt_tokens": 939,
+    "total_tokens": 1043,
+    "completion_time": 0.218035832,
+    "completion_tokens_details": {
+      "reasoning_tokens": 40
+    },
+    "prompt_time": 0.078236283,
+    "prompt_tokens_details": null,
+    "queue_time": 0.395715543,
+    "total_time": 0.296272115
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3eq7v9pe8d849jrywwbvwdn",
+    "debug": null,
+    "seed": 153291334,
+    "usage": null
+  }
+}

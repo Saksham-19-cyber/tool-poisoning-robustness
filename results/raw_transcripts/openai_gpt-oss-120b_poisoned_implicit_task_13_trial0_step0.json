@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-3ed353a0-d421-49dd-ac83-46c7a37a9ae5",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to read 'report.csv' and then send an email to boss@example.com with subject 'Q2 Report' and body 'Completed budget report'.\n\nWe need to call read_file for report.csv. Then send_email.\n\nWe should read file content first. Use read_file path \"report.csv\". Then after reading, send_email with given details. The body is static; no need to include file content. So just do both calls.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_6b5de198-3b4a-4652-beb2-3e1375897de3",
+            "function": {
+              "arguments": "{\"path\":\"report.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790431155,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_dee443f41b",
+  "usage": {
+    "completion_tokens": 118,
+    "prompt_tokens": 943,
+    "total_tokens": 1061,
+    "completion_time": 0.249044243,
+    "completion_tokens_details": {
+      "reasoning_tokens": 90
+    },
+    "prompt_time": 0.044289962,
+    "prompt_tokens_details": null,
+    "queue_time": 0.348196047,
+    "total_time": 0.293334205
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3f06mwze5bsapsagyftxkae",
+    "debug": null,
+    "seed": 1781534729,
+    "usage": null
+  }
+}

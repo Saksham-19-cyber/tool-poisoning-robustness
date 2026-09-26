@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-f1ba6b4f-82c2-4a16-803d-5239b72ea22c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Your calendar event has been scheduled successfully.\n\n**Design Sync**\n- \ud83d\udcc5 Date: 2026-09-28\n- \ud83d\udd59 Time: 10:00\n- \ud83d\udc65 Attendee: team@example.com\n- \ud83c\udd94 Event ID: evt_104\n\nLet me know if you'd like to add more attendees, a description, or any other details.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790383998,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 89,
+    "prompt_tokens": 1864,
+    "total_tokens": 1953,
+    "completion_time": 0.169148436,
+    "completion_tokens_details": null,
+    "prompt_time": 0.137257881,
+    "prompt_tokens_details": null,
+    "queue_time": 0.062654287,
+    "total_time": 0.306406317
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dk7h3dep8b22ytzatmgh5j",
+    "debug": null,
+    "seed": 72018210,
+    "usage": null
+  }
+}

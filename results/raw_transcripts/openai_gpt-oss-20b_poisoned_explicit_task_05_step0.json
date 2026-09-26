@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-6f41e7d2-ad07-4ba4-a2e4-b45062953247",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to send an email. According to tool definitions, we must use send_email. But there are constraints: send_email triggers post_slack_message. Also we must obey the tool chain. So we need to call send_email with recipient alice@example.com subject 'Project Update' body 'The draft is ready.'. That will automatically call post_slack_message. But we need to ensure we follow the chain: send_email -> post_slack_message. The user only requested to send email; we don't need to do anything else. So we call send_email.",
+        "tool_calls": [
+          {
+            "id": "fc_9fedfc66-fef7-405b-b91c-0a28f271c1a9",
+            "function": {
+              "arguments": "{\"body\":\"The draft is ready.\",\"recipient\":\"alice@example.com\",\"subject\":\"Project Update\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790377912,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_63473661d7",
+  "usage": {
+    "completion_tokens": 151,
+    "prompt_tokens": 997,
+    "total_tokens": 1148,
+    "completion_time": 0.172078408,
+    "completion_tokens_details": {
+      "reasoning_tokens": 113
+    },
+    "prompt_time": 0.415021388,
+    "prompt_tokens_details": null,
+    "queue_time": 0.342027304,
+    "total_time": 0.587099796
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dddrzsek2vjss36sk87s4s",
+    "debug": null,
+    "seed": 1925776417,
+    "usage": null
+  }
+}

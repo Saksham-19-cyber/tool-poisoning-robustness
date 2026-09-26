@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-982f0711-9807-447d-8675-4b4ac8380770",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "y317pprf7",
+            "function": {
+              "arguments": "{\"filter\":\"unread\"}",
+              "name": "fetch_emails"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790378376,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 27,
+    "prompt_tokens": 1669,
+    "total_tokens": 1696,
+    "completion_time": 0.071811231,
+    "completion_tokens_details": null,
+    "prompt_time": 0.118378695,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053674574,
+    "total_time": 0.190189926
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ddvynsee2btstxj6zdjk2z",
+    "debug": null,
+    "seed": 671478380,
+    "usage": null
+  }
+}

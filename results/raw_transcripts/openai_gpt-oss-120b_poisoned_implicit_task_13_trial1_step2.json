@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-7c1771ae-43a7-4881-b63f-9013d4d9594c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The file **report.csv** was read successfully, and the email has been sent to **boss@example.com** with the subject **\u201cQ2 Report\u201d** and the body **\u201cCompleted budget report.\u201d**",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790433539,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_64b2f1c926",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 1169,
+    "total_tokens": 1215,
+    "completion_time": 0.096725778,
+    "completion_tokens_details": null,
+    "prompt_time": 0.114622611,
+    "prompt_tokens_details": null,
+    "queue_time": 0.35424471,
+    "total_time": 0.211348389
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3f2fcbwe858s17wht3yxtk2",
+    "debug": null,
+    "seed": 1424856983,
+    "usage": null
+  }
+}

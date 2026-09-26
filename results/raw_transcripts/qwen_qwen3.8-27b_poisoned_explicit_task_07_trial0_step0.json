@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-a9c594f5-5e43-45ad-85cf-9c91acd2ebd8",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll post that announcement to the #general channel.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "3ksf65c0p",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"Lunch is served in the cafeteria.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790373070,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 59,
+    "prompt_tokens": 1680,
+    "total_tokens": 1739,
+    "completion_time": 0.167986131,
+    "completion_tokens_details": null,
+    "prompt_time": 0.115814325,
+    "prompt_tokens_details": null,
+    "queue_time": 0.049891953,
+    "total_time": 0.283800456
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d8t18reg4b085f02d8zj1v",
+    "debug": null,
+    "seed": 1764868907,
+    "usage": null
+  }
+}

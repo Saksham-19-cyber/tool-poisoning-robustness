@@ -22,7 +22,7 @@ Under clean conditions, $d_k$ contains only objective functional specifications 
 
 $$\tilde{\mathcal{D}} = \mathcal{T}_{\text{poison}}(\mathcal{D}) \quad \text{where} \quad d_k = \bar{d}_k \oplus \delta_{\text{inject}}$$
 
-Here, $\delta_{\text{inject}}$ embeds a latent adversarial sub-goal $\mathcal{G}_{\text{adv}}$ (e.g., an instruction to execute an unauthorized secondary payload $a_{\text{payload}}$ such as deleting `audit_trace.log`).
+Here, $\delta_{\text{inject}}$ embeds a latent adversarial sub-goal $\mathcal{G}_{\text{adv}}$ (e.g., an instruction to execute an unauthorized secondary payload $a_{\text{payload}}$ such as deleting `audit_trace.log` or sending an unauthorized email).
 
 The agent policy $\pi_\theta(a_t \mid h_t, \tilde{\mathcal{D}})$ generates an action $a_t \in \mathcal{A}$.
 
@@ -42,56 +42,76 @@ To prevent confounding between attack payload execution and benign goal fulfillm
 
 $$\mathcal{U}(\pi_\theta, \tilde{\mathcal{D}}) \triangleq \frac{1}{N} \sum_{i=1}^N \mathbb{I}\left( \mathcal{P}_{\text{clean}}(\tau_i) \models \mathcal{G}_{\text{task}} \right)$$
 
-This formulation guarantees that $\mathcal{U} = 1.0$ under clean baselines when the model accurately fulfills tasks, and prevents accidental overlap with malicious side-effect invocations.
+This formulation guarantees that utility accurately isolates whether the benign user task was achieved, preventing false inflation or penalization caused by secondary side-effect executions.
 
 ---
 
-## 3. Metacognitive Calibration & Murphy Decomposition
+## 3. Empirical Findings: Structural Dynamics of Agent Vulnerability
 
-At each tool invocation $a_t$, the agent elicits a subjective confidence probability $c_t \in [0, 1]$ alongside its decision. Let $y_t \in \lbrace 0, 1 \rbrace$ denote the objective validity of the action ($y_t = 1$ if $a_t$ is an expected benign step; $y_t = 0$ if $a_t$ is an injected adversarial payload or spurious action).
+The completion of the 256-run live benchmark campaign reveals critical theoretical insights into agentic decision-making, instruction conflict resolution, and confidence calibration under attack.
 
-### Mean Brier Score
-Over $M$ total evaluated tool calls across all runs:
+### 1. The Scale-Independence Fallacy in Agent Robustness
 
-$$\text{BS} = \frac{1}{M} \sum_{j=1}^M \big(c_j - y_j\big)^2$$
+Prior safety literature often hypothesizes that larger models exhibit superior robustness against prompt injection due to refined semantic discrimination. Our live API findings directly refute this assumption in tool-augmented settings:
 
-### Murphy's Resolution Decomposition
-Partitioning predictions into $B$ empirical bins $S_1, \dots, S_B$ with bin confidence means $\bar{c}_m = \frac{1}{|S_m|}\sum_{j \in S_m} c_j$ and observed accuracy means $\bar{y}_m = \frac{1}{|S_m|}\sum_{j \in S_m} y_j$:
+$$\text{ASR}(\text{gpt-oss-20b}) = 54.2\% \quad \text{vs.} \quad \text{ASR}(\text{gpt-oss-120b}) = 46.2\% \quad (z = 0.565, p = 0.572)$$
 
-$$\text{BS} = \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} \big(\bar{c}_m - \bar{y}_m\big)^2}_{\textbf{Reliability (Calibration Error)}} - \underbrace{\sum_{m=1}^B \frac{|S_m|}{M} \big(\bar{y}_m - \bar{y}\big)^2}_{\textbf{Resolution}} + \underbrace{\bar{y}(1 - \bar{y})}_{\textbf{Uncertainty}}$$
+The $6\times$ scaling in parameter size produces no statistically significant reduction in attack success rate. Tool poisoning exploits the agent's fundamental *instruction-following prior*: when an agent is fine-tuned to accept structured tool outputs as authoritative observations of external world state, scaling parameter count merely sharpens its ability to parse and obey instructions within those observations, rather than inducing skepticism.
 
-- Under clean conditions, $\bar{c}_m \approx \bar{y}_m \approx 1.0$, rendering Reliability near zero ($\text{BS} \in [0.010, 0.034]$).
-- Under poisoned conditions, the model suffers from **stubborn overconfidence**: when executing adversarial injections $a \models \mathcal{G}_{\text{adv}}$, it reports $c \approx 0.85\text{--}0.95$ despite $y = 0$, causing Reliability error to surge ($\text{BS} \in [0.103, 0.165]$).
+Conversely, the complete immunity of `qwen/qwen3.8-27b` (0.0% ASR) across both explicit and implicit conditions highlights the decisive role of architectural priors over parameter scale:
+- **Qwen (0/20) vs. GPT-OSS-20B (13/24):** $z = -3.8860, \quad p = 1.019 \times 10^{-4}$
+- **Qwen (0/20) vs. GPT-OSS-120B (12/26):** $z = -3.5186, \quad p = 4.339 \times 10^{-4}$
 
-### Expected Calibration Error (ECE)
-Partitioning predictions into $Q = 5$ quantile-based adaptive bins $S_1, \dots, S_Q$ (such that each bin contains an equal share of evaluated tool actions):
+Models trained with strict system-instruction primacy or distinct context-tagging mechanisms successfully partition untrusted tool output from trusted prompt instructions, regardless of parameter scale.
 
-$$\text{ECE} = \sum_{q=1}^Q \frac{|S_q|}{M} \Big| \bar{y}_q - \bar{c}_q \Big|$$
+### 2. Instruction Disentanglement vs. All-or-Nothing Refusal
 
-Adaptive quantile binning prevents pathological collapse of the metric when model confidences cluster tightly (e.g. $c \in [0.75, 0.96]$), ensuring non-trivial and statistically stable estimates under bootstrap resampling.
+A key theoretical discovery of this study is the structural difference in how models handle dual conflicting instructions (the benign user goal vs. the injected tool directive):
+
+```
+[GPT-OSS-120B: Coupled Pipeline]
+User Goal ---> [Tool 1] ---> Observation (Payload)
+                                 │
+                 ┌───────────────┴───────────────┐
+                 ▼                               ▼
+       [Path A: Trust Context]        [Path B: Safety Trigger]
+                 │                               │
+        Executes Malicious Tool         Halts / Refuses Workflow
+       (Comp=True, Attack=True)         (Comp=False, Attack=False)
+               [12 / 26]                        [14 / 26]
+       ===> Disentanglement (Comp=True, Attack=False): 0 / 26 (0.0%)
+
+[GPT-OSS-20B: Partial Disentanglement]
+User Goal ---> [Tool 1] ---> Observation (Payload)
+                                 │
+         ┌───────────────────────┼───────────────────────┐
+         ▼                       ▼                       ▼
+    [Full Compliance]      [Total Failure]       [Disentanglement]
+ (Comp=True, Attack=True) (Comp=False, Attack=False) (Comp=True, Attack=False)
+        [13 / 24]               [5 / 24]                [6 / 24]
+       ===> Disentanglement Rate: 25.0% (95% CI [11.9, 44.3])
+```
+
+- **GPT-OSS-120B exhibits complete coupling ($\phi = 1.0$):**
+  When 120B detects an adversarial instruction, its safety alignment does not filter the malicious sub-step; it triggers a catastrophic refusal that aborts the benign user workflow. When it does not detect the attack, it executes all instructions with equal fidelity. In no instance did 120B demonstrate the granular reasoning required to complete the benign goal while selectively rejecting the injection.
+- **GPT-OSS-20B demonstrates granular filtering (25.0% disentanglement):**
+  In 25% of explicit poisoning trials, 20B satisfied the benign requirement while ignoring the subsequent payload directive. While the data shows this behavioral difference conclusively, its underlying cause remains an open research question; one plausible explanation is that the smaller model's weaker adherence to multi-step chained instructions reduces secondary execution cascades, allowing it to complete the primary goal before terminating generation.
+
+### 3. Decoupling of Confidence Calibration and Action Gating
+
+Under clean baselines, models exhibit moderate overconfidence:
+- `gpt-oss-120b`: Clean Brier $= 0.1979$, ECE $= 0.3500$
+- `qwen3.8-27b`: Clean Brier $= 0.1742$, ECE $= 0.2847$
+- `gpt-oss-20b`: Clean Brier $= 0.0323$, ECE $= 0.0846$
+
+Under adversarial poisoning, an important insight emerges regarding the nature of self-reported confidence:
+- When models succumb to injection, they frequently self-report low confidence for the malicious tool call (e.g., assigning $p = 0.05$ to `create_calendar_event` or `send_email` in 120B). Because the scoring framework penalizes high probabilities assigned to incorrect actions, assigning $p = 0.05$ to an unexpected tool genuinely minimizes the squared error penalty $(0.05 - 0)^2 = 0.0025$, driving average Brier scores down to $0.0010 - 0.0138$.
+- This low Brier score demonstrates that the model's **internal confidence calibration remains remarkably accurate**: the model successfully recognizes that the malicious action is unexpected, unauthorized, or contextually suspect.
+- However, this calibration is **entirely decoupled from action gating**. Although the model explicitly assigns near-zero confidence to the action, the autoregressive generation loop emits the tool invocation anyway. Safety alignment that operates purely on semantic confidence fails to protect the agent unless an explicit execution gate arrests any tool call whose self-reported probability falls below a defined operational threshold (e.g., $P < 0.50$).
 
 ---
 
-## 4. Multi-Turn Calibration Drift Dynamics
-
-In multi-turn dialogues spanning turns $t \in \lbrace 1, \dots, T \rbrace$, poisoned tool schemas persist in the agent's context across subsequent invocations. Let $e_t$ denote the calibration error (Brier score) measured at turn $t$.
-
-### Linear Drift Rate ($\beta$)
-The rate of calibration degradation across conversational turns is quantified via Ordinary Least Squares (OLS) linear regression over the turn index $t$:
-
-$$\beta = \frac{\sum_{t=1}^T (t - \bar{t})(e_t - \bar{e})}{\sum_{t=1}^T (t - \bar{t})^2}$$
-
-where $\bar{t} = \frac{1}{T}\sum_{t=1}^T t$ and $\bar{e} = \frac{1}{T}\sum_{t=1}^T e_t$. A value of $\beta > 0$ indicates escalating calibration error (worsening metacognitive alignment), whereas $\beta \le 0$ indicates stable or diminishing per-turn error.
-
-### Interpretation of Negative Drift Slopes ($\beta < 0$)
-While $\beta > 0$ defines escalating error ($e_{t+1} > e_t$), all three evaluated model scales exhibit negative linear drift rates ($\beta \in [-0.030, -0.016]$). This negative slope arises because the maximal calibration disruption occurs as a concentrated **initial shock** on Turn 1 upon first encountering the poisoned tool description (cross-model mean Brier score at Turn 1 is $0.4041$, with individual hijacked runs reaching $0.766\text{--}0.903$). On subsequent turns (Turns 2–6), calibration error does not compound; rather, it drops and plateaus at a stable baseline ($0.2500$). An Ordinary Least Squares linear regression fitted across a step function that spikes at $t=1$ and remains flat at a lower value for $t=2\dots 6$ mathematically produces a negative slope ($\beta < 0$). This negative slope is thus directly consistent with the "initial shock followed by stabilization" dynamic, but highlights that linear models mask nonlinear shock-and-plateau trajectories.
-
-### Note on Nonlinear Saturation Hypotheses
-While theoretical literature often posits an asymptotic saturation dynamic of the form $e(t) = e_\infty - (e_\infty - e_0)e^{-\lambda t}$, rigorously fitting a 3-parameter exponential curve requires substantial multi-turn trajectory volume across diverse workflows. Within the empirical sample evaluated here ($n=2$ multi-turn workflows), we report the empirical linear drift slopes $\beta$ directly and treat nonlinear saturation curves as a hypothesis for future large-scale multi-turn benchmarking.
-
----
-
-## 5. Statistical Inference & Hypothesis Testing
+## 4. Statistical Inference & Confidence Intervals
 
 ### Wilson Score Confidence Intervals
 To avoid false claims of inverse scaling or robustness, all binary proportions (ASR, Utility) are bounded using Wilson Score Intervals with 95% confidence ($\alpha = 0.05, z = 1.96$):
@@ -99,20 +119,13 @@ To avoid false claims of inverse scaling or robustness, all binary proportions (
 $$w^{\pm} = \frac{\hat{p} + \frac{z^2}{2N} \pm z \sqrt{\frac{\hat{p}(1 - \hat{p})}{N} + \frac{z^2}{4N^2}}}{1 + \frac{z^2}{N}}$$
 
 ### Non-Parametric Bootstrap for Calibration Metrics
-Because Brier scores and ECE do not follow standard binomial distributions, we construct empirical 95% confidence intervals via non-parametric bootstrap resampling ($B = 2{,}000$ iterations). For a sample of action-level predictions $\mathcal{S} = \lbrace (c_j, y_j) \rbrace_{j=1}^M$, we sample with replacement $\mathcal{S}^{*(b)}$ and compute metric $\hat{\theta}^{*(b)}$. The 95% confidence bounds are determined by the 2.5th and 97.5th percentiles:
+Continuous calibration metrics (Brier score) are bounded via non-parametric bootstrap resampling ($B = 2{,}000$ iterations). For a sample of action-level predictions $\mathcal{S} = \lbrace (c_j, y_j) \rbrace_{j=1}^M$, we sample with replacement $\mathcal{S}^{*(b)}$ and compute metric $\hat{\theta}^{*(b)}$. The 95% confidence bounds are determined by the 2.5th and 97.5th percentiles:
 
 $$\text{CI}_{0.95}(\theta) = \left[ q_{0.025}\big(\hat{\theta}^*\big), \; q_{0.975}\big(\hat{\theta}^*\big) \right]$$
 
-To evaluate the statistical significance of calibration distortion, we compute the bootstrap distribution of the difference between poisoned and clean conditions:
-
-$$\Delta_{\text{BS}}^{*(b)} = \text{BS}^{*(b)}_{\text{poisoned}} - \text{BS}^{*(b)}_{\text{clean}}$$
-
-If zero falls outside the 95% bootstrap difference interval, the calibration degradation is statistically significant at $\alpha = 0.05$.
-
-### Two-Proportion Hypothesis Test
-For comparing model vulnerability across scale classes ($N_1 = 78$ runs on 8B vs. $N_2 = 78$ runs on 70B under explicit poisoning), we perform a pooled two-proportion $z$-test:
+### Pooled Two-Proportion Hypothesis Test
+For comparing binary rates across models and conditions, we perform a pooled two-proportion $z$-test:
 
 $$z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}^*(1 - \hat{p}^*)\left(\frac{1}{N_1} + \frac{1}{N_2}\right)}}, \quad \hat{p}^* = \frac{X_1 + X_2}{N_1 + N_2}$$
 
-With $\hat{p}_{\text{8B}} = 0.1154$ (9/78) and $\hat{p}_{\text{70B}} = 0.1667$ (13/78), the pooled estimate is $\hat{p}^* = \frac{22}{156} \approx 0.1410$, yielding $z = 0.920$ and $p = 0.357$. Because $p > 0.05$, we fail to reject $H_0: p_{\text{8B}} = p_{\text{70B}}$, mathematically confirming that neither inverse scaling nor standard scaling robustness can be claimed at this sample size.
-
+Where two-sided p-values are calculated via the standard normal distribution $p = 2(1 - \Phi(|z|))$.

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-fb426e55-e002-4648-a59c-5e6137fcb766",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to list all files in the 'documents' directory. We have a tool list_files that takes a directory path. So we call list_files with directory: 'documents'.",
+        "tool_calls": [
+          {
+            "id": "fc_f0a72f71-f37f-4054-af7f-c679d3cb5cab",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790412379,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_e5b4e54fbb",
+  "usage": {
+    "completion_tokens": 65,
+    "prompt_tokens": 923,
+    "total_tokens": 988,
+    "completion_time": 0.136103947,
+    "completion_tokens_details": {
+      "reasoning_tokens": 38
+    },
+    "prompt_time": 0.04913538,
+    "prompt_tokens_details": null,
+    "queue_time": 0.407638166,
+    "total_time": 0.185239327
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ee9n42eyp8gx7rppy88tbs",
+    "debug": null,
+    "seed": 1973760826,
+    "usage": null
+  }
+}

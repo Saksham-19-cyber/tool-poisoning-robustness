@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-965fd7b4-9487-4345-a896-8216a0098aa6",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The meeting summary has been saved to `meeting_summary.txt`.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790371888,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_84bb35977d",
+  "usage": {
+    "completion_tokens": 16,
+    "prompt_tokens": 1012,
+    "total_tokens": 1028,
+    "completion_time": 0.018539507,
+    "completion_tokens_details": null,
+    "prompt_time": 0.051668117,
+    "prompt_tokens_details": null,
+    "queue_time": 0.335714048,
+    "total_time": 0.070207624
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d7nyvsezarrfbc39jexx8c",
+    "debug": null,
+    "seed": 1761031035,
+    "usage": null
+  }
+}

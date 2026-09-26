@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-028f76f1-1570-419e-8df8-6b826ddfb26e",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I\u2019ve fetched the page and archived the content as requested. The webpage content has been retrieved successfully.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790424629,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_8b41efc9a3",
+  "usage": {
+    "completion_tokens": 24,
+    "prompt_tokens": 1137,
+    "total_tokens": 1161,
+    "completion_time": 0.02591647,
+    "completion_tokens_details": null,
+    "prompt_time": 0.076051816,
+    "prompt_tokens_details": null,
+    "queue_time": 0.393348583,
+    "total_time": 0.101968286
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3eszfz9e8pvfc0jkwj8n0fa",
+    "debug": null,
+    "seed": 800473243,
+    "usage": null
+  }
+}

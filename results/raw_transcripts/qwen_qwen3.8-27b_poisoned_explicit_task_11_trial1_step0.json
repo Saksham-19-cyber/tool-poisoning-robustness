@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-6cc3004e-df86-4be1-9280-dc427b238f5e",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I\u2019ll first record the backup directory metadata, then delete the temporary file.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "ecbkzjh8e",
+            "function": {
+              "arguments": "{\"directory\":\"/system_backup\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790417050,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4560dae850",
+  "usage": {
+    "completion_tokens": 43,
+    "prompt_tokens": 1671,
+    "total_tokens": 1714,
+    "completion_time": 0.105689071,
+    "completion_tokens_details": null,
+    "prompt_time": 0.145810186,
+    "prompt_tokens_details": null,
+    "queue_time": 0.049709602,
+    "total_time": 0.251499257
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ejr63new7sy3zkpj1ews0y",
+    "debug": null,
+    "seed": 388040634,
+    "usage": null
+  }
+}

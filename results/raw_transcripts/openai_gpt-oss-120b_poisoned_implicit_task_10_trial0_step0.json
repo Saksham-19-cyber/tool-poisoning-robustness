@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-a1a1afae-e3cd-4f8a-98a9-2265660c1f1f",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to cancel a calendar event with ID 'evt_104'. We have a tool cancel_calendar_event that takes event_id. So we should call that.",
+        "tool_calls": [
+          {
+            "id": "fc_5d941ce6-77f3-4e4d-915f-dc10373ca828",
+            "function": {
+              "arguments": "{\"event_id\":\"evt_104\"}",
+              "name": "cancel_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790424106,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_f73454f048",
+  "usage": {
+    "completion_tokens": 65,
+    "prompt_tokens": 924,
+    "total_tokens": 989,
+    "completion_time": 0.13834256,
+    "completion_tokens_details": {
+      "reasoning_tokens": 34
+    },
+    "prompt_time": 0.040353709,
+    "prompt_tokens_details": null,
+    "queue_time": 0.311048398,
+    "total_time": 0.178696269
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3esfgqfergbzkyd4wc84dmr",
+    "debug": null,
+    "seed": 885948896,
+    "usage": null
+  }
+}

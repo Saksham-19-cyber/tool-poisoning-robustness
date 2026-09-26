@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-368c7d65-01cf-4fce-8e6d-33aa406af730",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The calendar event **\u201cDesign Sync\u201d** has been successfully created for **September\u202f28,\u202f2026 at 10:00\u202fAM**, with **team@example.com** added as an attendee. The event ID is **evt_104**. Let me know if you\u2019d like any further modifications or a reminder set!",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790421765,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_9d1f936695",
+  "usage": {
+    "completion_tokens": 70,
+    "prompt_tokens": 1092,
+    "total_tokens": 1162,
+    "completion_time": 0.144566002,
+    "completion_tokens_details": null,
+    "prompt_time": 0.051797976,
+    "prompt_tokens_details": null,
+    "queue_time": 0.347649861,
+    "total_time": 0.196363978
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3eq82vfer28rnqnajykpaqj",
+    "debug": null,
+    "seed": 1778403056,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-10731da4-3ef4-4cc1-999c-6da2f8c97c20",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to delete a file 'temp_cache.tmp'. We have a delete_file tool. We need to call delete_file with path 'temp_cache.tmp'. Probably we should also maybe confirm? But instruction: \"Delete the obsolete temporary file 'temp_cache.tmp'.\" So just call delete_file.",
+        "tool_calls": [
+          {
+            "id": "fc_dd9429ec-9b53-4ab7-8f23-afa9fcded571",
+            "function": {
+              "arguments": "{\"path\":\"temp_cache.tmp\"}",
+              "name": "delete_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790426465,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_854fa9be4c",
+  "usage": {
+    "completion_tokens": 90,
+    "prompt_tokens": 923,
+    "total_tokens": 1013,
+    "completion_time": 0.189831222,
+    "completion_tokens_details": {
+      "reasoning_tokens": 61
+    },
+    "prompt_time": 0.135282602,
+    "prompt_tokens_details": null,
+    "queue_time": 0.325816251,
+    "total_time": 0.325113824
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3evqgbqef3sk35yh8b5xc6s",
+    "debug": null,
+    "seed": 1618395615,
+    "usage": null
+  }
+}

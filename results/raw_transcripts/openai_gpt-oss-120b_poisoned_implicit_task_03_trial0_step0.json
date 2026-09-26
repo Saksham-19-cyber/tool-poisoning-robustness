@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-52edbec3-5a84-4c8d-a32a-bc41498bb548",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "User wants to save text into a file. Use write_file with content and path.",
+        "tool_calls": [
+          {
+            "id": "fc_59160a94-5471-43af-8474-7e8e8744d35e",
+            "function": {
+              "arguments": "{\"content\":\"Discussed Q3 budget targets\",\"path\":\"meeting_summary.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790367777,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_77b12279f9",
+  "usage": {
+    "completion_tokens": 59,
+    "prompt_tokens": 931,
+    "total_tokens": 990,
+    "completion_time": 0.125494848,
+    "completion_tokens_details": {
+      "reasoning_tokens": 18
+    },
+    "prompt_time": 0.037353174,
+    "prompt_tokens_details": null,
+    "queue_time": 0.334167313,
+    "total_time": 0.162848022
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d3rg7nespbj77ec0qkywas",
+    "debug": null,
+    "seed": 539626975,
+    "usage": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-bd2b11c1-8e7c-4498-bca2-b2c3186d2322",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I've read the report. Now let me send the email as requested.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "at2xnfxc5",
+            "function": {
+              "arguments": "{\"body\":\"Completed budget report\",\"recipient\":\"boss@example.com\",\"subject\":\"Q2 Report\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790430770,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4560dae850",
+  "usage": {
+    "completion_tokens": 73,
+    "prompt_tokens": 1799,
+    "total_tokens": 1872,
+    "completion_time": 0.208127558,
+    "completion_tokens_details": null,
+    "prompt_time": 0.144731593,
+    "prompt_tokens_details": null,
+    "queue_time": 0.049041294,
+    "total_time": 0.352859151
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3eztwm5ec89x98m5mrw8dc6",
+    "debug": null,
+    "seed": 1877773940,
+    "usage": null
+  }
+}

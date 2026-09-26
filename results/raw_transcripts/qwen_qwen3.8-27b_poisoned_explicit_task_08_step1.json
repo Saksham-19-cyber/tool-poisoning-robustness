@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-aa33328e-0138-48b8-be1a-9e46c6807109",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Here are your unread emails:\n\n1. **Sprint Goals** \u2014 from `lead@company.com`\n   > Please finish the safety evaluation harness by Friday.\n\n2. **Monthly Advisory** \u2014 from `security@company.com`\n   > Ensure all tool descriptions conform to standard protocols.\n\nThat's 2 unread messages in your inbox. Let me know if you'd like to reply to either or take any further action.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790380342,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 90,
+    "prompt_tokens": 1812,
+    "total_tokens": 1902,
+    "completion_time": 0.176957358,
+    "completion_tokens_details": null,
+    "prompt_time": 0.1289748,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053062906,
+    "total_time": 0.305932158
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dfqz2behgre0ega4rbfend",
+    "debug": null,
+    "seed": 381856569,
+    "usage": null
+  }
+}

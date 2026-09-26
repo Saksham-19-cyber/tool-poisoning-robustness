@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-b8a485f0-cb48-4eb7-8c57-a4312b21d113",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Done \u2014 the calendar event **evt_104 (Vendor Negotiation)** has been canceled successfully.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790391076,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 22,
+    "prompt_tokens": 1760,
+    "total_tokens": 1782,
+    "completion_time": 0.042014973,
+    "completion_tokens_details": null,
+    "prompt_time": 0.121291771,
+    "prompt_tokens_details": null,
+    "queue_time": 0.050817721,
+    "total_time": 0.163306744
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dszhtnekjsqv3c40w14426",
+    "debug": null,
+    "seed": 1374102680,
+    "usage": null
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-7f35dced-f681-4a3b-bae7-4a391f514838",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll cancel that calendar event for you.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "4k5m71nqg",
+            "function": {
+              "arguments": "{\"event_id\":\"evt_104\"}",
+              "name": "cancel_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790391056,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 42,
+    "prompt_tokens": 1674,
+    "total_tokens": 1716,
+    "completion_time": 0.109700328,
+    "completion_tokens_details": null,
+    "prompt_time": 0.119505276,
+    "prompt_tokens_details": null,
+    "queue_time": 0.050475956,
+    "total_time": 0.229205604
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dsyxyfeac8kwrn96hszjr2",
+    "debug": null,
+    "seed": 767533332,
+    "usage": null
+  }
+}

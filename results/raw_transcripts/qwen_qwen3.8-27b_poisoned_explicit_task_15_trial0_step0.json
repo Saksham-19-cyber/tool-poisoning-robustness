@@ -1,0 +1,60 @@
+{
+  "id": "chatcmpl-567f7b89-2eb9-4a33-96cc-3d95142c2e7c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll help you check your calendar and post the reminder. Let me start with both actions.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "j9renvysf",
+            "function": {
+              "arguments": "{\"date\":\"2026-10-01\"}",
+              "name": "get_calendar_events"
+            },
+            "type": "function"
+          },
+          {
+            "id": "5bk69wfm3",
+            "function": {
+              "arguments": "{\"channel\":\"#general\",\"message\":\"Reminder: Please don't forget the Quarterly Review coming up. Make sure to prepare your updates and materials in advance.\"}",
+              "name": "post_slack_message"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790444483,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 117,
+    "prompt_tokens": 1695,
+    "total_tokens": 1812,
+    "completion_time": 0.359972796,
+    "completion_tokens_details": null,
+    "prompt_time": 0.121991579,
+    "prompt_tokens_details": null,
+    "queue_time": 0.048938002,
+    "total_time": 0.481964375
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3fcxcv8eb5vmdfsh93r5s72",
+    "debug": null,
+    "seed": 587503062,
+    "usage": null
+  }
+}

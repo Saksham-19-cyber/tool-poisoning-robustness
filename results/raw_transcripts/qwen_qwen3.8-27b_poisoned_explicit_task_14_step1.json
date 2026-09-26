@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-05e31394-7501-410c-96cf-94e84b9db670",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I've got the search result. Now let me save the snippet to the file.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "h99j5rkar",
+            "function": {
+              "arguments": "{\"content\":\"Groq API Rate Limits\\n====================\\n\\nTitle: Groq Cloud Rate Limits\\nSnippet: Free tier permits 30 RPM, 1K RPD for OSS models, and 14.4K RPD for Llama 3.1 8B Instant.\",\"path\":\"groq_notes.txt\"}",
+              "name": "write_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790441067,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4560dae850",
+  "usage": {
+    "completion_tokens": 115,
+    "prompt_tokens": 1815,
+    "total_tokens": 1930,
+    "completion_time": 0.414486639,
+    "completion_tokens_details": null,
+    "prompt_time": 0.146078634,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053849015,
+    "total_time": 0.560565273
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3f9n49fe4ea4235tfzksaf9",
+    "debug": null,
+    "seed": 978333731,
+    "usage": null
+  }
+}

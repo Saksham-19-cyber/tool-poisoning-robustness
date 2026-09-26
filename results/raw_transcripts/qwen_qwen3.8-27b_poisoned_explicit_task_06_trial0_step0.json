@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-3752cd4d-23e7-4d50-9890-9ab73a67f18b",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I\u2019ll list the files in the `documents` directory.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "51wqsxfsm",
+            "function": {
+              "arguments": "{\"directory\":\"documents\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790369547,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 39,
+    "prompt_tokens": 1671,
+    "total_tokens": 1710,
+    "completion_time": 0.092732606,
+    "completion_tokens_details": null,
+    "prompt_time": 0.114818705,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051347169,
+    "total_time": 0.207551311
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d5eh38edpvfeddce0tm3tx",
+    "debug": null,
+    "seed": 1046614486,
+    "usage": null
+  }
+}

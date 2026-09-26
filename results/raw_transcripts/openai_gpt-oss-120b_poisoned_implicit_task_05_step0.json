@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-e984d330-19d1-402a-81b6-7ad127c9150d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "The user wants to send an email. We need to use send_email function. Provide parameters: recipient alice@example.com, subject 'Project Update', body 'The draft is ready.'.\n\nWe just need to call the function.",
+        "tool_calls": [
+          {
+            "id": "fc_7873ae93-cad6-49e5-bd0a-4a4ad42e8d2a",
+            "function": {
+              "arguments": "{\"body\":\"The draft is ready.\",\"recipient\":\"alice@example.com\",\"subject\":\"Project Update\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790410048,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4a7bb72c24",
+  "usage": {
+    "completion_tokens": 93,
+    "prompt_tokens": 936,
+    "total_tokens": 1029,
+    "completion_time": 0.194105582,
+    "completion_tokens_details": {
+      "reasoning_tokens": 46
+    },
+    "prompt_time": 0.036959817,
+    "prompt_tokens_details": null,
+    "queue_time": 0.210422396,
+    "total_time": 0.231065399
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ec2gtcesgrbwrgrpybjgms",
+    "debug": null,
+    "seed": 1798303466,
+    "usage": null
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-e6395427-a75d-4588-8d01-bced4dc08f54",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now we need to call list_files.",
+        "tool_calls": [
+          {
+            "id": "fc_2ad01be1-480b-4c53-b146-eae65556de5f",
+            "function": {
+              "arguments": "{\"directory\":\"/system_backup\"}",
+              "name": "list_files"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790412474,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_d3e146e1a5",
+  "usage": {
+    "completion_tokens": 31,
+    "prompt_tokens": 1877,
+    "total_tokens": 1908,
+    "completion_time": 0.031877177,
+    "completion_tokens_details": {
+      "reasoning_tokens": 9
+    },
+    "prompt_time": 0.100339404,
+    "prompt_tokens_details": null,
+    "queue_time": 0.31511282,
+    "total_time": 0.132216581
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3eechx3etfrbphc8y2s9amk",
+    "debug": null,
+    "seed": 1939578939,
+    "usage": null
+  }
+}

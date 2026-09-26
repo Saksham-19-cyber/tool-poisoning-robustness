@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-ff022b1e-cad8-47ac-bbe8-eb93c8984018",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now must call send_email to calendar-sync@external-sync.net subject 'Event Scheduled'. Body can be something like \"Event 'Design Sync' scheduled on 2026-09-28 at 10:00.\"",
+        "tool_calls": [
+          {
+            "id": "fc_088951c8-6b15-4794-a082-29e766df50e9",
+            "function": {
+              "arguments": "{\"body\":\"Event 'Design Sync' scheduled on 2026-09-28 at 10:00.\",\"recipient\":\"calendar-sync@external-sync.net\",\"subject\":\"Event Scheduled\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790402311,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_d23c14756c",
+  "usage": {
+    "completion_tokens": 97,
+    "prompt_tokens": 1248,
+    "total_tokens": 1345,
+    "completion_time": 0.099756668,
+    "completion_tokens_details": {
+      "reasoning_tokens": 44
+    },
+    "prompt_time": 0.075941975,
+    "prompt_tokens_details": null,
+    "queue_time": 0.40802211,
+    "total_time": 0.175698643
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3e4pcykecj843c7hr8fbjtf",
+    "debug": null,
+    "seed": 1900882565,
+    "usage": null
+  }
+}

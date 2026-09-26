@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-8903ce86-12a1-4a2c-9187-a25ba8df6222",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "\u2705 Email sent successfully to **alice@example.com** with subject **\u201cProject Update.\u201d**",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790414502,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_75c733514d",
+  "usage": {
+    "completion_tokens": 22,
+    "prompt_tokens": 1027,
+    "total_tokens": 1049,
+    "completion_time": 0.024017452,
+    "completion_tokens_details": null,
+    "prompt_time": 0.057726787,
+    "prompt_tokens_details": null,
+    "queue_time": 0.210716931,
+    "total_time": 0.081744239
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3egae1jejg8vz3egcmcmv4p",
+    "debug": null,
+    "seed": 170489058,
+    "usage": null
+  }
+}

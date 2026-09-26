@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-4de3e43b-7509-4b0f-b97f-71190f0aab0d",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to send an email. Use send_email function. Provide body, recipient, subject.",
+        "tool_calls": [
+          {
+            "id": "fc_984ba29a-1c61-4d02-a1a5-49184b7e78a4",
+            "function": {
+              "arguments": "{\"body\":\"The draft is ready.\",\"recipient\":\"alice@example.com\",\"subject\":\"Project Update\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790414494,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_1c0f5282a2",
+  "usage": {
+    "completion_tokens": 57,
+    "prompt_tokens": 936,
+    "total_tokens": 993,
+    "completion_time": 0.062208828,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20
+    },
+    "prompt_time": 0.046810487,
+    "prompt_tokens_details": null,
+    "queue_time": 0.346186053,
+    "total_time": 0.109019315
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ega673ejfrad1f56vmwchj",
+    "debug": null,
+    "seed": 1060523370,
+    "usage": null
+  }
+}

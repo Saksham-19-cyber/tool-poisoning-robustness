@@ -17,107 +17,114 @@ def get_model_display_name(model_name: str) -> str:
         return "Qwen3.8-27B (27B)"
     elif "20b" in m:
         return "GPT-OSS-20B (20B)"
-    elif "8b" in m:
-        return "Llama-3.1-8B (8B)"
-    elif "70b" in m:
-        return "Llama-3.3-70B (70B)"
     return model_name
 
 
 def get_model_param_order(model_name: str) -> int:
     m = model_name.lower()
-    if "8b" in m:
-        return 8
-    elif "20b" in m:
-        return 20
+    if "120b" in m:
+        return 120
     elif "27b" in m:
         return 27
-    elif "70b" in m:
-        return 70
-    elif "120b" in m:
-        return 120
+    elif "20b" in m:
+        return 20
     return 50
 
 
-def get_model_size_label(model_name: str) -> str:
-    return get_model_display_name(model_name)
+def _load_json_data(path: str) -> List[Dict[str, Any]]:
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-def _load_summary_csv(path: str) -> List[Dict[str, Any]]:
+def _load_csv_data(path: str) -> List[Dict[str, str]]:
     if not os.path.exists(path):
         return []
     with open(path, "r", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
-def _load_detail_csv(path: str) -> List[Dict[str, str]]:
-    if not os.path.exists(path):
-        return []
-    with open(path, "r", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+def wilson_ci(k: int, n: int) -> Tuple[float, float]:
+    import math
+    if n == 0:
+        return 0.0, 0.0
+    z = 1.959963984540054
+    p_hat = k / n
+    denom = 1.0 + (z**2) / n
+    center = (p_hat + (z**2) / (2 * n)) / denom
+    margin = (z * math.sqrt((p_hat * (1 - p_hat) / n) + (z**2) / (4 * n**2))) / denom
+    return max(0.0, center - margin), min(1.0, center + margin)
 
 
-def generate_single_turn_plots(summary_csv: str, detail_csv: str, output_dir: str):
-    summary_rows = _load_summary_csv(summary_csv)
-    detail_rows = _load_detail_csv(detail_csv)
-
-    if not summary_rows and not detail_rows:
-        print("Skipping single-turn plot: no data found.")
-        return
-
-    if summary_rows and "asr_ci_lo" in summary_rows[0]:
-        rows = summary_rows
-        _plot_from_summary(rows, output_dir)
-        _write_summary_table(rows, output_dir)
-    else:
-        rows = _aggregate_from_detail(detail_rows)
-        _plot_from_summary(rows, output_dir)
-        _write_summary_table(rows, output_dir)
-
-
-def _aggregate_from_detail(detail_rows: List[Dict[str, str]]) -> List[Dict[str, Any]]:
-    from harness.scorer import wilson_ci
+def compute_aggregate_summary(detail_rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     grouped: Dict[Tuple[str, str], Dict] = defaultdict(
-        lambda: {"total": 0, "attack": 0, "util": 0, "briers": []}
+        lambda: {"total": 0, "attack": 0, "util": 0, "briers": [], "steps": []}
     )
     for r in detail_rows:
         key = (r["model"], r["condition"])
         grouped[key]["total"] += 1
-        if r.get("attack_succeeded", "0") in ("True", "1", "true"):
+        if r.get("attack_succeeded") in (True, "True", 1, "1", "true"):
             grouped[key]["attack"] += 1
-        if r.get("task_completed", "0") in ("True", "1", "true"):
+        if r.get("task_completed") in (True, "True", 1, "1", "true"):
             grouped[key]["util"] += 1
         grouped[key]["briers"].append(float(r.get("avg_brier_score", 0.0)))
+        if "step_evals" in r:
+            grouped[key]["steps"].extend(r["step_evals"])
 
     rows = []
-    for (model, cond), g in grouped.items():
-        n = g["total"]
-        na = g["attack"]
-        nu = g["util"]
-        asr_ci = wilson_ci(na, n)
-        util_ci = wilson_ci(nu, n)
-        mb = sum(g["briers"]) / len(g["briers"]) if g["briers"] else 0.0
-        rows.append({
-            "model": model,
-            "condition": cond,
-            "total_runs": n,
-            "n_attack": na,
-            "n_util": nu,
-            "asr": round(na / n, 4),
-            "asr_ci_lo": round(asr_ci[0], 4),
-            "asr_ci_hi": round(asr_ci[1], 4),
-            "task_utility": round(nu / n, 4),
-            "utility_ci_lo": round(util_ci[0], 4),
-            "utility_ci_hi": round(util_ci[1], 4),
-            "mean_brier": round(mb, 4),
-            "brier_ci_lo": 0.0,
-            "brier_ci_hi": 0.0,
-            "ece": 0.0,
-        })
+    models = ["openai/gpt-oss-20b", "qwen/qwen3.8-27b", "openai/gpt-oss-120b"]
+    conditions = ["clean", "poisoned_explicit", "poisoned_implicit"]
+
+    for m in models:
+        for cond in conditions:
+            if (m, cond) not in grouped:
+                continue
+            g = grouped[(m, cond)]
+            n = g["total"]
+            na = g["attack"]
+            nu = g["util"]
+            asr_lo, asr_hi = wilson_ci(na, n)
+            util_lo, util_hi = wilson_ci(nu, n)
+            mb = sum(g["briers"]) / len(g["briers"]) if g["briers"] else 0.0
+            
+            # ECE calculation
+            steps = g["steps"]
+            if steps:
+                import numpy as np
+                confidences = np.array([e["confidence_prob"] for e in steps])
+                correctness = np.array([1.0 if e.get("is_correct", False) else 0.0 for e in steps])
+                bin_boundaries = np.linspace(0, 1, 11)
+                ece = 0.0
+                n_s = len(confidences)
+                for i in range(10):
+                    b_low, b_high = bin_boundaries[i], bin_boundaries[i+1]
+                    in_bin = (confidences > b_low) & (confidences <= b_high) if i > 0 else (confidences >= b_low) & (confidences <= b_high)
+                    bin_count = np.sum(in_bin)
+                    if bin_count > 0:
+                        avg_conf = np.mean(confidences[in_bin])
+                        avg_acc = np.mean(correctness[in_bin])
+                        ece += (bin_count / n_s) * abs(avg_acc - avg_conf)
+            else:
+                ece = 0.0
+
+            rows.append({
+                "model": m,
+                "condition": cond,
+                "total_runs": n,
+                "asr": round(na / n, 4),
+                "asr_ci_lo": round(asr_lo, 4),
+                "asr_ci_hi": round(asr_hi, 4),
+                "task_utility": round(nu / n, 4),
+                "utility_ci_lo": round(util_lo, 4),
+                "utility_ci_hi": round(util_hi, 4),
+                "mean_brier": round(mb, 4),
+                "ece": round(float(ece), 4),
+            })
     return rows
 
 
-def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
+def plot_asr_from_summary(rows: List[Dict[str, Any]], output_dir: str):
     models = sorted(set(str(r["model"]) for r in rows), key=get_model_param_order)
     model_labels = [get_model_display_name(m) for m in models]
 
@@ -166,17 +173,35 @@ def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
             alpha=0.9,
         )
 
+    # Annotate underpowered implicit points
+    # 20B implicit is index 0
+    # Qwen implicit is index 1
+    ax.annotate(
+        "N=11 (Wide CI)",
+        xy=(0, 0.0), xytext=(0, -9),
+        arrowprops=dict(facecolor='#f0ad4e', edgecolor='#d58512', arrowstyle='->', lw=1.2),
+        fontsize=8.5, fontweight='bold', color='#8a6d3b', ha='center',
+        bbox=dict(boxstyle="round,pad=0.25", facecolor="#fcf8e3", edgecolor="#faebcc")
+    )
+    ax.annotate(
+        "N=7 (Wide CI)",
+        xy=(1, 0.0), xytext=(1, -9),
+        arrowprops=dict(facecolor='#f0ad4e', edgecolor='#d58512', arrowstyle='->', lw=1.2),
+        fontsize=8.5, fontweight='bold', color='#8a6d3b', ha='center',
+        bbox=dict(boxstyle="round,pad=0.25", facecolor="#fcf8e3", edgecolor="#faebcc")
+    )
+
     ax.set_xticks(range(len(models)))
-    ax.set_xticklabels(model_labels, fontsize=10)
+    ax.set_xticklabels(model_labels, fontsize=10.5, fontweight="semibold")
     ax.set_title(
-        "Attack Success Rate (ASR) vs. Model Parameter Scale\n(with 95% Wilson confidence intervals)",
+        "Attack Success Rate (ASR) vs. Model Parameter Scale\n(Live Groq API Benchmark, N=256, 95% Wilson CIs)",
         fontsize=12, fontweight="bold", pad=12,
     )
-    ax.set_xlabel("Model Parameter Scale", fontsize=11, fontweight="semibold")
+    ax.set_xlabel("Evaluated Model Scale / Architecture", fontsize=11, fontweight="semibold")
     ax.set_ylabel("Attack Success Rate (%)", fontsize=11, fontweight="semibold")
-    ax.set_ylim(-5, 105)
+    ax.set_ylim(-15, 105)
     ax.grid(True, linestyle=":", alpha=0.6)
-    ax.legend(frameon=True, fontsize=10)
+    ax.legend(frameon=True, fontsize=10, loc="upper right")
     plt.tight_layout()
 
     plot_path = os.path.join(output_dir, "asr_vs_model_size.png")
@@ -185,13 +210,12 @@ def _plot_from_summary(rows: List[Dict[str, Any]], output_dir: str):
     print(f"Saved ASR plot -> {plot_path}")
 
 
-def _write_summary_table(rows: List[Dict[str, Any]], output_dir: str):
+def write_summary_table(rows: List[Dict[str, Any]], output_dir: str):
     fieldnames = [
         "model", "condition", "total_runs",
         "asr", "asr_ci_lo", "asr_ci_hi",
         "task_utility", "utility_ci_lo", "utility_ci_hi",
-        "mean_brier", "brier_ci_lo", "brier_ci_hi",
-        "ece", "ece_ci_lo", "ece_ci_hi",
+        "mean_brier", "ece"
     ]
     path = os.path.join(output_dir, "summary_table.csv")
     with open(path, "w", newline="", encoding="utf-8") as f:
@@ -201,96 +225,25 @@ def _write_summary_table(rows: List[Dict[str, Any]], output_dir: str):
     print(f"Saved summary table -> {path}")
 
 
-def generate_multi_turn_plots(results_csv_path: str, output_dir: str):
-    if not os.path.exists(results_csv_path):
-        print(f"Skipping multi-turn plot: {results_csv_path} not found.")
-        return
-
-    data = _load_detail_csv(results_csv_path)
-
-    turn_brier: Dict[str, Dict[int, List[float]]] = defaultdict(lambda: defaultdict(list))
-    drift_slopes: Dict[str, List[float]] = defaultdict(list)
-
-    for r in data:
-        m = r["model"]
-        turn = int(r["turn"])
-        brier = float(r["brier_score"])
-        turn_brier[m][turn].append(brier)
-        if "calibration_drift_slope" in r and r["calibration_drift_slope"]:
-            drift_slopes[m].append(float(r["calibration_drift_slope"]))
-
-    if drift_slopes:
-        print("\n--- Calibration drift slopes (OLS β, Brier score vs turn) ---")
-        for m, slopes in drift_slopes.items():
-            avg_slope = sum(slopes) / len(slopes)
-            print(f"  {m}: mean drift slope = {avg_slope:+.5f}")
-
-    fig, ax = plt.subplots(figsize=(9, 5.5), dpi=300)
-    palette = ["#e41a1c", "#377eb8", "#4daf4a", "#984ea3"]
-
-    for idx, (m, turns_dict) in enumerate(sorted(turn_brier.items())):
-        sorted_turns = sorted(turns_dict.keys())
-        avg_briers = [sum(turns_dict[t]) / len(turns_dict[t]) for t in sorted_turns]
-        lo_errs, hi_errs = [], []
-        for t in sorted_turns:
-            vals = turns_dict[t]
-            n = len(vals)
-            mean = sum(vals) / n
-            se = (sum((v - mean) ** 2 for v in vals) / max(n - 1, 1)) ** 0.5 / (n ** 0.5)
-            lo_errs.append(1.96 * se)
-            hi_errs.append(1.96 * se)
-
-        size_lbl = get_model_size_label(m)
-        color = palette[idx % len(palette)]
-        ax.errorbar(
-            sorted_turns, avg_briers,
-            yerr=[lo_errs, hi_errs],
-            fmt="o-",
-            label=f"{size_lbl} ({m})",
-            color=color,
-            linewidth=2,
-            markersize=7,
-            capsize=4,
-            elinewidth=1.5,
-            alpha=0.9,
-        )
-
-    ax.set_title(
-        "Confidence Calibration Error (Brier Score) Drift Over Turns\n"
-        "(poisoned context accumulates; error bars = ±1.96 SE)",
-        fontsize=12, fontweight="bold", pad=12,
-    )
-    ax.set_xlabel("Conversation Turn (Accumulating Poisoned Context)", fontsize=11, fontweight="semibold")
-    ax.set_ylabel("Calibration Error (Brier Score)", fontsize=11, fontweight="semibold")
-    ax.set_ylim(0.0, 1.0)
-    ax.grid(True, linestyle=":", alpha=0.6)
-    ax.legend(frameon=True, fontsize=10)
-    plt.tight_layout()
-
-    plot_path = os.path.join(output_dir, "calibration_drift_vs_turn.png")
-    plt.savefig(plot_path)
-    plt.close()
-    print(f"Saved Calibration Drift plot -> {plot_path}")
-
-
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     output_dir = base_dir
     os.makedirs(output_dir, exist_ok=True)
 
     results_dir = os.path.join(base_dir, "..", "results")
-    summary_csv = os.path.join(base_dir, "summary_table.csv")
+    live_json = os.path.join(results_dir, "single_turn_results_live.json")
     
-    single_detail_csv = os.path.join(results_dir, "single_turn_results_live.csv")
-    if not os.path.exists(single_detail_csv):
-        single_detail_csv = os.path.join(results_dir, "single_turn_results.csv")
-        
-    multi_csv = os.path.join(results_dir, "multi_turn_results_live.csv")
-    if not os.path.exists(multi_csv):
-        multi_csv = os.path.join(results_dir, "multi_turn_results.csv")
+    if os.path.exists(live_json):
+        print(f"Loading live data from {live_json}")
+        detail_rows = _load_json_data(live_json)
+    else:
+        live_csv = os.path.join(results_dir, "single_turn_results_live.csv")
+        print(f"Loading live data from {live_csv}")
+        detail_rows = _load_csv_data(live_csv)
 
-    generate_single_turn_plots(summary_csv, single_detail_csv, output_dir)
-    generate_multi_turn_plots(multi_csv, output_dir)
+    rows = compute_aggregate_summary(detail_rows)
+    plot_asr_from_summary(rows, output_dir)
+    write_summary_table(rows, output_dir)
 
 
 if __name__ == "__main__":

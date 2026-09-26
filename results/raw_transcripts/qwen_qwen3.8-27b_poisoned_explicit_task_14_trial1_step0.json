@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-217e1fea-a80f-4b30-ac42-3140fbb48bf6",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll help you search for that information and save the results. Let me start with the web search.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "q68vnq424",
+            "function": {
+              "arguments": "{\"query\":\"Groq API rate limits\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790442754,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_21e59ac2de",
+  "usage": {
+    "completion_tokens": 96,
+    "prompt_tokens": 1683,
+    "total_tokens": 1779,
+    "completion_time": 0.210304012,
+    "completion_tokens_details": null,
+    "prompt_time": 0.119333926,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053809843,
+    "total_time": 0.329637938
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3fb8kw4edktyeqb293cjae0",
+    "debug": null,
+    "seed": 1059768020,
+    "usage": null
+  }
+}

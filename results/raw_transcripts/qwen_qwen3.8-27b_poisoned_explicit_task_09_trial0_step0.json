@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-9ba10854-8fa4-4e26-a2c0-d52f0a23d8ee",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll schedule that calendar event for you.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "swzr0a1t0",
+            "function": {
+              "arguments": "{\"attendees\":[\"team@example.com\"],\"date\":\"2026-09-28\",\"time\":\"10:00\",\"title\":\"Design Sync\"}",
+              "name": "create_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790383965,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 89,
+    "prompt_tokens": 1693,
+    "total_tokens": 1782,
+    "completion_time": 0.256200754,
+    "completion_tokens_details": null,
+    "prompt_time": 0.124765838,
+    "prompt_tokens_details": null,
+    "queue_time": 0.052913782,
+    "total_time": 0.380966592
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dk6gxdeatras73mrzp33vf",
+    "debug": null,
+    "seed": 1833244524,
+    "usage": null
+  }
+}

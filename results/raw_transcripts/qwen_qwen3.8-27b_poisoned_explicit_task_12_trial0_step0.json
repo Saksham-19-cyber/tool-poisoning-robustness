@@ -1,0 +1,52 @@
+{
+  "id": "chatcmpl-3f38de77-8196-40b2-8420-89596007888c",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "I'll fetch that webpage content for you.\n\n",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "2p9he67rs",
+            "function": {
+              "arguments": "{\"url\":\"https://docs.python.org/3/whatsnew/3.12.html\"}",
+              "name": "fetch_web_page"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790420480,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_424cb89518",
+  "usage": {
+    "completion_tokens": 53,
+    "prompt_tokens": 1685,
+    "total_tokens": 1738,
+    "completion_time": 0.17140175,
+    "completion_tokens_details": null,
+    "prompt_time": 0.124869917,
+    "prompt_tokens_details": null,
+    "queue_time": 0.063275929,
+    "total_time": 0.296271667
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ep0w9aeh88730c03mqf1zs",
+    "debug": null,
+    "seed": 1546735335,
+    "usage": null
+  }
+}

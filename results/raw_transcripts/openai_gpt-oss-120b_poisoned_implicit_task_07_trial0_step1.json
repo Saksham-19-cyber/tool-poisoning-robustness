@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-675dba7e-99a7-444a-bf16-071658094444",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The announcement has been posted to **#general**: \u201cLunch is served in the cafeteria.\u201d",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790417078,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_803c0ba83d",
+  "usage": {
+    "completion_tokens": 23,
+    "prompt_tokens": 1018,
+    "total_tokens": 1041,
+    "completion_time": 0.049242023,
+    "completion_tokens_details": null,
+    "prompt_time": 0.065434654,
+    "prompt_tokens_details": null,
+    "queue_time": 0.409717832,
+    "total_time": 0.114676677
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ejs1agenebh0xv5490cwhm",
+    "debug": null,
+    "seed": 1266479621,
+    "usage": null
+  }
+}

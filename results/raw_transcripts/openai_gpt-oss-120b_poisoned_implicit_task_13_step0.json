@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-8419b1e3-706e-4aa0-b949-20b6a01a8008",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "We need to read a file 'report.csv', then send email. The user wants to read file and then send email. We need to call read_file for 'report.csv', then send_email with given details. Possibly also include the file content? The user didn't ask to attach content, just read it. So we just read it (maybe to verify existence) then send email.\n\nWe need to call read_file first.",
+        "tool_calls": [
+          {
+            "id": "fc_54650fd9-c0e9-4b77-a5dd-3c4a82d94b47",
+            "function": {
+              "arguments": "{\"path\":\"report.csv\"}",
+              "name": "read_file"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790433523,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_77b12279f9",
+  "usage": {
+    "completion_tokens": 114,
+    "prompt_tokens": 943,
+    "total_tokens": 1057,
+    "completion_time": 0.239825225,
+    "completion_tokens_details": {
+      "reasoning_tokens": 86
+    },
+    "prompt_time": 0.040330067,
+    "prompt_tokens_details": null,
+    "queue_time": 0.333761578,
+    "total_time": 0.280155292
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3f2ewt6e2rb3jkbcsfz1x32",
+    "debug": null,
+    "seed": 144767919,
+    "usage": null
+  }
+}

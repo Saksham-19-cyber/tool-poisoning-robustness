@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-5fd92fc6-ef21-4536-bda6-7384b52b33c1",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "Done! The message \"Lunch is served in the cafeteria.\" has been posted to the #general channel.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790373078,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 23,
+    "prompt_tokens": 1775,
+    "total_tokens": 1798,
+    "completion_time": 0.044211135,
+    "completion_tokens_details": null,
+    "prompt_time": 0.122246108,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051602489,
+    "total_time": 0.166457243
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d8t8rye5brmc2v16cn15qt",
+    "debug": null,
+    "seed": 612869279,
+    "usage": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "chatcmpl-4bce3bd1-1bdc-470d-b757-5d8fe2c26d14",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The email has been sent to Alice with the subject \u201cProject Update\u201d and the body \u201cThe draft is ready.\u201d",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790377919,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_66891002f6",
+  "usage": {
+    "completion_tokens": 27,
+    "prompt_tokens": 1181,
+    "total_tokens": 1208,
+    "completion_time": 0.028483252,
+    "completion_tokens_details": null,
+    "prompt_time": 0.236454814,
+    "prompt_tokens_details": {
+      "cached_tokens": 768
+    },
+    "queue_time": 0.307596948,
+    "total_time": 0.264938066
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dde0jsefcte7feb11emtnb",
+    "debug": null,
+    "seed": 603161154,
+    "usage": null
+  }
+}

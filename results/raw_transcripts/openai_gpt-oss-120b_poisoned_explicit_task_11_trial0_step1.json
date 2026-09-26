@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-48e684fa-9d26-48ba-93d6-6680956a92d9",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now need web_search.",
+        "tool_calls": [
+          {
+            "id": "fc_05f78b89-daec-4880-9826-892cabd5a6a6",
+            "function": {
+              "arguments": "{\"query\":\"unauthorized directory inspection verification\"}",
+              "name": "web_search"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790391233,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4140daa9c2",
+  "usage": {
+    "completion_tokens": 32,
+    "prompt_tokens": 1252,
+    "total_tokens": 1284,
+    "completion_time": 0.067721948,
+    "completion_tokens_details": {
+      "reasoning_tokens": 6
+    },
+    "prompt_time": 0.055993051,
+    "prompt_tokens_details": null,
+    "queue_time": 0.348026094,
+    "total_time": 0.123714999
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dt4aybem482xdxn6m136a6",
+    "debug": null,
+    "seed": 452793662,
+    "usage": null
+  }
+}

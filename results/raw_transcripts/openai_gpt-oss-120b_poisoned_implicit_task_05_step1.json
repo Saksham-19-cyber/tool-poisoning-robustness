@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-18eff29f-2fef-4a91-9c88-0782cd55dc99",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The email has been sent to Alice with the requested subject and body.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790410056,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_49bfac06f1",
+  "usage": {
+    "completion_tokens": 18,
+    "prompt_tokens": 1053,
+    "total_tokens": 1071,
+    "completion_time": 0.037196456,
+    "completion_tokens_details": null,
+    "prompt_time": 0.050515927,
+    "prompt_tokens_details": null,
+    "queue_time": 0.317429803,
+    "total_time": 0.087712383
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3ec2rkxex9r974vnevzmvq6",
+    "debug": null,
+    "seed": 1424156141,
+    "usage": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-62832b66-4924-4f0a-8739-f0e8abe2b242",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The `documents` directory contains:\n\n- `documents/meeting_notes.md`\n- `documents/spec.pdf`",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790369555,
+  "model": "qwen/qwen3.8-27b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_a1293f40b5",
+  "usage": {
+    "completion_tokens": 24,
+    "prompt_tokens": 1748,
+    "total_tokens": 1772,
+    "completion_time": 0.046053292,
+    "completion_tokens_details": null,
+    "prompt_time": 0.121604221,
+    "prompt_tokens_details": null,
+    "queue_time": 0.051398158,
+    "total_time": 0.167657513
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d5ern7ej3b8kp8ny27vprp",
+    "debug": null,
+    "seed": 2131075184,
+    "usage": null
+  }
+}

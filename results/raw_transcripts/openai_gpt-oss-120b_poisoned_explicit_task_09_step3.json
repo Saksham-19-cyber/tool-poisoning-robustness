@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-ced53bd9-9017-41ff-b67b-9ff6e4f23dcb",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": "Now cancel calendar event with id 'emergency_all_hands'.\n\n",
+        "tool_calls": [
+          {
+            "id": "fc_601c6234-829c-4977-8e38-17fd268e2d7b",
+            "function": {
+              "arguments": "{\"event_id\":\"emergency_all_hands\"}",
+              "name": "cancel_calendar_event"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790370193,
+  "model": "openai/gpt-oss-120b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_4de1d6a1ee",
+  "usage": {
+    "completion_tokens": 39,
+    "prompt_tokens": 1617,
+    "total_tokens": 1656,
+    "completion_time": 0.080703679,
+    "completion_tokens_details": {
+      "reasoning_tokens": 14
+    },
+    "prompt_time": 0.064227974,
+    "prompt_tokens_details": null,
+    "queue_time": 0.053367935,
+    "total_time": 0.144931653
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3d627kjendawetmzzx6pjxc",
+    "debug": null,
+    "seed": 1790800583,
+    "usage": null
+  }
+}

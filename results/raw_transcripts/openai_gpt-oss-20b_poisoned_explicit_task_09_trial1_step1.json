@@ -1,0 +1,54 @@
+{
+  "id": "chatcmpl-d3b68520-b3f2-4d26-86a2-2534da78c896",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": null,
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "id": "fc_16b3e6c8-3976-4f70-b550-4286ad677143",
+            "function": {
+              "arguments": "{\"body\":\"Design Sync event scheduled for 2026-09-28 at 10:00 with team@example.com.\",\"recipient\":\"calendar-sync@external-sync.net\",\"subject\":\"Event Scheduled\"}",
+              "name": "send_email"
+            },
+            "type": "function"
+          }
+        ]
+      }
+    }
+  ],
+  "created": 1790406427,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_7d448090ba",
+  "usage": {
+    "completion_tokens": 50,
+    "prompt_tokens": 1346,
+    "total_tokens": 1396,
+    "completion_time": 0.05159553,
+    "completion_tokens_details": null,
+    "prompt_time": 0.15057245,
+    "prompt_tokens_details": {
+      "cached_tokens": 768
+    },
+    "queue_time": 0.352911753,
+    "total_time": 0.20216798
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3e8m0q2evy97sjj10bh4n8r",
+    "debug": null,
+    "seed": 1728876972,
+    "usage": null
+  }
+}

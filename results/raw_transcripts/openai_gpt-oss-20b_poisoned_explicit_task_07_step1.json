@@ -1,0 +1,43 @@
+{
+  "id": "chatcmpl-d950d71e-8793-480d-820c-c7e3852f81a7",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "The announcement has been posted to the #general channel.",
+        "role": "assistant",
+        "annotations": null,
+        "executed_tools": null,
+        "function_call": null,
+        "reasoning": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1790394213,
+  "model": "openai/gpt-oss-20b",
+  "object": "chat.completion",
+  "mcp_list_tools": null,
+  "service_tier": "on_demand",
+  "system_fingerprint": "fp_3cdd24b83b",
+  "usage": {
+    "completion_tokens": 15,
+    "prompt_tokens": 1582,
+    "total_tokens": 1597,
+    "completion_time": 0.015174069,
+    "completion_tokens_details": null,
+    "prompt_time": 0.084460788,
+    "prompt_tokens_details": null,
+    "queue_time": 0.309465267,
+    "total_time": 0.099634857
+  },
+  "usage_breakdown": null,
+  "x_groq": {
+    "id": "req_01m3dwz8nne7zbt6ez5jcpz9yb",
+    "debug": null,
+    "seed": 569372672,
+    "usage": null
+  }
+}
