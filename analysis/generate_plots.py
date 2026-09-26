@@ -12,11 +12,11 @@ import matplotlib.pyplot as plt
 def get_model_display_name(model_name: str) -> str:
     m = model_name.lower()
     if "120b" in m:
-        return "GPT-OSS-120B (120B)"
+        return "openai/gpt-oss-120b\n(120B)"
     elif "27b" in m:
-        return "Qwen3.8-27B (27B)"
+        return "qwen/qwen3.8-27b\n(27B)"
     elif "20b" in m:
-        return "GPT-OSS-20B (20B)"
+        return "openai/gpt-oss-20b\n(20B)"
     return model_name
 
 
